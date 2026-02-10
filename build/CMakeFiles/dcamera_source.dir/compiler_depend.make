@@ -487,6 +487,7 @@ CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distribu
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cmath \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/compare \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/concepts \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstddef \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdint \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdio \
@@ -643,7 +644,6 @@ CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distribu
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h \
   /Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/include/dcamera_capture_info_cmd.h \
   /Users/donghuibin/Work/distributed_camera_test/external/cJSON/cJSON.h \
-  /Users/donghuibin/Work/distributed_camera_test/stubs/headers/dh_log.h \
   /Users/donghuibin/Work/distributed_camera_test/stubs/headers/distributed_camera_constants.h \
   /Users/donghuibin/Work/distributed_camera_test/stubs/headers/distributed_camera_errno.h \
   /Users/donghuibin/Work/distributed_camera_test/stubs/headers/distributed_hardware_log.h \
@@ -1442,15 +1442,12 @@ CMakeFiles/dcamera_source.dir/src/dcamera_source_dll.cpp.o: /Users/donghuibin/Wo
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdarg.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h \
-  /Users/donghuibin/Work/distributed_camera_test/stubs/headers/dh_log.h \
   /Users/donghuibin/Work/distributed_camera_test/stubs/headers/distributed_hardware_log.h
 
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_wctype.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_wchar.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_string.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_ctype.h:
 
@@ -1901,8 +1898,6 @@ CMakeFiles/dcamera_source.dir/src/dcamera_source_dll.cpp.o: /Users/donghuibin/Wo
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/algorithm:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__verbose_abort:
-
-/Users/donghuibin/Work/distributed_camera_test/stubs/headers/dh_log.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/in_out_result.h:
 
@@ -2918,6 +2913,8 @@ CMakeFiles/dcamera_source.dir/src/dcamera_source_dll.cpp.o: /Users/donghuibin/Wo
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_final.h:
 
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_string.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_negate.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/synth_three_way.h:
@@ -2942,9 +2939,9 @@ CMakeFiles/dcamera_source.dir/src/dcamera_source_dll.cpp.o: /Users/donghuibin/Wo
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/partition_copy.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string_view:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_const.h:
 
