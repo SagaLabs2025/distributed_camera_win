@@ -14,7 +14,7 @@
 namespace OHOS {
 namespace DistributedHardware {
 
-// 日志函数实现（直接定义在这里）
+// 日志函数实现（完整版）
 inline void DHLog(int32_t logLevel, const char *fmt, ...) {
     (void)logLevel;
     va_list args;
@@ -63,6 +63,9 @@ inline void DHLog(int32_t logLevel, const char *fmt, ...) {
             return; \
         } \
     } while (0)
+
+// 兼容性别名（保持与源码一致）
+#define distributed_hardware_log distributed_hardware_log
 
 } // namespace DistributedHardware
 } // namespace OHOS
