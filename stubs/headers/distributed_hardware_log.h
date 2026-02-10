@@ -10,12 +10,13 @@
 #include <cstdio>
 #include <cstdarg>
 #include "distributed_camera_constants.h"
+#include "distributed_camera_errno.h"
 
 namespace OHOS {
 namespace DistributedHardware {
 
 // 日志函数实现（完整版）
-inline void DHLog(int32_t logLevel, const char *fmt, ...) {
+inline void DHLog(DHLogLevel logLevel, const char *fmt, ...) {
     (void)logLevel;
     va_list args;
     va_start(args, fmt);
@@ -48,7 +49,7 @@ inline void DHLog(int32_t logLevel, const char *fmt, ...) {
         } \
     } while (0)
 
-#define CHECK_AND_RETURN_RET_LOG(cond, ret, fmt) \
+#define CHECK_AND_RETURN_RET_LOG(cond, ret, fmt, ...) \
     do { \
         if ((cond)) { \
             DHLOGE(fmt, ##__VA_ARGS__); \
@@ -56,11 +57,22 @@ inline void DHLog(int32_t logLevel, const char *fmt, ...) {
         } \
     } while (0)
 
-#define CHECK_AND_LOG(cond, fmt) \
+#define CHECK_AND_LOG(cond, fmt, ...) \
     do { \
         if ((cond)) { \
             DHLOGE(fmt, ##__VA_ARGS__); \
             return; \
+        } \
+    } while (0)
+
+#define CHECK_AND_FREE_RETURN_RET_LOG(cond, ret, root, fmt, ...) \
+    do { \
+        if ((cond)) { \
+            DHLOGE(fmt, ##__VA_ARGS__); \
+            if ((root) != nullptr) { \
+                cJSON_Delete(root); \
+            } \
+            return (ret); \
         } \
     } while (0)
 

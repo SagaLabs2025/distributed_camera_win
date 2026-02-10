@@ -13,8 +13,8 @@
 namespace OHOS {
 namespace DistributedHardware {
 
-// 日志标签定义
-constexpr int32_t DH_LOG_TAG = 0xD004101;
+// 注意：日志标签和日志级别定义在 distributed_camera_errno.h 中
+// DH_LOG_TAG, DH_LOG_DEBUG, DH_LOG_INFO, DH_LOG_WARN, DH_LOG_ERROR
 
 // 相机服务状态
 enum {
