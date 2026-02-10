@@ -48,10 +48,17 @@ namespace DistributedHardware {
 namespace HDI {
     namespace DistributedCamera {
         namespace V1_1 {
-            class DCameraHDFEvent;
+            struct DCameraHDFEvent;
+            struct DCStreamInfo;
+            struct DCCaptureInfo;
         }
     }
 }
+
+// 类型别名，简化代码
+using HDI_DCStreamInfo = ::OHOS::HDI::DistributedCamera::V1_1::DCStreamInfo;
+using HDI_DCCaptureInfo = ::OHOS::HDI::DistributedCamera::V1_1::DCCaptureInfo;
+using HDI_DCameraHDFEvent = ::OHOS::HDI::DistributedCamera::V1_1::DCameraHDFEvent;
 
 // 前向声明
 class ICameraStateListener;
@@ -60,6 +67,9 @@ class ICameraInput;
 class DCameraSourceStateMachine;
 class DCameraSourceController;
 class DCameraSourceInput;
+
+// DCameraEvent 前向声明
+class DCameraEvent;
 
 // DCameraRegistParam 已在 dcamera_common_types.h 中定义，此处不需要重复定义
 
@@ -105,12 +115,12 @@ public:
     int32_t DCameraNotify(std::string& eventStr);
     int32_t OpenSession(DCameraIndex& camIndex);
     int32_t CloseSession(DCameraIndex& camIndex);
-    int32_t ConfigCameraStreams(const std::vector<std::shared_ptr<DCStreamInfo>>& streamInfos);
+    int32_t ConfigCameraStreams(const std::vector<std::shared_ptr<HDI_DCStreamInfo>>& streamInfos);
     int32_t ReleaseCameraStreams(const std::vector<int>& streamIds);
-    int32_t StartCameraCapture(const std::vector<std::shared_ptr<DCCaptureInfo>>& captureInfos);
+    int32_t StartCameraCapture(const std::vector<std::shared_ptr<HDI_DCCaptureInfo>>& captureInfos);
     int32_t StopCameraCapture(const std::vector<int>& streamIds);
     int32_t UpdateCameraSettings(const std::vector<std::shared_ptr<DCameraSettings>>& settings);
-    int32_t ProcessHDFEvent(const OHOS::HDI::DistributedCamera::V1_1::DCameraHDFEvent& event);
+    int32_t ProcessHDFEvent(const HDI_DCameraHDFEvent& event);
     int32_t GetStateInfo();
     std::string GetVersion();
     int32_t OnChannelConnectedEvent();
@@ -139,10 +149,10 @@ public:
     virtual int32_t UnRegister(std::shared_ptr<DCameraRegistParam>& param);
     virtual int32_t OpenCamera();
     virtual int32_t CloseCamera();
-    virtual int32_t ConfigStreams(std::vector<std::shared_ptr<DCStreamInfo>>& streamInfos);
+    virtual int32_t ConfigStreams(std::vector<std::shared_ptr<HDI_DCStreamInfo>>& streamInfos);
     virtual int32_t ReleaseStreams(std::vector<int>& streamIds, bool& isAllRelease);
     virtual int32_t ReleaseAllStreams();
-    virtual int32_t StartCapture(std::vector<std::shared_ptr<DCCaptureInfo>>& captureInfos);
+    virtual int32_t StartCapture(std::vector<std::shared_ptr<HDI_DCCaptureInfo>>& captureInfos);
     virtual int32_t StopCapture(std::vector<int>& streamIds, bool& isAllStop);
     virtual int32_t StopAllCapture();
     virtual int32_t UpdateSettings(std::vector<std::shared_ptr<DCameraSettings>>& settings);

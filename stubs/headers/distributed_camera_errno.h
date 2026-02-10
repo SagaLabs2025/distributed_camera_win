@@ -7,7 +7,7 @@
 #ifndef STUBS_DISTRIBUTED_CAMERA_ERRNO_H
 #define STUBS_DISTRIBUTED_CAMERA_ERRNO_H
 
-#include <int32.h>
+#include <cstdint>
 
 namespace OHOS {
 namespace DistributedHardware {

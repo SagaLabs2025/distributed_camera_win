@@ -32,6 +32,10 @@ namespace HDI {
 namespace DistributedCamera {
 namespace V1_1 {
 
+// 前向声明 HDF 类型
+struct DCStreamInfo;
+struct DCCaptureInfo;
+
 // 前向声明，避免循环依赖
 using ::OHOS::DistributedHardware::DCameraSettings;
 
