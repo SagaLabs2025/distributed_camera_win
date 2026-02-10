@@ -87,6 +87,10 @@ set(DCAMERA_SOURCE_SOURCES
     
     # SourceService - 阶段 2 (逐步添加)
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp
+    
+    # Stub 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_utils_tools.cpp
 )
 
 # 检查源文件是否存在

@@ -198,6 +198,34 @@ CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distribu
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp -o CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.s
 
+CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o: CMakeFiles/dcamera_source.dir/flags.make
+CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o: /Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp
+CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o: CMakeFiles/dcamera_source.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o -MF CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o.d -o CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o -c /Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp
+
+CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp > CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.i
+
+CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp -o CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.s
+
+CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.o: CMakeFiles/dcamera_source.dir/flags.make
+CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.o: /Users/donghuibin/Work/distributed_camera_test/stubs/src/dcamera_utils_tools.cpp
+CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.o: CMakeFiles/dcamera_source.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.o -MF CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.o.d -o CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.o -c /Users/donghuibin/Work/distributed_camera_test/stubs/src/dcamera_utils_tools.cpp
+
+CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/donghuibin/Work/distributed_camera_test/stubs/src/dcamera_utils_tools.cpp > CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.i
+
+CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/donghuibin/Work/distributed_camera_test/stubs/src/dcamera_utils_tools.cpp -o CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.s
+
 # Object files for target dcamera_source
 dcamera_source_OBJECTS = \
 "CMakeFiles/dcamera_source.dir/src/dcamera_source_dll.cpp.o" \
@@ -208,7 +236,9 @@ dcamera_source_OBJECTS = \
 "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.o" \
 "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.o" \
 "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.o" \
-"CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.o"
+"CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.o" \
+"CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o" \
+"CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.o"
 
 # External object files for target dcamera_source
 dcamera_source_EXTERNAL_OBJECTS =
@@ -222,10 +252,12 @@ libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/dis
 libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.o
 libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.o
 libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.o
+libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o
+libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.o
 libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/build.make
 libdcamera_source.dylib: libcjson.a
 libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX shared library libdcamera_source.dylib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX shared library libdcamera_source.dylib"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dcamera_source.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

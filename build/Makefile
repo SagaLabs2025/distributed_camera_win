@@ -392,6 +392,30 @@ Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraserv
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.s
 .PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.s
 
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp.s
+
 external/cJSON/cJSON.o: external/cJSON/cJSON.c.o
 .PHONY : external/cJSON/cJSON.o
 
@@ -464,6 +488,30 @@ src/dcamera_source_dll.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/src/dcamera_source_dll.cpp.s
 .PHONY : src/dcamera_source_dll.cpp.s
 
+stubs/src/dcamera_utils_tools.o: stubs/src/dcamera_utils_tools.cpp.o
+.PHONY : stubs/src/dcamera_utils_tools.o
+
+# target to build an object file
+stubs/src/dcamera_utils_tools.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.o
+.PHONY : stubs/src/dcamera_utils_tools.cpp.o
+
+stubs/src/dcamera_utils_tools.i: stubs/src/dcamera_utils_tools.cpp.i
+.PHONY : stubs/src/dcamera_utils_tools.i
+
+# target to preprocess a source file
+stubs/src/dcamera_utils_tools.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.i
+.PHONY : stubs/src/dcamera_utils_tools.cpp.i
+
+stubs/src/dcamera_utils_tools.s: stubs/src/dcamera_utils_tools.cpp.s
+.PHONY : stubs/src/dcamera_utils_tools.s
+
+# target to generate assembly for a file
+stubs/src/dcamera_utils_tools.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.s
+.PHONY : stubs/src/dcamera_utils_tools.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -503,6 +551,9 @@ help:
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.o"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.i"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.s"
 	@echo "... external/cJSON/cJSON.o"
 	@echo "... external/cJSON/cJSON.i"
 	@echo "... external/cJSON/cJSON.s"
@@ -512,6 +563,9 @@ help:
 	@echo "... src/dcamera_source_dll.o"
 	@echo "... src/dcamera_source_dll.i"
 	@echo "... src/dcamera_source_dll.s"
+	@echo "... stubs/src/dcamera_utils_tools.o"
+	@echo "... stubs/src/dcamera_utils_tools.i"
+	@echo "... stubs/src/dcamera_utils_tools.s"
 .PHONY : help
 
 

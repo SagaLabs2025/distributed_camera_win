@@ -65,6 +65,15 @@ inline void DHLog(DHLogLevel logLevel, const char *fmt, ...) {
         } \
     } while (0)
 
+// 简化版宏（无返回值）
+#define CHECK_AND_RETURN_LOG(cond, fmt, ...) \
+    do { \
+        if ((cond)) { \
+            DHLOGE(fmt, ##__VA_ARGS__); \
+            return; \
+        } \
+    } while (0)
+
 #define CHECK_AND_FREE_RETURN_RET_LOG(cond, ret, root, fmt, ...) \
     do { \
         if ((cond)) { \
