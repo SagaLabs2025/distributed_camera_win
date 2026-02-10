@@ -1,0 +1,24 @@
+# Build outputs
+build/
+*.dylib
+*.a
+*.o
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Backup files
+*.bak
+*.bak*
+
+# External dependencies (keep source, ignore .git)
+external/cJSON/.git
+external/c_utils/.git
+external/drivers_interface/.git
+
+# macOS
+.DS_Store

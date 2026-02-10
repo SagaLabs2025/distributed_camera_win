@@ -33,12 +33,20 @@ message(STATUS "OpenHarmony 源码根目录: ${OHOS_DCAMERA_SOURCE_ROOT}")
 set(EXTERNAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/external")
 set(C_UTILS_INCLUDE_DIR "${EXTERNAL_DIR}/c_utils/base/include")
 set(DRIVERS_INTERFACE_DIR "${EXTERNAL_DIR}/drivers_interface")
+set(CJSON_DIR "${EXTERNAL_DIR}/cJSON")
+set(CJSON_INCLUDE_DIR "${CJSON_DIR}")
 
 # 验证外部依赖
 if(EXISTS "${C_UTILS_INCLUDE_DIR}")
     message(STATUS "✓ 找到 c_utils: ${C_UTILS_INCLUDE_DIR}")
 else()
     message(STATUS "✗ 未找到 c_utils，部分功能可能受限")
+endif()
+
+if(EXISTS "${CJSON_INCLUDE_DIR}/cJSON.h")
+    message(STATUS "✓ 找到 cJSON: ${CJSON_INCLUDE_DIR}")
+else()
+    message(STATUS "✗ 未找到 cJSON")
 endif()
 
 # 源码头文件目录
@@ -55,6 +63,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/adapters
     ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_SOURCE_DIR}/stubs/headers
+    ${CJSON_INCLUDE_DIR}
     ${DCAMERA_INCLUDE_DIR}
     ${DCAMERA_COMMON_INCLUDE}
     ${DCAMERA_SERVICE_DIR}/sourceservice/include
@@ -85,7 +94,12 @@ foreach(SOURCE_FILE ${DCAMERA_SOURCE_SOURCES})
     endif()
 endforeach()
 
-message(STATUS "找到 ${CMAKE_CURRENT_LIST_DIR} 个源文件")
+list(LENGTH EXISTING_SOURCES SOURCE_COUNT)
+message(STATUS "找到 ${SOURCE_COUNT} 个源文件")
+
+# 编译 cJSON 静态库
+add_library(cjson STATIC ${CJSON_DIR}/cJSON.c)
+target_include_directories(cjson PUBLIC ${CJSON_INCLUDE_DIR})
 
 # 创建 dcamera_source 动态库
 add_library(dcamera_source SHARED
@@ -102,12 +116,13 @@ add_library(dcamera_sink SHARED
 target_link_libraries(dcamera_source
     PRIVATE
     c++
-    c++
+    cjson
 )
 
 target_link_libraries(dcamera_sink
     PRIVATE
     c++
+    cjson
 )
 
 # 安装
@@ -123,5 +138,5 @@ message(STATUS "===============================================")
 message(STATUS "  构建类型: ${CMAKE_BUILD_TYPE}")
 message(STATUS "  C++ 标准: ${CMAKE_CXX_STANDARD}")
 message(STATUS "  源码根目录: ${OHOS_DCAMERA_SOURCE_ROOT}")
-message(STATUS "  源文件数量: ${CMAKE_CURRENT_LIST_DIR}")
+message(STATUS "  源文件数量: ${SOURCE_COUNT}")
 message(STATUS "===============================================")
