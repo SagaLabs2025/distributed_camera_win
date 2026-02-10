@@ -12,33 +12,34 @@
 namespace OHOS {
 namespace DistributedHardware {
 
+// 日志标签定义
+constexpr int32_t DH_LOG_TAG = 0xD004101;
+
 // 日志级别定义
 typedef enum {
-    DH_LOG_DEBUG,
-    DH_LOG_INFO,
-    DH_LOG_WARN,
-    DH_LOG_ERROR,
+    DH_LOG_DEBUG = 0,
+    DH_LOG_INFO = 1,
+    DH_LOG_WARN = 2,
+    DH_LOG_ERROR = 3,
 } DHLogLevel;
 
-// 日志函数（简化版，避免与distributed_hardware_log.h冲突）
-inline void DHLog(DHLogLevel logLevel, const char *fmt, ...) {
-    (void)logLevel;
-    va_list args;
-    va_start(args, fmt);
-    vprintf(fmt, args);
-    printf("\n");
-    va_end(args);
-}
+// 基础错误码
+constexpr int32_t DCAMERA_OK = 0;
+constexpr int32_t DCAMERA_ERROR = -1;
+constexpr int32_t DCAMERA_ERROR_INVALID_PARAM = -2;
+constexpr int32_t DCAMERA_ERROR_NULL_PTR = -3;
+constexpr int32_t DCAMERA_ERROR_NOT_READY = -4;
+constexpr int32_t DCAMERA_ERROR_TIMEOUT = -5;
+constexpr int32_t DCAMERA_ERROR_NO_MEMORY = -6;
+constexpr int32_t DCAMERA_ERROR_BUSY = -7;
+constexpr int32_t DCAMERA_ERROR_NOT_FOUND = -8;
+constexpr int32_t DCAMERA_ERROR_ALREADY_EXISTS = -9;
+constexpr int32_t DCAMERA_ERROR_PERMISSION_DENIED = -10;
 
-// 日志宏（简化版）
-#define DHLOGD(fmt, ...) printf("[DEBUG] " fmt "\n", ##__VA_ARGS__)
-#define DHLOGI(fmt, ...) printf("[INFO] " fmt "\n", ##__VA_ARGS__)
-#define DHLOGW(fmt, ...) printf("[WARN] " fmt "\n", ##__VA_ARGS__)
-#define DHLOGE(fmt, ...) printf("[ERROR] " fmt "\n", ##__VA_ARGS__)
-
-// 错误码定义（使用distributed_hardware_log.h中的定义）
-// 这里不重复定义 DCAMERA_OK, DCAMERA_ERROR 等
-// 以避免与 distributed_hardware_log.h 冲突
+// HDF 错误码基础
+constexpr int32_t ERR_DH_CAMERA_BASE = 0x05C20000;
+constexpr int32_t DCAMERA_BAD_VALUE = ERR_DH_CAMERA_BASE + 2;  // 957473662
+constexpr int32_t DCAMERA_BAD_TYPE = ERR_DH_CAMERA_BASE + 3;
 
 // 相机特定错误码
 constexpr int32_t DCAMERA_ERR_CAMERA_NOT_FOUND = -100;
