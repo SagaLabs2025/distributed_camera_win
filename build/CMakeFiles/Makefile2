@@ -123,12 +123,12 @@ CMakeFiles/cjson.dir/clean:
 CMakeFiles/dcamera_source.dir/all: CMakeFiles/cjson.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Built target dcamera_source"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16 "Built target dcamera_source"
 .PHONY : CMakeFiles/dcamera_source.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/dcamera_source.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/dcamera_source.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles 0
 .PHONY : CMakeFiles/dcamera_source.dir/rule
@@ -140,7 +140,7 @@ dcamera_source: CMakeFiles/dcamera_source.dir/rule
 # codegen rule for target.
 CMakeFiles/dcamera_source.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Finished codegen for target dcamera_source"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16 "Finished codegen for target dcamera_source"
 .PHONY : CMakeFiles/dcamera_source.dir/codegen
 
 # clean rule for target.

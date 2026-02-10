@@ -57,7 +57,6 @@ set(DCAMERA_COMMON_INCLUDE "${DCAMERA_SOURCE_DIR}/common/include")
 set(SOFTBUS_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers")
 
 # 包含目录
-# 注意：源码头文件路径必须在stub之前，优先使用源码定义
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/adapters
@@ -67,15 +66,12 @@ include_directories(
     ${CJSON_INCLUDE_DIR}
     ${DCAMERA_INCLUDE_DIR}
     ${DCAMERA_COMMON_INCLUDE}
+    ${DCAMERA_SERVICE_DIR}/base/include
     ${DCAMERA_SERVICE_DIR}/sourceservice/include
     ${DCAMERA_SERVICE_DIR}/sinkservice/include
-    ${DCAMERA_SERVICE_DIR}/base/include
 )
 
-# 源文件定义
-# 阶段 1: Base 工具（7个文件）
-# 阶段 2: SourceService 工具（逐步添加）
-# 阶段 3: SinkService 工具（逐步添加）
+# 源文件定义 - 保守策略，先编译基础文件
 set(DCAMERA_SOURCE_SOURCES
     # Base 工具 - 阶段 1 ✅
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_capture_info_cmd.cpp
@@ -86,13 +82,9 @@ set(DCAMERA_SOURCE_SOURCES
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_sink_frame_info.cpp
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_metadata_setting_cmd.cpp
     
-    # SourceService - 阶段 2 (逐步添加)
+    # SourceService - 阶段 2
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp
-    
-    # SinkService - 阶段 3 (逐步添加)
-    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp
-    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp
     
     # Stub 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_utils_tools.cpp
