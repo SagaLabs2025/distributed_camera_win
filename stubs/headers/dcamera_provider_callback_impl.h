@@ -9,7 +9,6 @@
 
 #include "v1_1/id_camera_provider_callback.h"
 #include <string>
-#include <vector>
 
 namespace OHOS {
 namespace DistributedHardware {

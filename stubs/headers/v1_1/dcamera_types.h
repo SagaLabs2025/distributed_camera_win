@@ -1,14 +1,14 @@
 /*
- * HDF DCameraTypes - OpenHarmony Distributed Camera - macOS Stub
+ * DCameraTypes - OpenHarmony Distributed Camera V1_1 - macOS Stub
  *
- * HDF 类型定义的 macOS 空实现
- * 基于 drivers_interface/distributed_camera/v1_1/DCameraTypes.idl
+ * HDF 类型定义
  */
 
 #ifndef STUBS_V1_1_DCAMERA_TYPES_H
 #define STUBS_V1_1_DCAMERA_TYPES_H
 
 #include <string>
+#include <vector>
 
 namespace OHOS {
 namespace HDI {

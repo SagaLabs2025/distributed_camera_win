@@ -8,7 +8,6 @@
 #define STUBS_DCAMERA_TYPES_H
 
 #include <string>
-#include <vector>
 
 namespace OHOS {
 namespace HDI {

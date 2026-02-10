@@ -7,7 +7,6 @@
 #ifndef STUBS_DATA_BUFFER_H
 #define STUBS_DATA_BUFFER_H
 
-#include <vector>
 #include <memory>
 
 namespace OHOS {

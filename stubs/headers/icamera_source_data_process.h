@@ -16,7 +16,6 @@
 #ifndef OHOS_ICAMERA_SOURCE_DATA_PROCESS_H
 #define OHOS_ICAMERA_SOURCE_DATA_PROCESS_H
 
-#include <vector>
 #include <memory>
 #include <cstdint>
 

@@ -19,7 +19,6 @@
 #include <string>
 #include <memory>
 #include <stdint.h>
-#include <vector>
 
 namespace OHOS {
 namespace DistributedHardware {
