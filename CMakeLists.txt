@@ -63,31 +63,27 @@ include_directories(
 )
 
 # 源文件定义
+# 暂时只使用 dylib 入口文件，不包含 OpenHarmony 源码
+# 等待 stub 头文件编译通过后再逐步添加源码文件
 set(DCAMERA_SOURCE_SOURCES
-    # Source Service
-    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp
-    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_handler.cpp
-    ${DCAMERA_SERVICE_DIR}/sourceservice/src/camerasource/dcamera_source_controller.cpp
-    ${DCAMERA_SERVICE_DIR}/sourceservice/src/camerasource/dcamera_source_input.cpp
-    ${DCAMERA_SERVICE_DIR}/sourceservice/src/camerasource/dcamera_source_coordinator.cpp
-    ${DCAMERA_SERVICE_DIR}/sourceservice/src/camerasource/dcamera_state_machine.cpp
-    ${DCAMERA_SERVICE_DIR}/sourceservice/src/camerasource/dcamera_source_callback.cpp
-
-    # Data Processing
-    ${DCAMERA_SERVICE_DIR}/data_process/src/dcamera_source_data_process.cpp
-    ${DCAMERA_SERVICE_DIR}/data_process/src/dcamera_sink_data_process.cpp
-
-    # Base Utils
-    ${DCAMERA_SERVICE_DIR}/base/src/dcamera_hdf_event.cpp
-    ${DCAMERA_SERVICE_DIR}/base/src/dcamera_utils_tools.cpp
-    ${DCAMERA_SERVICE_DIR}/base/src/dcamera_channel_info_cmd.cpp
-    ${DCAMERA_SERVICE_DIR}/base/src/dcamera_info_cmd.cpp
-    ${DCAMERA_SERVICE_DIR}/base/src/dcamera_open_info_cmd.cpp
-    ${DCAMERA_SERVICE_DIR}/base/src/dcamera_capture_info_cmd.cpp
-    ${DCAMERA_SERVICE_DIR}/base/src/dcamera_event_cmd.cpp
-
-    # Common Utils
-    ${DCAMERA_SOURCE_DIR}/common/src/utils/dcamera_buffer.cpp
+    # 暂时禁用 OpenHarmony 源码文件
+    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp
+    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_handler.cpp
+    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/camerasource/dcamera_source_controller.cpp
+    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/camerasource/dcamera_source_input.cpp
+    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/camerasource/dcamera_source_coordinator.cpp
+    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/camerasource/dcamera_state_machine.cpp
+    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/camerasource/dcamera_source_callback.cpp
+    # ${DCAMERA_SERVICE_DIR}/data_process/src/dcamera_source_data_process.cpp
+    # ${DCAMERA_SERVICE_DIR}/data_process/src/dcamera_sink_data_process.cpp
+    # ${DCAMERA_SERVICE_DIR}/base/src/dcamera_hdf_event.cpp
+    # ${DCAMERA_SERVICE_DIR}/base/src/dcamera_utils_tools.cpp
+    # ${DCAMERA_SERVICE_DIR}/base/src/dcamera_channel_info_cmd.cpp
+    # ${DCAMERA_SERVICE_DIR}/base/src/dcamera_info_cmd.cpp
+    # ${DCAMERA_SERVICE_DIR}/base/src/dcamera_open_info_cmd.cpp
+    # ${DCAMERA_SERVICE_DIR}/base/src/dcamera_capture_info_cmd.cpp
+    # ${DCAMERA_SERVICE_DIR}/base/src/dcamera_event_cmd.cpp
+    # ${DCAMERA_SOURCE_DIR}/common/src/utils/dcamera_buffer.cpp
 )
 
 # 检查源文件是否存在
