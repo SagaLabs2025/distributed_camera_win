@@ -71,7 +71,7 @@ include_directories(
     ${DCAMERA_SERVICE_DIR}/sinkservice/include
 )
 
-# 源文件定义 - 保守策略，先编译基础文件
+# 源文件定义 - 保守策略，避免复杂依赖
 set(DCAMERA_SOURCE_SOURCES
     # Base 工具 - 阶段 1 ✅
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_capture_info_cmd.cpp
@@ -82,7 +82,7 @@ set(DCAMERA_SOURCE_SOURCES
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_sink_frame_info.cpp
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_metadata_setting_cmd.cpp
     
-    # SourceService - 阶段 2
+    # SourceService - 阶段 2 ✅
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp
     
