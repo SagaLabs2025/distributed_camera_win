@@ -1,0 +1,8 @@
+/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles/dcamera_source.dir
+/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles/dcamera_sink.dir
+/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles/edit_cache.dir
+/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles/rebuild_cache.dir
+/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles/list_install_components.dir
+/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles/install.dir
+/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles/install/local.dir
+/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles/install/strip.dir

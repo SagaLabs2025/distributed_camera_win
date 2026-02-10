@@ -13,15 +13,15 @@
 #include <memory>
 
 namespace OHOS {
-namespace DistributedHardware {
-// 前向声明，避免循环依赖
-// DCameraSettings 的实际定义在 dcamera_common_types.h 中
-class DCameraSettings;
-} // namespace DistributedHardware
-
 namespace HDI {
 namespace DistributedCamera {
 namespace V1_1 {
+
+// 前向声明，避免循环依赖
+// DCameraSettings 在 DistributedHardware 命名空间中
+namespace DistributedHardware {
+    class DCameraSettings;
+}
 
 // 数据流类型
 enum DCStreamType {

@@ -35,12 +35,23 @@
 #include "icamera_input.h"
 #include "idistributed_camera_source.h"
 #include "v1_1/dcamera_types.h"
+#include "dcamera_hisysevent_adapter.h"
+#include "dcamera_hitrace_adapter.h"
 
 #include "v1_1/id_camera_provider_callback.h"
 #include "v1_1/id_camera_provider.h"
 
 namespace OHOS {
 namespace DistributedHardware {
+
+// 前向声明 HDF 类型
+namespace HDI {
+    namespace DistributedCamera {
+        namespace V1_1 {
+            class DCameraHDFEvent;
+        }
+    }
+}
 
 // 前向声明
 class ICameraStateListener;

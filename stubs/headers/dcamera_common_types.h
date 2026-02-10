@@ -21,13 +21,14 @@
 #include <stdint.h>
 #include <vector>
 
-// 在 Mock 模式下，提前包含 HDF 类型定义，确保命名空间已声明
+namespace OHOS {
+namespace DistributedHardware {
+
+// 在 Mock 模式下，提前包含 HDF 类型定义
+// 注意：必须在命名空间内包含，避免命名空间冲突
 #ifdef DCAMERA_MACOS_MOCK
 #include "v1_1/dcamera_types.h"
 #endif
-
-namespace OHOS {
-namespace DistributedHardware {
 
 // ============================================================================
 // 条件编译：根据是否在 Mock 模式下选择不同的类型定义
@@ -38,8 +39,17 @@ namespace DistributedHardware {
 // Mock 编译模式：使用 HDF 命名空间的类型
 // ----------------------------------------------------------------------------
 
-// 直接使用 HDF 命名空间的类型作为 DistributedHardware 命名空间的类型
-// 这样解决了类型不兼容问题，OpenHarmony 源码中的类型赋值就能正确工作
+// 在命名空间外包含 HDF 类型定义
+namespace HDI {
+    namespace DistributedCamera {
+        namespace V1_1 {
+            class DCStreamType;
+            class DCEncodingType;
+        }
+    }
+}
+
+// 使用类型别名
 using DCStreamType = ::OHOS::HDI::DistributedCamera::V1_1::DCStreamType;
 using DCEncodeType = ::OHOS::HDI::DistributedCamera::V1_1::DCEncodingType;
 

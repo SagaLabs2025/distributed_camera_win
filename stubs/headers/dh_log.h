@@ -28,9 +28,6 @@ typedef enum {
     DH_LOG_ERROR,
 } DHLogLevel;
 
-// 日志级别常量
-constexpr int32_t DH_LOG_INFO = 1;
-
 // DHLogManager 类 - macOS Mock
 class DHLogManager {
 public:

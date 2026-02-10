@@ -20,10 +20,13 @@
 #include "idcamera_source_callback.h"
 #include "idistributed_hardware_source.h"
 
+// 使用 IRemoteBroker
+using ::OHOS::IRemoteBroker;
+
 namespace OHOS {
 namespace DistributedHardware {
 
-class IDistributedCameraSource : public OHOS::IRemoteBroker {
+class IDistributedCameraSource : public IRemoteBroker {
 public:
     // Windows Mock: 使用普通字符串替代 char16_t 字符串
     DECLARE_INTERFACE_DESCRIPTOR("ohos.distributedhardware.distributedcamerasource");

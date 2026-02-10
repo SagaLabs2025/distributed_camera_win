@@ -32,6 +32,9 @@ namespace HDI {
 namespace DistributedCamera {
 namespace V1_1 {
 
+// 前向声明，避免循环依赖
+using ::OHOS::DistributedHardware::DCameraSettings;
+
 // IDCameroviderCallback 接口
 class IDCameroviderCallback {
 public:
