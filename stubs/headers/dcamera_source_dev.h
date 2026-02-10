@@ -71,6 +71,13 @@ class DCameraSourceInput;
 // DCameraEvent 前向声明
 class DCameraEvent;
 
+// 前向声明 DistributedHardware 命名空间中的类型
+// 这些类型在 dcamera_common_types.h 中定义
+struct DCameraRegistParam;
+struct EnableParam;
+struct WorkModeParam;
+enum DCAMERA_EVENT : int32_t;
+
 // DCameraRegistParam 已在 dcamera_common_types.h 中定义，此处不需要重复定义
 
 // IDCameraProviderCallback 接口定义（兼容层）
