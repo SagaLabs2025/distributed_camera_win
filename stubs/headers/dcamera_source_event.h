@@ -24,6 +24,20 @@ struct DCameraIndex {
     int32_t index = 0;
 };
 
+// DCamera 信息类型
+struct DCameraInfo {
+    std::string dhId;
+    std::string deviceId;
+    std::string position;
+};
+
+// DCamera 打开信息
+struct DCameraOpenInfo {
+    std::string dhId;
+    std::string deviceId;
+    int32_t sourceType = 0;
+};
+
 // 注册参数
 class DCameraRegistParam {
 public:

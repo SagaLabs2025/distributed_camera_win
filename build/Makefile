@@ -368,6 +368,54 @@ Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraserv
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.s
 .PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.s
 
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp.s
+
 Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.o
 .PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.o
 
@@ -548,6 +596,12 @@ help:
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.o"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.i"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.s"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.o"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.i"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.s"

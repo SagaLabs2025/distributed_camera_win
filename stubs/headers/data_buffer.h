@@ -1,13 +1,15 @@
 /*
- * DataBuffer - OpenHarmony Distributed Camera - macOS Mock
+ * Data Buffer - OpenHarmony - macOS Stub
  *
- * 数据缓冲区的 macOS 空实现
+ * 数据缓冲区
  */
 
 #ifndef STUBS_DATA_BUFFER_H
 #define STUBS_DATA_BUFFER_H
 
+#include <cstdint>
 #include <memory>
+#include <vector>
 
 namespace OHOS {
 namespace DistributedHardware {
