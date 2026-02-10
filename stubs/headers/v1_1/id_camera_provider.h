@@ -113,6 +113,7 @@ inline std::shared_ptr<ICameraProvider> ICameraProvider::Get(const std::string& 
 // 为兼容 OpenHarmony 源码，在 DistributedHardware 命名空间中引入类型别名
 namespace OHOS {
 namespace DistributedHardware {
+    // 使用完整路径
     using ::OHOS::HDI::DistributedCamera::V1_1::ICameraProvider;
 }
 }

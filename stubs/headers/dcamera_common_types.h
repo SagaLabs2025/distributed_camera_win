@@ -21,11 +21,6 @@
 #include <stdint.h>
 #include <vector>
 
-// 在 Mock 模式下，提前包含 HDF 类型定义（在命名空间外）
-#ifdef DCAMERA_MACOS_MOCK
-#include "v1_1/dcamera_types.h"
-#endif
-
 namespace OHOS {
 namespace DistributedHardware {
 
@@ -34,9 +29,11 @@ namespace DistributedHardware {
 // Mock 编译模式：使用 HDF 命名空间的类型
 // ----------------------------------------------------------------------------
 
-// 注意：HDF 命名空间在顶层 OHOS 下，与 DistributedHardware 并列
-// 在此命名空间内，HDI 已经通过上面的 include 可用
-// 使用类型别名
+// 注意：在此处包含 HDF 类型定义
+// 虽然在命名空间内，但 HDF 命名空间与 DistributedHardware 并列
+#include "v1_1/dcamera_types.h"
+
+// 使用完整路径访问 HDF 类型（需要回到 OHOS 顶层）
 using DCStreamType = ::OHOS::HDI::DistributedCamera::V1_1::DCStreamType;
 using DCEncodeType = ::OHOS::HDI::DistributedCamera::V1_1::DCEncodingType;
 

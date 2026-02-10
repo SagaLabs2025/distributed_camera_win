@@ -20,11 +20,11 @@
 #include "idcamera_source_callback.h"
 #include "idistributed_hardware_source.h"
 
-// 使用 IRemoteBroker
-using ::OHOS::IRemoteBroker;
-
 namespace OHOS {
 namespace DistributedHardware {
+
+// 使用 OHOS 顶层命名空间中的 IRemoteBroker
+using ::OHOS::IRemoteBroker;
 
 class IDistributedCameraSource : public IRemoteBroker {
 public:

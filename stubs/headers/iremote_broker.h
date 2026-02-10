@@ -9,9 +9,8 @@
 
 #include <string>
 
+// IRemoteBroker - 远程代理基类（在 OHOS 顶层命名空间）
 namespace OHOS {
-
-// IRemoteBroker - 远程代理基类
 class IRemoteBroker {
 public:
     virtual ~IRemoteBroker() = default;

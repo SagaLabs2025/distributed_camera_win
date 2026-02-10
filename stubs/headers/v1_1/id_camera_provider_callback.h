@@ -36,7 +36,7 @@ namespace V1_1 {
 struct DCStreamInfo;
 struct DCCaptureInfo;
 
-// 前向声明，避免循环依赖
+// 使用 DistributedHardware 命名空间中的类型（完整路径）
 using ::OHOS::DistributedHardware::DCameraSettings;
 
 // IDCameroviderCallback 接口

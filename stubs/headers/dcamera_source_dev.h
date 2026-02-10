@@ -44,7 +44,7 @@
 namespace OHOS {
 namespace DistributedHardware {
 
-// 前向声明 HDF 类型
+// 前向声明 HDF 类型（使用完整路径从全局命名空间开始）
 namespace HDI {
     namespace DistributedCamera {
         namespace V1_1 {
@@ -55,7 +55,7 @@ namespace HDI {
     }
 }
 
-// 类型别名，简化代码
+// 类型别名，简化代码（使用完整全局路径）
 using HDI_DCStreamInfo = ::OHOS::HDI::DistributedCamera::V1_1::DCStreamInfo;
 using HDI_DCCaptureInfo = ::OHOS::HDI::DistributedCamera::V1_1::DCCaptureInfo;
 using HDI_DCameraHDFEvent = ::OHOS::HDI::DistributedCamera::V1_1::DCameraHDFEvent;
