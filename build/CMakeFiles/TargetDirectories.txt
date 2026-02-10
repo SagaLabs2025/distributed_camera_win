@@ -1,3 +1,4 @@
+/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles/cjson.dir
 /Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles/dcamera_source.dir
 /Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles/dcamera_sink.dir
 /Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles/edit_cache.dir

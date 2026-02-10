@@ -1,14 +1,14 @@
 /*
- * HDF DCameraTypes - OpenHarmony Distributed Camera - macOS Stub
+ * DCameraTypes - OpenHarmony Distributed Camera - macOS Stub
  *
- * HDF 类型定义的 macOS 空实现
- * 基于 drivers_interface/distributed_camera/v1_1/DCameraTypes.idl
+ * 相机类型定义的 macOS 空实现
  */
 
-#ifndef STUBS_V1_1_DCAMERA_TYPES_H
-#define STUBS_V1_1_DCAMERA_TYPES_H
+#ifndef STUBS_DCAMERA_TYPES_H
+#define STUBS_DCAMERA_TYPES_H
 
 #include <string>
+#include <vector>
 
 namespace OHOS {
 namespace HDI {
@@ -109,28 +109,9 @@ struct DCCaptureInfo {
     DCameraSettings captureSettings_[10];
 };
 
-/**
- * @brief Defines inner buffer of distributed camera,
- * which is used to acquire buffer during processing capture requests.
- */
-struct DCameraBuffer {
-    int index_;
-    unsigned int size_;
-    void* bufferHandle_;
-};
-
-/**
- * @brief Notification event of distributed camera.
- */
-struct DCameraHDFEvent {
-    int type_;
-    int result_;
-    std::string content_;
-};
-
 } // namespace V1_1
 } // namespace DistributedCamera
 } // namespace HDI
 } // namespace OHOS
 
-#endif // STUBS_V1_1_DCAMERA_TYPES_H
+#endif // STUBS_DCAMERA_TYPES_H

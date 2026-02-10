@@ -57,11 +57,12 @@ set(DCAMERA_COMMON_INCLUDE "${DCAMERA_SOURCE_DIR}/common/include")
 set(SOFTBUS_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers")
 
 # 包含目录
+# 注意：源码头文件路径必须在stub之前，优先使用源码定义
 include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/adapters
     ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers
     ${CMAKE_SOURCE_DIR}/stubs/headers
     ${CJSON_INCLUDE_DIR}
     ${DCAMERA_INCLUDE_DIR}

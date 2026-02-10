@@ -95,6 +95,7 @@ dcamera_sink_EXTERNAL_OBJECTS =
 
 libdcamera_sink.dylib: CMakeFiles/dcamera_sink.dir/src/dcamera_sink_dll.cpp.o
 libdcamera_sink.dylib: CMakeFiles/dcamera_sink.dir/build.make
+libdcamera_sink.dylib: libcjson.a
 libdcamera_sink.dylib: CMakeFiles/dcamera_sink.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libdcamera_sink.dylib"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dcamera_sink.dir/link.txt --verbose=$(VERBOSE)
