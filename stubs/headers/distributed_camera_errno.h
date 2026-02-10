@@ -36,6 +36,9 @@ constexpr int32_t DCAMERA_ERROR_NOT_FOUND = -8;
 constexpr int32_t DCAMERA_ERROR_ALREADY_EXISTS = -9;
 constexpr int32_t DCAMERA_ERROR_PERMISSION_DENIED = -10;
 
+// 兼容别名
+constexpr int32_t DCAMERA_NOT_FOUND = DCAMERA_ERROR_NOT_FOUND;
+
 // HDF 错误码基础
 constexpr int32_t ERR_DH_CAMERA_BASE = 0x05C20000;
 constexpr int32_t DCAMERA_BAD_VALUE = ERR_DH_CAMERA_BASE + 2;  // 957473662

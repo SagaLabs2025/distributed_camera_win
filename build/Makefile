@@ -368,6 +368,30 @@ Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraserv
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.s
 .PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.s
 
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.s
+
 external/cJSON/cJSON.o: external/cJSON/cJSON.c.o
 .PHONY : external/cJSON/cJSON.o
 
@@ -476,6 +500,9 @@ help:
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.o"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.i"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.s"
 	@echo "... external/cJSON/cJSON.o"
 	@echo "... external/cJSON/cJSON.i"
 	@echo "... external/cJSON/cJSON.s"

@@ -74,8 +74,9 @@ include_directories(
 
 # 源文件定义
 # 阶段 1: Base 工具（7个文件）
+# 阶段 2: SourceService 工具（逐步添加）
 set(DCAMERA_SOURCE_SOURCES
-    # Base 工具 - 阶段 1
+    # Base 工具 - 阶段 1 ✅
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_capture_info_cmd.cpp
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_channel_info_cmd.cpp
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_event_cmd.cpp
@@ -83,6 +84,9 @@ set(DCAMERA_SOURCE_SOURCES
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_open_info_cmd.cpp
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_sink_frame_info.cpp
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_metadata_setting_cmd.cpp
+    
+    # SourceService - 阶段 2 (逐步添加)
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp
 )
 
 # 检查源文件是否存在
