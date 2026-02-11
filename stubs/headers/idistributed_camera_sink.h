@@ -9,10 +9,14 @@
 
 #include <string>
 #include <vector>
+#include "ipc/iremote_broker.h"
 
 #ifdef __cplusplus
 namespace OHOS {
 namespace DistributedHardware {
+
+// 前向声明
+class IRemoteObject;
 
 /**
  * @brief 分布式相机 Sink 参数结构
@@ -24,10 +28,20 @@ struct SinkParam {
 
 /**
  * @brief 分布式相机 Sink 接口
+ * 继承 IRemoteBroker 以获得引用计数和 AsObject() 方法
  */
-class IDistributedCameraSink {
+class IDistributedCameraSink : public virtual IRemoteBroker {
 public:
     virtual ~IDistributedCameraSink() = default;
+
+    /**
+     * @brief 获取接口描述符
+     * @return 描述符
+     */
+    std::u16string GetDescriptor() override
+    {
+        return u"IDistributedCameraSink";
+    }
 
     /**
      * @brief 初始化 Sink
@@ -70,6 +84,31 @@ public:
     {
         (void)devId; (void)dhId; (void)reqId;
         return 0;  // Mock: 总是返回成功
+    }
+
+    /**
+     * @brief 获取远程对象（IRemoteBroker 实现）
+     * @return 远程对象原始指针
+     */
+    IRemoteObject* AsObject() override
+    {
+        return nullptr;  // Mock: 返回空指针
+    }
+
+    /**
+     * @brief 增加强引用计数（sptr 兼容）
+     */
+    void IncStrongRef(const void* objectId) override
+    {
+        (void)objectId;
+    }
+
+    /**
+     * @brief 减少强引用计数（sptr 兼容）
+     */
+    void DecStrongRef(const void* objectId) override
+    {
+        (void)objectId;
     }
 };
 

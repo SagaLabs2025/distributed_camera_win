@@ -310,24 +310,10 @@ CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distribu
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp -o CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.s
 
-CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o: CMakeFiles/dcamera_source.dir/flags.make
-CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o: /Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp
-CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o: CMakeFiles/dcamera_source.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o -MF CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o.d -o CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o -c /Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp
-
-CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp > CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.i
-
-CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp -o CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.s
-
 CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.o: CMakeFiles/dcamera_source.dir/flags.make
 CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.o: /Users/donghuibin/Work/distributed_camera_test/stubs/src/dcamera_hisysevent_adapter.cpp
 CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.o: CMakeFiles/dcamera_source.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.o -MF CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.o.d -o CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.o -c /Users/donghuibin/Work/distributed_camera_test/stubs/src/dcamera_hisysevent_adapter.cpp
 
 CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.i: cmake_force
@@ -357,7 +343,6 @@ dcamera_source_OBJECTS = \
 "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.o" \
 "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.o" \
 "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.o" \
-"CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o" \
 "CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.o"
 
 # External object files for target dcamera_source
@@ -380,12 +365,11 @@ libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/dis
 libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.o
 libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.o
 libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.o
-libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o
 libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.o
 libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/build.make
 libdcamera_source.dylib: libcjson.a
 libdcamera_source.dylib: CMakeFiles/dcamera_source.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX shared library libdcamera_source.dylib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/donghuibin/Work/distributed_camera_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX shared library libdcamera_source.dylib"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dcamera_source.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

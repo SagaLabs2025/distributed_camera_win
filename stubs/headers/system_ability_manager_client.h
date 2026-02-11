@@ -15,7 +15,6 @@
 
 #ifdef __cplusplus
 namespace OHOS {
-namespace {
 
 /**
  * @brief Mock 的 SystemAbilityManager
@@ -72,13 +71,13 @@ public:
 class SystemAbilityManagerClient {
 public:
     /**
-     * @brief 获取单例实例（返回引用，与 OpenHarmony 原生 API 一致）
-     * @return 客户端实例引用
+     * @brief 获取单例实例（返回指针，与 OpenHarmony 原生 API 一致）
+     * @return 客户端实例指针
      */
-    static SystemAbilityManagerClient& GetInstance()
+    static SystemAbilityManagerClient* GetInstance()
     {
         static SystemAbilityManagerClient instance;
-        return instance;
+        return &instance;
     }
 
     /**
@@ -97,7 +96,6 @@ private:
     ~SystemAbilityManagerClient() = default;
 };
 
-} // namespace
 } // namespace OHOS
 
 #endif // __cplusplus

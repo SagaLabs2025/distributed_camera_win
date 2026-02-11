@@ -224,30 +224,6 @@ Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/an
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.s
 .PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.s
 
-Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.o: Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o
-.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.o
-
-# target to build an object file
-Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o
-.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o
-
-Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.i: Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.i
-.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.i
-
-# target to preprocess a source file
-Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.i
-.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.i
-
-Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.s: Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.s
-.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.s
-
-# target to generate assembly for a file
-Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.s
-.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.s
-
 Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.o
 .PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.o
 
@@ -722,9 +698,6 @@ help:
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.o"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.i"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.s"
-	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.o"
-	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.i"
-	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.s"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.o"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.i"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.s"

@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.o"
   "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.o.d"
-  "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o"
-  "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o.d"
   "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.o"
   "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.o.d"
   "CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.o"

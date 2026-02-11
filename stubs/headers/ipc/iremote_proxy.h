@@ -30,11 +30,11 @@ public:
 
     /**
      * @brief 获取远程对象
-     * @return 远程对象智能指针
+     * @return 远程对象原始指针（与 IRemoteBroker 基类接口一致）
      */
-    sptr<IRemoteObject> AsObject()
+    IRemoteObject* AsObject() override
     {
-        return remoteObject_;
+        return remoteObject_.GetRefPtr();
     }
 
     /**

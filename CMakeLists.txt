@@ -110,11 +110,14 @@ include_directories(
     ${DCAMERA_COMMON_INCLUDE}
     ${DCAMERA_COMMON_INCLUDE}/constants    # distributed_camera_errno.h 所在目录
     ${DCAMERA_COMMON_INCLUDE}/utils       # dh_log.h 所在目录
+    ${DCAMERA_SOURCE_DIR}/services/channel/include  # icamera_channel_listener.h 所在目录
     ${DCAMERA_SERVICE_DIR}/base/include
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcamera
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr
+    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerahdf
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerainterface
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerastate
+    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcameracontrol
     ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/include
     ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/include/callback
     ${EXTERNAL_DIR}/drivers_interface_distributed_camera/v1_1
@@ -145,7 +148,7 @@ set(DCAMERA_SOURCE_SOURCES
 
     # ========== Common 工具模块 ==========
     ${DCAMERA_SOURCE_DIR}/common/src/utils/anonymous_string.cpp
-    ${DCAMERA_SOURCE_DIR}/common/src/utils/dcamera_radar.cpp
+    # ${DCAMERA_SOURCE_DIR}/common/src/utils/dcamera_radar.cpp  # 暂时排除（宏隔离问题）
 
     # ========== Stub 实现 ==========
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_hisysevent_adapter.cpp

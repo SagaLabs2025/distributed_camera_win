@@ -10,13 +10,15 @@
 #include <cstdint>
 #include <vector>
 #include <string>
+#include "iremote_broker.h"
 
 #ifdef __cplusplus
 
 namespace OHOS {
 
-// 前向声明 IRemoteBroker，避免循环包含
-class IRemoteBroker;
+// 前向声明
+class MessageParcel;
+class MessageOption;
 
 // 通用宏定义
 #define DISALLOW_COPY_AND_MOVE(classname) \
@@ -55,6 +57,36 @@ public:
             (void)remote;
         }
     };
+
+    /**
+     * @brief 发送请求到远程对象（Proxy 使用）
+     * @param code 请求码
+     * @param data 输入数据
+     * @param reply 输出数据
+     * @param option 选项
+     * @return 成功返回 0
+     */
+    virtual int32_t SendRequest(uint32_t code, MessageParcel& data,
+                               MessageParcel& reply, MessageOption& option)
+    {
+        (void)code; (void)data; (void)reply; (void)option;
+        return 0;
+    }
+
+    /**
+     * @brief 处理远程请求（Stub 使用）
+     * @param code 请求码
+     * @param data 输入数据
+     * @param reply 输出数据
+     * @param option 选项
+     * @return 成功返回 0
+     */
+    virtual int32_t OnRemoteRequest(uint32_t code, MessageParcel& data,
+                                    MessageParcel& reply, MessageOption& option)
+    {
+        (void)code; (void)data; (void)reply; (void)option;
+        return 0;
+    }
 
     /**
      * @brief 添加死亡监听器
