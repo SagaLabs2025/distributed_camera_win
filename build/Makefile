@@ -200,29 +200,437 @@ dcamera_sink/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_sink.dir/build.make CMakeFiles/dcamera_sink.dir/build
 .PHONY : dcamera_sink/fast
 
-external/cJSON/cJSON.o: external/cJSON/cJSON.c.o
-.PHONY : external/cJSON/cJSON.o
+Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.o: Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.o
 
 # target to build an object file
-external/cJSON/cJSON.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cjson.dir/build.make CMakeFiles/cjson.dir/external/cJSON/cJSON.c.o
-.PHONY : external/cJSON/cJSON.c.o
+Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.o
 
-external/cJSON/cJSON.i: external/cJSON/cJSON.c.i
-.PHONY : external/cJSON/cJSON.i
+Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.i: Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.i
 
 # target to preprocess a source file
-external/cJSON/cJSON.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cjson.dir/build.make CMakeFiles/cjson.dir/external/cJSON/cJSON.c.i
-.PHONY : external/cJSON/cJSON.c.i
+Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.i
 
-external/cJSON/cJSON.s: external/cJSON/cJSON.c.s
-.PHONY : external/cJSON/cJSON.s
+Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.s: Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.s
 
 # target to generate assembly for a file
-external/cJSON/cJSON.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cjson.dir/build.make CMakeFiles/cjson.dir/external/cJSON/cJSON.c.s
-.PHONY : external/cJSON/cJSON.c.s
+Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.o: Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.i: Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.s: Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp.s
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.o
+
+# target to build an object file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.o
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.o
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.i
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.i
+
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.s
+.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.s
+
+Users/donghuibin/Work/external/cJSON/cJSON.o: Users/donghuibin/Work/external/cJSON/cJSON.c.o
+.PHONY : Users/donghuibin/Work/external/cJSON/cJSON.o
+
+# target to build an object file
+Users/donghuibin/Work/external/cJSON/cJSON.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cjson.dir/build.make CMakeFiles/cjson.dir/Users/donghuibin/Work/external/cJSON/cJSON.c.o
+.PHONY : Users/donghuibin/Work/external/cJSON/cJSON.c.o
+
+Users/donghuibin/Work/external/cJSON/cJSON.i: Users/donghuibin/Work/external/cJSON/cJSON.c.i
+.PHONY : Users/donghuibin/Work/external/cJSON/cJSON.i
+
+# target to preprocess a source file
+Users/donghuibin/Work/external/cJSON/cJSON.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cjson.dir/build.make CMakeFiles/cjson.dir/Users/donghuibin/Work/external/cJSON/cJSON.c.i
+.PHONY : Users/donghuibin/Work/external/cJSON/cJSON.c.i
+
+Users/donghuibin/Work/external/cJSON/cJSON.s: Users/donghuibin/Work/external/cJSON/cJSON.c.s
+.PHONY : Users/donghuibin/Work/external/cJSON/cJSON.s
+
+# target to generate assembly for a file
+Users/donghuibin/Work/external/cJSON/cJSON.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cjson.dir/build.make CMakeFiles/cjson.dir/Users/donghuibin/Work/external/cJSON/cJSON.c.s
+.PHONY : Users/donghuibin/Work/external/cJSON/cJSON.c.s
 
 src/dcamera_sink_dll.o: src/dcamera_sink_dll.cpp.o
 .PHONY : src/dcamera_sink_dll.o
@@ -272,29 +680,29 @@ src/dcamera_source_dll.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/src/dcamera_source_dll.cpp.s
 .PHONY : src/dcamera_source_dll.cpp.s
 
-stubs/src/dcamera_utils_tools.o: stubs/src/dcamera_utils_tools.cpp.o
-.PHONY : stubs/src/dcamera_utils_tools.o
+stubs/src/dcamera_hisysevent_adapter.o: stubs/src/dcamera_hisysevent_adapter.cpp.o
+.PHONY : stubs/src/dcamera_hisysevent_adapter.o
 
 # target to build an object file
-stubs/src/dcamera_utils_tools.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.o
-.PHONY : stubs/src/dcamera_utils_tools.cpp.o
+stubs/src/dcamera_hisysevent_adapter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.o
+.PHONY : stubs/src/dcamera_hisysevent_adapter.cpp.o
 
-stubs/src/dcamera_utils_tools.i: stubs/src/dcamera_utils_tools.cpp.i
-.PHONY : stubs/src/dcamera_utils_tools.i
+stubs/src/dcamera_hisysevent_adapter.i: stubs/src/dcamera_hisysevent_adapter.cpp.i
+.PHONY : stubs/src/dcamera_hisysevent_adapter.i
 
 # target to preprocess a source file
-stubs/src/dcamera_utils_tools.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.i
-.PHONY : stubs/src/dcamera_utils_tools.cpp.i
+stubs/src/dcamera_hisysevent_adapter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.i
+.PHONY : stubs/src/dcamera_hisysevent_adapter.cpp.i
 
-stubs/src/dcamera_utils_tools.s: stubs/src/dcamera_utils_tools.cpp.s
-.PHONY : stubs/src/dcamera_utils_tools.s
+stubs/src/dcamera_hisysevent_adapter.s: stubs/src/dcamera_hisysevent_adapter.cpp.s
+.PHONY : stubs/src/dcamera_hisysevent_adapter.s
 
 # target to generate assembly for a file
-stubs/src/dcamera_utils_tools.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.s
-.PHONY : stubs/src/dcamera_utils_tools.cpp.s
+stubs/src/dcamera_hisysevent_adapter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.s
+.PHONY : stubs/src/dcamera_hisysevent_adapter.cpp.s
 
 # Help Target
 help:
@@ -311,18 +719,69 @@ help:
 	@echo "... cjson"
 	@echo "... dcamera_sink"
 	@echo "... dcamera_source"
-	@echo "... external/cJSON/cJSON.o"
-	@echo "... external/cJSON/cJSON.i"
-	@echo "... external/cJSON/cJSON.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/anonymous_string.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/common/src/utils/dcamera_radar.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_capture_info_cmd.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_channel_info_cmd.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_event_cmd.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_info_cmd.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_metadata_setting_cmd.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_open_info_cmd.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/base/src/dcamera_sink_frame_info.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_service_state_listener.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/dcamera_source_hidumper.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_service.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcamera/distributed_camera_source_stub.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_dev.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_event.s"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.o"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.i"
+	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.s"
+	@echo "... Users/donghuibin/Work/external/cJSON/cJSON.o"
+	@echo "... Users/donghuibin/Work/external/cJSON/cJSON.i"
+	@echo "... Users/donghuibin/Work/external/cJSON/cJSON.s"
 	@echo "... src/dcamera_sink_dll.o"
 	@echo "... src/dcamera_sink_dll.i"
 	@echo "... src/dcamera_sink_dll.s"
 	@echo "... src/dcamera_source_dll.o"
 	@echo "... src/dcamera_source_dll.i"
 	@echo "... src/dcamera_source_dll.s"
-	@echo "... stubs/src/dcamera_utils_tools.o"
-	@echo "... stubs/src/dcamera_utils_tools.i"
-	@echo "... stubs/src/dcamera_utils_tools.s"
+	@echo "... stubs/src/dcamera_hisysevent_adapter.o"
+	@echo "... stubs/src/dcamera_hisysevent_adapter.i"
+	@echo "... stubs/src/dcamera_hisysevent_adapter.s"
 .PHONY : help
 
 

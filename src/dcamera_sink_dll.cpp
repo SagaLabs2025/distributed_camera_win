@@ -4,7 +4,12 @@
  * 分布式相机接收端动态库入口点
  */
 
+// 首先包含 HiLog 适配器
+#include "hilog_log_adapter.h"
+
+// 然后包含 distributed_hardware_log.h
 #include "distributed_hardware_log.h"
+
 #include <iostream>
 
 namespace OHOS {

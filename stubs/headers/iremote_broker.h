@@ -1,24 +1,11 @@
 /*
- * IRemoteBroker - OpenHarmony IPC - macOS Mock
- *
- * IPC 远程代理接口的 macOS 空实现
+ * Forwarding wrapper for iremote_broker.h
  */
+#ifndef STUBS_FORWARDING_IREMOTE_BROKER_H
+#define STUBS_FORWARDING_IREMOTE_BROKER_H
 
-#ifndef STUBS_IREMOTE_BROKER_H
-#define STUBS_IREMOTE_BROKER_H
+// 先包含宏定义，确保 DECLARE_INTERFACE_DESCRIPTOR 被重新定义
+#include "ipc/iremote_broker_macros.h"
+#include "ipc/iremote_broker.h"
 
-#include <string>
-
-// IRemoteBroker - 远程代理基类（在 OHOS 顶层命名空间）
-namespace OHOS {
-class IRemoteBroker {
-public:
-    virtual ~IRemoteBroker() = default;
-};
-
-// 接口描述符宏
-#define DECLARE_INTERFACE_DESCRIPTOR(descriptor)
-
-} // namespace OHOS
-
-#endif // STUBS_IREMOTE_BROKER_H
+#endif // STUBS_FORWARDING_IREMOTE_BROKER_H

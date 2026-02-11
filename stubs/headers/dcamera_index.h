@@ -1,35 +1,28 @@
-/*
- * DCameraIndex - OpenHarmony Distributed Camera - macOS Mock
- *
- * 分布式相机索引的 macOS 空实现
- */
-
 #ifndef STUBS_DCAMERA_INDEX_H
 #define STUBS_DCAMERA_INDEX_H
-
 #include <string>
 
 namespace OHOS {
 namespace DistributedHardware {
 
-// DCameraIndex - 相机索引
-struct DCameraIndex {
-    std::string devId_;
-    std::string dhId_;
-
+class DCameraIndex {
+public:
     DCameraIndex() = default;
+    explicit DCameraIndex(std::string devId, std::string dhId) : devId_(devId), dhId_(dhId) {}
     ~DCameraIndex() = default;
 
-    bool operator<(const DCameraIndex& other) const {
-        if (devId_ != other.devId_) {
-            return devId_ < other.devId_;
-        }
-        return dhId_ < other.dhId_;
+    bool operator == (const DCameraIndex& index) const
+    {
+        return this->devId_ == index.devId_ && this->dhId_ == index.dhId_;
     }
 
-    bool operator==(const DCameraIndex& other) const {
-        return devId_ == other.devId_ && dhId_ == other.dhId_;
+    bool operator < (const DCameraIndex& index) const
+    {
+        return (this->devId_ + this->dhId_) < (index.devId_ + index.dhId_);
     }
+
+    std::string devId_;
+    std::string dhId_;
 };
 
 } // namespace DistributedHardware
