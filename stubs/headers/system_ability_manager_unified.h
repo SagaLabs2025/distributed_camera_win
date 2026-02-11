@@ -44,7 +44,7 @@ public:
     virtual sptr<IRemoteObject> CheckSystemAbility(int32_t saId, const std::string& deviceId)
     {
         (void)saId; (void)deviceId;
-        return nullptr;  // Mock 默认实现
+        return nullptr;  // Mock: 返回空指针
     }
 };
 
@@ -63,7 +63,6 @@ public:
         return 0;  // Mock: SA 总是存在
     }
 
-    // 带 deviceId 参数的版本（返回 sptr）
     sptr<IRemoteObject> CheckSystemAbility(int32_t saId, const std::string& deviceId) override
     {
         (void)saId; (void)deviceId;
@@ -139,19 +138,15 @@ private:
 
 // 导出到 DistributedHardware 命名空间（用于源码访问）
 namespace DistributedHardware {
-    // 分布式相机 SA ID 常量定义
-    constexpr int32_t DISTRIBUTED_HARDWARE_CAMERA_SOURCE_SA_ID = 4803;
-    constexpr int32_t DISTRIBUTED_HARDWARE_CAMERA_SINK_SA_ID = 4804;
+    // 分布式相机 SA ID 常量定义（使用 const uint32_t 匹配源码）
+    const uint32_t DISTRIBUTED_HARDWARE_CAMERA_SOURCE_SA_ID = 4803;
+    const uint32_t DISTRIBUTED_HARDWARE_CAMERA_SINK_SA_ID = 4804;
 
     // 导出 SystemAbilityManagerClient
     using OHOS::SystemAbilityManagerClient;
 }
 
 } // namespace OHOS
-
-// 全局命名空间别名 - 方便各命名空间使用
-using OHOS::ISystemAbilityManager;
-using OHOS::SaState;
 
 #endif // __cplusplus
 

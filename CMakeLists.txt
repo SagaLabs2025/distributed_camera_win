@@ -19,6 +19,9 @@ add_definitions(-D__MACOS__)
 add_definitions(-DHI_LOG_ENABLE=0)
 add_definitions(-DDCAMERA_LOCAL_TEST)  # 分布式相机本地模拟测试
 
+# 使用源码中的类型和常量定义（优先于 stub 中的定义）
+add_definitions(-DUSE_SOURCE_DEFINITIONS=true)
+
 # 设置 OpenHarmony 源码根目录
 if(NOT DEFINED OHOS_DCAMERA_SOURCE_ROOT)
     set(OHOS_DCAMERA_SOURCE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../distributedhardware_distributed_camera")
