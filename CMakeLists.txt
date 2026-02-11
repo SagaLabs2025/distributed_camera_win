@@ -51,7 +51,6 @@ endif()
 
 # 源码头文件目录
 set(DCAMERA_SOURCE_DIR "${OHOS_DCAMERA_SOURCE_ROOT}")
-set(DCAMERA_SERVICE_DIR "${DCAMERA_SOURCE_DIR}/services/cameraservice")
 set(DCAMERA_INCLUDE_DIR "${DCAMERA_SOURCE_DIR}/interfaces/innerkits/camera_source_sdk/include")
 set(DCAMERA_COMMON_INCLUDE "${DCAMERA_SOURCE_DIR}/common/include")
 set(SOFTBUS_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers")
@@ -67,11 +66,9 @@ include_directories(
     ${DCAMERA_INCLUDE_DIR}
     ${DCAMERA_COMMON_INCLUDE}
     ${DCAMERA_SERVICE_DIR}/base/include
-    ${DCAMERA_SERVICE_DIR}/sourceservice/include
-    ${DCAMERA_SERVICE_DIR}/sinkservice/include
 )
 
-# 源文件定义 - 保守策略，避免复杂依赖
+# 源文件定义 - 稳定策略，只编译基础工具
 set(DCAMERA_SOURCE_SOURCES
     # Base 工具 - 阶段 1 ✅
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_capture_info_cmd.cpp
@@ -82,9 +79,8 @@ set(DCAMERA_SOURCE_SOURCES
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_sink_frame_info.cpp
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_metadata_setting_cmd.cpp
     
-    # SourceService - 阶段 2 ✅
+    # SourceService - 阶段 2 - 只编译事件文件
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp
-    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp
     
     # Stub 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_utils_tools.cpp
@@ -138,11 +134,11 @@ install(TARGETS dcamera_source dcamera_sink
 )
 
 # 打印配置信息
-message(STATUS "===============================================")
+message(STATUS "==============================================")
 message(STATUS "  分布式相机测试工程配置")
-message(STATUS "===============================================")
+message(STATUS "==============================================")
 message(STATUS "  构建类型: ${CMAKE_BUILD_TYPE}")
 message(STATUS "  C++ 标准: ${CMAKE_CXX_STANDARD}")
 message(STATUS "  源码根目录: ${OHOS_DCAMERA_SOURCE_ROOT}")
 message(STATUS "  源文件数量: ${SOURCE_COUNT}")
-message(STATUS "===============================================")
+message(STATUS "==============================================")
