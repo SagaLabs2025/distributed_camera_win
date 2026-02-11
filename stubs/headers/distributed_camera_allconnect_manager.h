@@ -11,29 +11,11 @@
 #include <memory>
 #include <cstdint>
 #include <functional>
+#include "distributed_camera_constants.h"  // 引用常量定义
 
 #ifdef __cplusplus
 namespace OHOS {
 namespace DistributedHardware {
-
-// 服务状态常量
-constexpr int32_t SCM_IDLE = 0;
-constexpr int32_t SCM_PREPARE = 1;
-constexpr int32_t SCM_START = 2;
-constexpr int32_t SCM_STOP = 3;
-
-// 服务状态枚举
-enum DCameraSrvState {
-    DCAMERA_SRV_STATE_NOT_START = 0,
-    DCAMERA_SRV_STATE_RUNNING = 1,
-    DCAMERA_SRV_STATE_STOPPING = 2,
-};
-
-// 类型别名
-using DCameraServiceState = int32_t;
-
-// 生命周期回调类型
-using LifecycleCallback = std::function<void(const std::string&, const std::string&)>;
 
 /**
  * @brief 分布式相机所有连接管理器（Mock）
