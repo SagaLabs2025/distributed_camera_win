@@ -8,7 +8,6 @@
 namespace OHOS {
 namespace DistributedHardware {
 
-// Stub 实现基础接口
 void IFeedingSmoother::PushData(const std::shared_ptr<IFeedableData>& data)
 {
     (void)data;
