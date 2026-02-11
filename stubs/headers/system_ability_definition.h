@@ -14,9 +14,8 @@
 namespace OHOS {
 namespace DistributedHardware {
 
-// 分布式相机 SA ID 定义
-constexpr int32_t DISTRIBUTED_HARDWARE_CAMERA_SOURCE_SA_ID = 4803;
-constexpr int32_t DISTRIBUTED_HARDWARE_CAMERA_SINK_SA_ID = 4804;
+// SA ID 常量现在在 system_ability_manager_unified.h 中定义
+// 避免重定义
 
 /**
  * @brief 系统能力定义模板

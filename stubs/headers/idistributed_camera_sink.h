@@ -10,13 +10,11 @@
 #include <string>
 #include <vector>
 #include "ipc/iremote_broker.h"
+#include "ipc/iremote_object.h"
 
 #ifdef __cplusplus
 namespace OHOS {
 namespace DistributedHardware {
-
-// 前向声明
-class IRemoteObject;
 
 /**
  * @brief 分布式相机 Sink 参数结构
@@ -91,6 +89,15 @@ public:
      * @return 远程对象原始指针
      */
     IRemoteObject* AsObject() override
+    {
+        return nullptr;  // Mock: 返回空指针
+    }
+
+    /**
+     * @brief 获取常量远程对象
+     * @return 常量远程对象原始指针
+     */
+    const IRemoteObject* AsObject() const override
     {
         return nullptr;  // Mock: 返回空指针
     }

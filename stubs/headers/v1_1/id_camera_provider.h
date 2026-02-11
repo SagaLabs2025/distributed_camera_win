@@ -28,6 +28,39 @@ class IDCameraProvider {
 public:
     virtual ~IDCameraProvider() = default;
 
+    // 引用计数方法（用于 sptr 兼容性）
+    virtual void IncStrongRef(const void* objectId)
+    {
+        (void)objectId;
+    }
+
+    virtual void DecStrongRef(const void* objectId)
+    {
+        (void)objectId;
+    }
+
+    /**
+     * @brief 获取 IDCameraProvider 实例
+     * @param serviceName HDF 服务名称
+     * @return 返回 IDCameraProvider 实例指针
+     */
+    static IDCameraProvider* Get(const std::string& serviceName)
+    {
+        (void)serviceName;
+        static IDCameraProvider instance;
+        return &instance;  // Mock: 返回单例
+    }
+
+    /**
+     * @brief 获取 IDCameraProvider 实例（无参数版本）
+     * @return 返回 IDCameraProvider 实例指针
+     */
+    static IDCameraProvider* Get()
+    {
+        static IDCameraProvider instance;
+        return &instance;  // Mock: 返回单例
+    }
+
     /**
      * @brief 启用分布式相机设备并设置回调
      * @param dhBase 分布式硬件设备基础信息

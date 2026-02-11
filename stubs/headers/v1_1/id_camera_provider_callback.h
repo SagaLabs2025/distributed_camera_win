@@ -24,6 +24,17 @@ class IDCameraProviderCallback {
 public:
     virtual ~IDCameraProviderCallback() = default;
 
+    // 引用计数方法（用于 sptr 兼容性）
+    virtual void IncStrongRef(const void* objectId)
+    {
+        (void)objectId;
+    }
+
+    virtual void DecStrongRef(const void* objectId)
+    {
+        (void)objectId;
+    }
+
     /**
      * @brief 在源设备和目标设备之间创建传输通道
      * 打开并初始化分布式相机会话

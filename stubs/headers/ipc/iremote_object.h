@@ -42,8 +42,9 @@ public:
     /**
      * @brief 死亡接收者接口
      * 用于监听远程对象死亡通知
+     * 继承 IRemoteBroker 以支持 sptr 智能指针
      */
-    class DeathRecipient {
+    class DeathRecipient : public virtual IRemoteBroker {
     public:
         DeathRecipient() = default;
         virtual ~DeathRecipient() = default;
@@ -55,6 +56,22 @@ public:
         virtual void OnRemoteDied(const wptr<IRemoteObject>& remote)
         {
             (void)remote;
+        }
+
+        // 实现 IRemoteBroker 的纯虚函数
+        std::u16string GetDescriptor() override
+        {
+            return u"DeathRecipient";
+        }
+
+        IRemoteObject* AsObject() override
+        {
+            return nullptr;
+        }
+
+        const IRemoteObject* AsObject() const override
+        {
+            return nullptr;
         }
     };
 

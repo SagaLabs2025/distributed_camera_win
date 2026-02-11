@@ -44,6 +44,15 @@ public:
         (void)data;
         return true;  // Mock: 总是成功
     }
+
+    /**
+     * @brief 获取时间戳
+     * @return 时间戳值
+     */
+    virtual int64_t GetTimeStamp()
+    {
+        return 0;  // Mock: 返回 0
+    }
 };
 
 } // namespace DistributedHardware

@@ -1,81 +1,60 @@
+/*
+ * DistributedCameraConstants Stub for macOS Mock
+ *
+ * OpenHarmony 分布式相机常量的 macOS 兼容层
+ */
+
 #ifndef STUBS_DISTRIBUTED_CAMERA_CONSTANTS_H
 #define STUBS_DISTRIBUTED_CAMERA_CONSTANTS_H
 
 #include <cstdint>
-#include <string>
+
+#ifdef __cplusplus
 
 namespace OHOS {
 namespace DistributedHardware {
 
-// 注意：日志标签和日志级别定义在 distributed_camera_errno.h 中
+// HDF 服务名称
+#define HDF_DCAMERA_EXT_SERVICE "camera_service"
+#define HDF_DCAMERA_SOURCE_SERVICE "distributed_camera_source"
 
-// 相机服务状态
-typedef enum {
-    DCAMERA_SRV_STATE_NOT_START = 0,
-    DCAMERA_SRV_STATE_RUNNING = 1
-} DCameraServiceState;
+// 版本标志
+#define SEPARATE_SINK_VERSION 1
 
-// 授权状态
-enum {
-    DCAMERA_AUTHORIZATION_DEFAULT = 0,
-    DCAMERA_AUTHORIZATION_AGREE = 1,
-    DCAMERA_AUTHORIZATION_REJECT = 2,
-    DCAMERA_AUTHORIZATION_TIMEOUT = 3,
+// 会话标志
+#define CONTINUE_SESSION_FLAG "dataContinue"
+#define SNAP_SHOT_SESSION_FLAG "dataSnapshot"
+
+// 事件类型枚举
+enum DCameraEventType {
+    DCAMERA_EVENT_OPEN_CHANNEL_ERROR = 100,
+    DCAMERA_EVENT_CLOSE_CHANNEL_ERROR,
+    DCAMERA_EVENT_CONFIG_STREAMS_ERROR,
+    DCAMERA_EVENT_RELEASE_STREAMS_ERROR,
+    DCAMERA_EVENT_START_CAPTURE_ERROR,
+    DCAMERA_EVENT_STOP_CAPTURE_ERROR,
+    DCAMERA_EVENT_UPDATE_SETTINGS_ERROR,
 };
 
-// 事件类型
-enum {
-    DCAMERA_MESSAGE = 0,
-    DCAMERA_OPERATION = 1,
-    DCAMERA_SINK_STOP = 2,
-    DCAMERE_GETFULLCAP = 3,
+// 消息类型常量
+constexpr int32_t DCAMERA_OPERATION = 0;
+constexpr int32_t DCAMERA_MESSAGE = 1;
+
+// 事件结果常量
+enum DCameraEventResult {
+    DCAMERA_EVENT_SUCCESS = 0,
+    DCAMERA_EVENT_FAILED = 1,
 };
 
-// 相机设置类型（HDF 接口）
-enum DCSettingsType {
-    DCAMERA_SETTINGS_TYPE_INVALID = 0,
-    DCAMERA_SETTINGS_TYPE_ISP = 1,
-    DCAMERA_SETTINGS_TYPE_REGION = 2,
-    DCAMERA_SETTINGS_TYPE_AEC = 3,
+// 通道事件常量
+enum DCameraChannelEvent {
+    DCAMERA_EVENT_CHANNEL_CONNECTED = 200,
+    DCAMERA_EVENT_CHANNEL_DISCONNECTED,
 };
-
-// 相机事件结果 (typedef enum to match OpenHarmony source)
-typedef enum {
-    DCAMERA_EVENT_CHANNEL_DISCONNECTED = 0,
-    DCAMERA_EVENT_CHANNEL_CONNECTED = 1,
-    DCAMERA_EVENT_CAMERA_SUCCESS = 2,
-    DCAMERA_EVENT_SINK_STOP = 3,
-
-    DCAMERA_EVENT_CAMERA_ERROR = -1,
-    DCAMERA_EVENT_OPEN_CHANNEL_ERROR = -2,
-    DCAMERA_EVENT_CLOSE_CHANNEL_ERROR = -3,
-    DCAMERA_EVENT_CONFIG_STREAMS_ERROR = -4,
-    DCAMERA_EVENT_RELEASE_STREAMS_ERROR = -5,
-    DCAMERA_EVENT_START_CAPTURE_ERROR = -6,
-    DCAMERA_EVENT_STOP_CAPTURE_ERROR = -7,
-    DCAMERA_EVENT_UPDATE_SETTINGS_ERROR = -8,
-    DCAMERA_EVENT_DEVICE_ERROR = -9,
-    DCAMERA_EVENT_DEVICE_PREEMPT = -10,
-    DCAMERA_EVENT_DEVICE_IN_USE = -11,
-    DCAMERA_EVENT_NO_PERMISSION = -12,
-} DCameraEventResult;
-
-// 相机格式
-enum {
-    OHOS_CAMERA_FORMAT_INVALID = 0,
-    OHOS_CAMERA_FORMAT_RGBA_8888,
-    OHOS_CAMERA_FORMAT_YCBCR_420_888,
-    OHOS_CAMERA_FORMAT_YCRCB_420_SP,
-    OHOS_CAMERA_FORMAT_YCBCR_420_SP,
-    OHOS_CAMERA_FORMAT_JPEG,
-    OHOS_CAMERA_FORMAT_YCBCB_P010,
-};
-
-const std::string SESSION_HEAD = "ohos.dhardware.dcamera_";
-const std::string DEVICE_ID_0 = "device/0";
-const std::string DEVICE_ID_1 = "device/1";
 
 } // namespace DistributedHardware
 } // namespace OHOS
+
+#endif // __cplusplus
 
 #endif // STUBS_DISTRIBUTED_CAMERA_CONSTANTS_H
