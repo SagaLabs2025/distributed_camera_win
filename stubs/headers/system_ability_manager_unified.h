@@ -2,6 +2,8 @@
  * SystemAbilityManager 统一 Stub
  *
  * OpenHarmony 系统能力管理器的 macOS 兼容层
+ *
+ * 重要原则：不定义 SA ID，完全使用源码头文件中的定义
  */
 
 #ifndef STUBS_SYSTEM_ABILITY_MANAGER_UNIFIED_H
@@ -138,10 +140,7 @@ private:
 
 // 导出到 DistributedHardware 命名空间（用于源码访问）
 namespace DistributedHardware {
-    // 分布式相机 SA ID 常量定义（使用 const uint32_t 匹配源码）
-    const uint32_t DISTRIBUTED_HARDWARE_CAMERA_SOURCE_SA_ID = 4803;
-    const uint32_t DISTRIBUTED_HARDWARE_CAMERA_SINK_SA_ID = 4804;
-
+    // 完全使用源码头文件中的 SA ID 定义，不重复定义
     // 导出 SystemAbilityManagerClient
     using OHOS::SystemAbilityManagerClient;
 }
