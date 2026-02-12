@@ -118,7 +118,7 @@ include_directories(
     ${DCAMERA_SERVICE_DIR}/base/include
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcamera
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr
-    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerahdf
+    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerahdf  # dcamera_source_input.h 所在目录
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerainterface
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerastate
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcameracontrol
