@@ -34,7 +34,7 @@ public:
     }
 
     // Get 方法 - 返回 Pointer (shared_ptr)
-    // 版本1: eventId + shared_ptr
+    // 版本1: eventId + shared_ptr (有参数版本)
     static Pointer Get(uint32_t eventId, const std::shared_ptr<void>& param)
     {
         auto event = std::make_shared<InnerEvent>();
@@ -50,6 +50,15 @@ public:
         event->innerEventId_ = eventId;
         event->sharedParam_ = param;
         event->priorityValue_ = priority;
+        return event;
+    }
+
+    // 版本3: 仅 eventId（无 param 版本，用于兼容某些调用）
+    static Pointer Get(uint32_t eventId)
+    {
+        auto event = std::make_shared<InnerEvent>();
+        event->innerEventId_ = eventId;
+        event->sharedParam_ = nullptr;  // 无参数时设为空
         return event;
     }
 
