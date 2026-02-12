@@ -96,6 +96,8 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/stubs/headers/hitrace
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/ipc
     ${CMAKE_SOURCE_DIR}/stubs/headers/ipc
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/transport
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/feeding
 
     # External 依赖头文件（用于类型定义）
     ${C_UTILS_INCLUDE_DIR}
@@ -118,18 +120,24 @@ include_directories(
     ${DCAMERA_SERVICE_DIR}/base/include
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcamera
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr
-    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerahdf  # dcamera_source_input.h 所在目录
-    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerainterface  # icamera_input.h 所在目录
-    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerastate
-    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcameracontrol
-    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/include
-    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/include/callback
-    ${EXTERNAL_DIR}/drivers_interface_distributed_camera/v1_1
+    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerahdf  # dcamerahdf 目录
+    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcameradata  # dcamera_source_input.h 所在目录
+    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerainterface  # icamera_state_listener.h 所在目录
+    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerastate  # dcamera_source_state_machine.h 所在目录
+    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcameracontrol  # dcamera_source_controller.h 所在目录
+    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr  # parent directory for subdirs
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/include  # idistributed_camera_source.h 所在目录
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/include/callback  # idcamera_source_callback.h 所在目录
+
+    # 源文件所在目录（用于访问同目录的头文件）
+    ${DCAMERA_SERVICE_DIR}/base/src
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr
 )
 
-# 源文件定义 - 逐步添加源文件
+# ========== 源文件列表 ==========
 set(DCAMERA_SOURCE_SOURCES
-    # ========== Base 工具模块 ==========
+    # ========== Base 基础模块 ==========
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_capture_info_cmd.cpp
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_channel_info_cmd.cpp
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_event_cmd.cpp
@@ -150,8 +158,15 @@ set(DCAMERA_SOURCE_SOURCES
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp
 
+    # ========== State Machine 状态机模块 ==========
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerastate/dcamera_source_state_machine.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process.cpp
+
     # ========== Common 工具模块 ==========
     ${DCAMERA_SOURCE_DIR}/common/src/utils/anonymous_string.cpp
+    ${DCAMERA_SOURCE_DIR}/common/src/utils/dcamera_utils_tools.cpp
     # ${DCAMERA_SOURCE_DIR}/common/src/utils/dcamera_radar.cpp  # 暂时排除（宏隔离问题）
 
     # ========== Stub 实现 ==========

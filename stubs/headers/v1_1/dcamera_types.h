@@ -95,8 +95,8 @@ struct DCStreamInfo {
     int32_t stride_;         // 图像步长
     int32_t format_;         // 图像格式
     int32_t dataspace_;      // 图像色彩空间
-    int32_t encodeType_;     // 编码类型 (DCEncodeType)
-    int32_t type_;           // 流类型 (DCStreamType)
+    DCEncodeType encodeType_;     // 编码类型 (DCEncodeType)
+    DCStreamType type_;           // 流类型 (DCStreamType)
     int32_t mode_;           // 当前场景模式
 };
 
@@ -111,8 +111,8 @@ struct DCCaptureInfo {
     int32_t format_;                          // 图像格式
     int32_t dataspace_;                       // 图像色彩空间
     bool isCapture_;                          // 是否触发 sink 捕获
-    int32_t encodeType_;                      // 编码类型 (DCEncodeType)
-    int32_t type_;                            // 流类型 (DCStreamType)
+    DCEncodeType encodeType_;                 // 编码类型 (DCEncodeType)
+    DCStreamType type_;                        // 流类型 (DCStreamType)
     std::vector<DCameraSettings> captureSettings_;  // 流设置
 };
 

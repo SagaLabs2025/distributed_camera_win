@@ -70,7 +70,7 @@ public:
      */
     virtual int32_t EnableDCameraDevice(const DHBase& dhBase,
                                         const std::string& abilityInfo,
-                                        std::shared_ptr<IDCameraProviderCallback> callbackObj)
+                                        sptr<IDCameraProviderCallback> callbackObj)
     {
         (void)dhBase;
         (void)abilityInfo;
