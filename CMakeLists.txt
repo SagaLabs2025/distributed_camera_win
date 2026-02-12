@@ -119,7 +119,7 @@ include_directories(
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcamera
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerahdf  # dcamera_source_input.h 所在目录
-    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerainterface
+    ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerainterface  # icamera_input.h 所在目录
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcamerastate
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr/dcameracontrol
     ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/include
