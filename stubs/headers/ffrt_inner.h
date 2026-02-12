@@ -2,12 +2,15 @@
  * FFRT Inner Event Stub for macOS Mock
  *
  * OpenHarmony FFRT 内核事件的 macOS 兼容层
- * 
+ *
  * 重要原则：使用源码中的定义，不重复定义或简化
  */
 
 #ifndef STUBS_FFRT_INNER_H
 #define STUBS_FFRT_INNER_H
+
+// 包含 ffrt.h 以获取 ffrt::submit() 等核心函数
+#include "ffrt.h"
 
 #include <cstdint>
 #include <string>

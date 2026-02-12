@@ -2,6 +2,8 @@
  * DistributedCameraAllConnectManager Stub for macOS Mock
  *
  * OpenHarmony 分布式相机连接管理器的 macOS 兼容层
+ *
+ * 重要原则：使用源码中的定义，不重复定义
  */
 
 #ifndef STUBS_DISTRIBUTED_CAMERA_ALLCONNECT_MANAGER_H
@@ -11,7 +13,9 @@
 #include <memory>
 #include <cstdint>
 #include <functional>
-#include "distributed_camera_constants.h"  // 引用常量定义
+
+// 引用源码中的 C API 定义（包含枚举和回调结构定义）
+#include "dcamera_collaboration_manager_capi.h"
 
 #ifdef __cplusplus
 namespace OHOS {
@@ -19,6 +23,7 @@ namespace DistributedHardware {
 
 /**
  * @brief 分布式相机所有连接管理器（Mock）
+ * 匹配源码中的方法签名
  */
 class DCameraAllConnectManager {
 public:
@@ -28,8 +33,8 @@ public:
         return instance;
     }
 
-    // 初始化状态检查
-    bool IsInited()
+    // 初始化状态检查（静态方法 - 匹配源码）
+    static bool IsInited()
     {
         return true;  // Mock: 总是已初始化
     }
@@ -46,10 +51,9 @@ public:
         return 0;  // Mock: 总是成功
     }
 
-    // 注册生命周期回调
-    int32_t RegisterLifecycleCallback(const LifecycleCallback& callback)
+    // 注册生命周期回调（使用源码签名 - 无参数）
+    int32_t RegisterLifecycleCallback()
     {
-        (void)callback;
         return 0;  // Mock: 总是成功
     }
 
@@ -60,27 +64,62 @@ public:
     }
 
     // 资源请求相关方法
-    int32_t BuildResourceRequest(const std::string& devId, const std::string& dhId)
+    std::shared_ptr<DCameraCollaborationResourceRequestInfoSets> BuildResourceRequest()
     {
-        (void)devId; (void)dhId;
+        return nullptr;  // Mock: 返回空指针
+    }
+
+    int32_t ApplyAdvancedResource(const std::string& peerNetworkId,
+                                  DCameraCollaborationResourceRequestInfoSets* resourceRequest)
+    {
+        (void)peerNetworkId; (void)resourceRequest;
         return 0;  // Mock: 总是成功
     }
 
-    int32_t BuildResourceRequest()
+    // 静态工具方法（匹配源码签名）
+    static void SetSourceNetworkId(const std::string &networkId, int32_t socket)
     {
-        return 0;  // Mock: 总是成功
+        (void)networkId; (void)socket;
     }
 
-    int32_t ApplyAdvancedResource(const std::string& devId, const std::string& dhId)
+    static void SetSinkNetWorkId(const std::string &networkId, int32_t socket)
     {
-        (void)devId; (void)dhId;
-        return 0;  // Mock: 总是成功
+        (void)networkId; (void)socket;
     }
 
-    // 服务状态发布
-    int32_t PublishServiceState(const std::string& devId, const std::string& dhId, int32_t state)
+    static void RemoveSinkNetworkId(int32_t sessionId)
     {
-        (void)devId; (void)dhId; (void)state;
+        (void)sessionId;
+    }
+
+    static void RemoveSourceNetworkId(int32_t sessionId)
+    {
+        (void)sessionId;
+    }
+
+    static std::string GetSinkDevIdBySocket(int32_t socket)
+    {
+        (void)socket;
+        return "";
+    }
+
+    static int32_t GetSinkSocketByNetWorkId(const std::string &networkId)
+    {
+        (void)networkId;
+        return 0;
+    }
+
+    static int32_t GetSourceSocketByNetworkId(const std::string &networkId)
+    {
+        (void)networkId;
+        return 0;
+    }
+
+    // 服务状态发布（使用源码中的枚举类型）
+    int32_t PublishServiceState(const std::string& peerNetworkId, const std::string& dhId,
+                                DCameraCollaborationBussinessStatus state)
+    {
+        (void)peerNetworkId; (void)dhId; (void)state;
         return 0;  // Mock: 总是成功
     }
 };

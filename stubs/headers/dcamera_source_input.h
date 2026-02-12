@@ -2,6 +2,8 @@
  * DCameraSourceInput Stub for macOS Mock
  *
  * OpenHarmony 分布式相机源输入的 macOS 兼容层
+ *
+ * 重要原则：使用源码中的定义，不重复定义
  */
 
 #ifndef STUBS_DCAMERA_SOURCE_INPUT_H
@@ -10,28 +12,32 @@
 #include <string>
 #include <memory>
 #include <cstdint>
+#include <vector>
 
 #ifdef __cplusplus
 namespace OHOS {
 namespace DistributedHardware {
 
+// 前向声明
+class DCameraSourceDev;
+
 /**
  * @brief 分布式相机源输入接口
+ * 匹配源码中的构造函数签名
  */
 class DCameraSourceInput {
 public:
-    // Constructor taking devId, dhId, and cameraSourceDev
-    DCameraSourceInput(const std::string& devId, const std::string& dhId,
-                      const std::shared_ptr<void>& cameraSourceDev)
+    // Constructor 匹配源码签名（接受值以支持 std::make_shared）
+    DCameraSourceInput(std::string devId, std::string dhId, std::shared_ptr<DCameraSourceDev> camDev)
     {
         (void)devId;
         (void)dhId;
-        (void)cameraSourceDev;
+        (void)camDev;
     }
 
     virtual ~DCameraSourceInput() = default;
 
-    virtual int32_t Initialize()
+    virtual int32_t Init()
     {
         return 0;  // Mock: 总是成功
     }
@@ -47,6 +53,17 @@ public:
     }
 
     virtual int32_t Release()
+    {
+        return 0;  // Mock: 总是成功
+    }
+
+    virtual int32_t StartCapture(const std::vector<std::string>& captureInfos)
+    {
+        (void)captureInfos;
+        return 0;  // Mock: 总是成功
+    }
+
+    virtual int32_t StopCapture()
     {
         return 0;  // Mock: 总是成功
     }

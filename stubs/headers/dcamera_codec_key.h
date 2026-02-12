@@ -1,21 +1,13 @@
 /*
- * DCamera Codec Key Constants
+ * DCamera Codec Key Constants Stub
  *
- * 分布式相机编解码器相关常量定义
+ * 引用源码中的常量定义，不重复定义
  */
 
-#ifndef OHOS_DCAMERA_CODEC_KEY_H
-#define OHOS_DCAMERA_CODEC_KEY_H
+#ifndef STUBS_DCAMERA_CODEC_KEY_H
+#define STUBS_DCAMERA_CODEC_KEY_H
 
-#include <string>
+// 引用源码中的 distributed_camera_constants.h 来获取 CAMERA_CODEC_TYPE_KEY 等定义
+#include "distributed_camera_constants.h"
 
-namespace OHOS {
-namespace DistributedHardware {
-
-// 编解码器类型键
-const std::string CAMERA_CODEC_TYPE_KEY = "CameraCodecType";
-
-} // namespace DistributedHardware
-} // namespace OHOS
-
-#endif // OHOS_DCAMERA_CODEC_KEY_H
+#endif // STUBS_DCAMERA_CODEC_KEY_H

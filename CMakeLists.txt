@@ -114,6 +114,7 @@ include_directories(
     ${DCAMERA_COMMON_INCLUDE}/constants    # distributed_camera_errno.h 所在目录
     ${DCAMERA_COMMON_INCLUDE}/utils       # dh_log.h 所在目录
     ${DCAMERA_SOURCE_DIR}/services/channel/include  # icamera_channel_listener.h 所在目录
+    ${DCAMERA_SOURCE_DIR}/services/channel/include/allconnect  # dcamera_collaboration_manager_capi.h 所在目录
     ${DCAMERA_SERVICE_DIR}/base/include
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcamera
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr
