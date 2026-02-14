@@ -160,6 +160,27 @@ public:
         (void)innerEventId;
     }
 
+    // Post task (lambda function)
+    bool PostTask(const std::function<void()>& task, const std::string& name = "", 
+                  int64_t delayTime = 0, EventQueue::Priority priority = EventQueue::PRIORITY_LOW)
+    {
+        (void)task;
+        (void)name;
+        (void)delayTime;
+        (void)priority;
+        return true;  // Mock: always success
+    }
+
+    // Post task with priority enum
+    bool PostTask(const std::function<void()>& task, int64_t delayTime, 
+                  EventQueue::Priority priority = EventQueue::PRIORITY_LOW)
+    {
+        (void)task;
+        (void)delayTime;
+        (void)priority;
+        return true;  // Mock: always success
+    }
+
     // Get event runner
     std::shared_ptr<EventRunner> GetEventRunner() const
     {

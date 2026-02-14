@@ -179,12 +179,16 @@ include_directories(
     ${EXTERNAL_DIR}/hiviewdfx_hitrace/interfaces/innerkits/native/include
     ${EXTERNAL_DIR}/hiviewdfx_hitrace/interfaces/native/innerkits/include/hitrace_meter  # hitrace_meter.h
     ${EXTERNAL_DIR}/communication_dsoftbus/interfaces/kits/native
+    ${EXTERNAL_DIR}/communication_dsoftbus/interfaces/kits/bus_center  # softbus_bus_center.h
+    ${EXTERNAL_DIR}/communication_dsoftbus/interfaces/kits/common  # softbus_common.h
     ${EXTERNAL_DIR}/communication_dsoftbus/interfaces/kits  # transport/trans_type.h parent directory
     ${EXTERNAL_DIR}/ability_ability_runtime/interfaces/innerkits/eventhandler/include
     ${EXTERNAL_DIR}/resourceschedule_ffrt/interfaces/kits
     ${EXTERNAL_DIR}/device_manager/interfaces/inner_kits/native/include
     ${EXTERNAL_DIR}/device_manager/interfaces/inner_kits/native_cpp/include  # device_manager.h
     ${EXTERNAL_DIR}/drivers_hdf_core/interfaces/inner_api/ipc  # iproxy_broker.h
+    ${EXTERNAL_DIR}/graphic_surface/interfaces/kits  # surface.h
+    ${EXTERNAL_DIR}/graphic_utils/interfaces/kits  # gfx_utils/pixel_format_utils.h
 
     # 2. OpenHarmony 源码头文件
     ${CJSON_INCLUDE_DIR}
@@ -210,8 +214,11 @@ include_directories(
     ${DCAMERA_SOURCE_DIR}/services/data_process/include/pipeline
     ${DCAMERA_SOURCE_DIR}/services/data_process/include/interfaces
     ${DCAMERA_SOURCE_DIR}/services/data_process/include/utils
+    ${DCAMERA_SOURCE_DIR}/services/data_process/include/eventbus
     ${DCAMERA_SOURCE_DIR}/services/cameraservice/sourceservice/include/distributedcameramgr/dcameradata/feedingsmoother/base
     ${DCAMERA_SOURCE_DIR}/services/cameraservice/sourceservice/include/distributedcameramgr/dcameradata/feedingsmoother/derived
+    ${DCAMERA_SOURCE_DIR}/services/cameraservice/sourceservice/include/distributedcameramgr/dcameradata/feedingsmoother/utils
+    ${DCAMERA_SOURCE_DIR}/services/cameraservice/sourceservice/include/distributedcameramgr/dcameradata/feedingsmoother
     ${DCAMERA_SOURCE_DIR}/services/cameraservice/cameraoperator/handler/include
 
     # 源文件所在目录（用于访问同目录的头文件）
@@ -248,7 +255,7 @@ set(DCAMERA_SOURCE_SOURCES
 
     # ========== State Machine 状态机模块 ==========
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerastate/dcamera_source_state_machine.cpp
-    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp
+    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp  # 暂时禁用：API版本不匹配
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process.cpp
 
@@ -260,6 +267,18 @@ set(DCAMERA_SOURCE_SOURCES
     # ========== Stub 实现 ==========
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_hisysevent_adapter.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/hilog_mock.cpp  # HiLog mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/hitrace_mock.cpp  # HiTrace mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/softbus_mock.cpp  # Softbus mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/ipc_object_stub_mock.cpp  # IPCObjectStub mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/ipc_object_stub_constructor_mock.cpp  # IPCObjectStub 构造函数 mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/peer_holder_mock.cpp  # PeerHolder mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/ipc_skeleton_mock.cpp  # IPCSkeleton mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/iremote_object_mock.cpp  # IRemoteObject mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/message_parcel_mock.cpp  # MessageParcel mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/data_buffer_mock.cpp  # DataBuffer mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_pipeline_source_mock.cpp  # DCameraPipelineSource mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/access_token_kit_mock.cpp  # AccessTokenKit mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/system_ability_manager_client_mock.cpp  # SystemAbilityManagerClient mock 实现
 )
 
 # 检查源文件是否存在

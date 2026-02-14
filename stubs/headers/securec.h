@@ -30,6 +30,12 @@ extern "C" {
     snprintf(dest, destMax, format, ##__VA_ARGS__)
 
 /**
+ * @brief 安全 sprintf 函数（macOS 兼容版本）
+ */
+#define sprintf_s(dest, destMax, format, ...) \
+    snprintf(dest, destMax, format, ##__VA_ARGS__)
+
+/**
  * @brief 安全 strcpy 函数（macOS 兼容版本）
  */
 #define strcpy_s(dest, destMax, src) \

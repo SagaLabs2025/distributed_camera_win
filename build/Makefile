@@ -560,30 +560,6 @@ Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraserv
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.s
 .PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.cpp.s
 
-Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp.o
-.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.o
-
-# target to build an object file
-Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp.o
-.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp.o
-
-Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.i: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp.i
-.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.i
-
-# target to preprocess a source file
-Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp.i
-.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp.i
-
-Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.s: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp.s
-.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.s
-
-# target to generate assembly for a file
-Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp.s
-.PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp.s
-
 Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input.o: Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input.cpp.o
 .PHONY : Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input.o
 
@@ -728,6 +704,54 @@ src/dcamera_source_dll.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/src/dcamera_source_dll.cpp.s
 .PHONY : src/dcamera_source_dll.cpp.s
 
+stubs/src/access_token_kit_mock.o: stubs/src/access_token_kit_mock.cpp.o
+.PHONY : stubs/src/access_token_kit_mock.o
+
+# target to build an object file
+stubs/src/access_token_kit_mock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/access_token_kit_mock.cpp.o
+.PHONY : stubs/src/access_token_kit_mock.cpp.o
+
+stubs/src/access_token_kit_mock.i: stubs/src/access_token_kit_mock.cpp.i
+.PHONY : stubs/src/access_token_kit_mock.i
+
+# target to preprocess a source file
+stubs/src/access_token_kit_mock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/access_token_kit_mock.cpp.i
+.PHONY : stubs/src/access_token_kit_mock.cpp.i
+
+stubs/src/access_token_kit_mock.s: stubs/src/access_token_kit_mock.cpp.s
+.PHONY : stubs/src/access_token_kit_mock.s
+
+# target to generate assembly for a file
+stubs/src/access_token_kit_mock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/access_token_kit_mock.cpp.s
+.PHONY : stubs/src/access_token_kit_mock.cpp.s
+
+stubs/src/data_buffer_mock.o: stubs/src/data_buffer_mock.cpp.o
+.PHONY : stubs/src/data_buffer_mock.o
+
+# target to build an object file
+stubs/src/data_buffer_mock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/data_buffer_mock.cpp.o
+.PHONY : stubs/src/data_buffer_mock.cpp.o
+
+stubs/src/data_buffer_mock.i: stubs/src/data_buffer_mock.cpp.i
+.PHONY : stubs/src/data_buffer_mock.i
+
+# target to preprocess a source file
+stubs/src/data_buffer_mock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/data_buffer_mock.cpp.i
+.PHONY : stubs/src/data_buffer_mock.cpp.i
+
+stubs/src/data_buffer_mock.s: stubs/src/data_buffer_mock.cpp.s
+.PHONY : stubs/src/data_buffer_mock.s
+
+# target to generate assembly for a file
+stubs/src/data_buffer_mock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/data_buffer_mock.cpp.s
+.PHONY : stubs/src/data_buffer_mock.cpp.s
+
 stubs/src/dcamera_hisysevent_adapter.o: stubs/src/dcamera_hisysevent_adapter.cpp.o
 .PHONY : stubs/src/dcamera_hisysevent_adapter.o
 
@@ -751,6 +775,30 @@ stubs/src/dcamera_hisysevent_adapter.s: stubs/src/dcamera_hisysevent_adapter.cpp
 stubs/src/dcamera_hisysevent_adapter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_hisysevent_adapter.cpp.s
 .PHONY : stubs/src/dcamera_hisysevent_adapter.cpp.s
+
+stubs/src/dcamera_pipeline_source_mock.o: stubs/src/dcamera_pipeline_source_mock.cpp.o
+.PHONY : stubs/src/dcamera_pipeline_source_mock.o
+
+# target to build an object file
+stubs/src/dcamera_pipeline_source_mock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_pipeline_source_mock.cpp.o
+.PHONY : stubs/src/dcamera_pipeline_source_mock.cpp.o
+
+stubs/src/dcamera_pipeline_source_mock.i: stubs/src/dcamera_pipeline_source_mock.cpp.i
+.PHONY : stubs/src/dcamera_pipeline_source_mock.i
+
+# target to preprocess a source file
+stubs/src/dcamera_pipeline_source_mock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_pipeline_source_mock.cpp.i
+.PHONY : stubs/src/dcamera_pipeline_source_mock.cpp.i
+
+stubs/src/dcamera_pipeline_source_mock.s: stubs/src/dcamera_pipeline_source_mock.cpp.s
+.PHONY : stubs/src/dcamera_pipeline_source_mock.s
+
+# target to generate assembly for a file
+stubs/src/dcamera_pipeline_source_mock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/dcamera_pipeline_source_mock.cpp.s
+.PHONY : stubs/src/dcamera_pipeline_source_mock.cpp.s
 
 stubs/src/hilog_mock.o: stubs/src/hilog_mock.cpp.o
 .PHONY : stubs/src/hilog_mock.o
@@ -778,6 +826,222 @@ stubs/src/hilog_mock.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/hilog_mock.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_sink.dir/build.make CMakeFiles/dcamera_sink.dir/stubs/src/hilog_mock.cpp.s
 .PHONY : stubs/src/hilog_mock.cpp.s
+
+stubs/src/hitrace_mock.o: stubs/src/hitrace_mock.cpp.o
+.PHONY : stubs/src/hitrace_mock.o
+
+# target to build an object file
+stubs/src/hitrace_mock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/hitrace_mock.cpp.o
+.PHONY : stubs/src/hitrace_mock.cpp.o
+
+stubs/src/hitrace_mock.i: stubs/src/hitrace_mock.cpp.i
+.PHONY : stubs/src/hitrace_mock.i
+
+# target to preprocess a source file
+stubs/src/hitrace_mock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/hitrace_mock.cpp.i
+.PHONY : stubs/src/hitrace_mock.cpp.i
+
+stubs/src/hitrace_mock.s: stubs/src/hitrace_mock.cpp.s
+.PHONY : stubs/src/hitrace_mock.s
+
+# target to generate assembly for a file
+stubs/src/hitrace_mock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/hitrace_mock.cpp.s
+.PHONY : stubs/src/hitrace_mock.cpp.s
+
+stubs/src/ipc_object_stub_constructor_mock.o: stubs/src/ipc_object_stub_constructor_mock.cpp.o
+.PHONY : stubs/src/ipc_object_stub_constructor_mock.o
+
+# target to build an object file
+stubs/src/ipc_object_stub_constructor_mock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/ipc_object_stub_constructor_mock.cpp.o
+.PHONY : stubs/src/ipc_object_stub_constructor_mock.cpp.o
+
+stubs/src/ipc_object_stub_constructor_mock.i: stubs/src/ipc_object_stub_constructor_mock.cpp.i
+.PHONY : stubs/src/ipc_object_stub_constructor_mock.i
+
+# target to preprocess a source file
+stubs/src/ipc_object_stub_constructor_mock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/ipc_object_stub_constructor_mock.cpp.i
+.PHONY : stubs/src/ipc_object_stub_constructor_mock.cpp.i
+
+stubs/src/ipc_object_stub_constructor_mock.s: stubs/src/ipc_object_stub_constructor_mock.cpp.s
+.PHONY : stubs/src/ipc_object_stub_constructor_mock.s
+
+# target to generate assembly for a file
+stubs/src/ipc_object_stub_constructor_mock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/ipc_object_stub_constructor_mock.cpp.s
+.PHONY : stubs/src/ipc_object_stub_constructor_mock.cpp.s
+
+stubs/src/ipc_object_stub_mock.o: stubs/src/ipc_object_stub_mock.cpp.o
+.PHONY : stubs/src/ipc_object_stub_mock.o
+
+# target to build an object file
+stubs/src/ipc_object_stub_mock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/ipc_object_stub_mock.cpp.o
+.PHONY : stubs/src/ipc_object_stub_mock.cpp.o
+
+stubs/src/ipc_object_stub_mock.i: stubs/src/ipc_object_stub_mock.cpp.i
+.PHONY : stubs/src/ipc_object_stub_mock.i
+
+# target to preprocess a source file
+stubs/src/ipc_object_stub_mock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/ipc_object_stub_mock.cpp.i
+.PHONY : stubs/src/ipc_object_stub_mock.cpp.i
+
+stubs/src/ipc_object_stub_mock.s: stubs/src/ipc_object_stub_mock.cpp.s
+.PHONY : stubs/src/ipc_object_stub_mock.s
+
+# target to generate assembly for a file
+stubs/src/ipc_object_stub_mock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/ipc_object_stub_mock.cpp.s
+.PHONY : stubs/src/ipc_object_stub_mock.cpp.s
+
+stubs/src/ipc_skeleton_mock.o: stubs/src/ipc_skeleton_mock.cpp.o
+.PHONY : stubs/src/ipc_skeleton_mock.o
+
+# target to build an object file
+stubs/src/ipc_skeleton_mock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/ipc_skeleton_mock.cpp.o
+.PHONY : stubs/src/ipc_skeleton_mock.cpp.o
+
+stubs/src/ipc_skeleton_mock.i: stubs/src/ipc_skeleton_mock.cpp.i
+.PHONY : stubs/src/ipc_skeleton_mock.i
+
+# target to preprocess a source file
+stubs/src/ipc_skeleton_mock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/ipc_skeleton_mock.cpp.i
+.PHONY : stubs/src/ipc_skeleton_mock.cpp.i
+
+stubs/src/ipc_skeleton_mock.s: stubs/src/ipc_skeleton_mock.cpp.s
+.PHONY : stubs/src/ipc_skeleton_mock.s
+
+# target to generate assembly for a file
+stubs/src/ipc_skeleton_mock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/ipc_skeleton_mock.cpp.s
+.PHONY : stubs/src/ipc_skeleton_mock.cpp.s
+
+stubs/src/iremote_object_mock.o: stubs/src/iremote_object_mock.cpp.o
+.PHONY : stubs/src/iremote_object_mock.o
+
+# target to build an object file
+stubs/src/iremote_object_mock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/iremote_object_mock.cpp.o
+.PHONY : stubs/src/iremote_object_mock.cpp.o
+
+stubs/src/iremote_object_mock.i: stubs/src/iremote_object_mock.cpp.i
+.PHONY : stubs/src/iremote_object_mock.i
+
+# target to preprocess a source file
+stubs/src/iremote_object_mock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/iremote_object_mock.cpp.i
+.PHONY : stubs/src/iremote_object_mock.cpp.i
+
+stubs/src/iremote_object_mock.s: stubs/src/iremote_object_mock.cpp.s
+.PHONY : stubs/src/iremote_object_mock.s
+
+# target to generate assembly for a file
+stubs/src/iremote_object_mock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/iremote_object_mock.cpp.s
+.PHONY : stubs/src/iremote_object_mock.cpp.s
+
+stubs/src/message_parcel_mock.o: stubs/src/message_parcel_mock.cpp.o
+.PHONY : stubs/src/message_parcel_mock.o
+
+# target to build an object file
+stubs/src/message_parcel_mock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/message_parcel_mock.cpp.o
+.PHONY : stubs/src/message_parcel_mock.cpp.o
+
+stubs/src/message_parcel_mock.i: stubs/src/message_parcel_mock.cpp.i
+.PHONY : stubs/src/message_parcel_mock.i
+
+# target to preprocess a source file
+stubs/src/message_parcel_mock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/message_parcel_mock.cpp.i
+.PHONY : stubs/src/message_parcel_mock.cpp.i
+
+stubs/src/message_parcel_mock.s: stubs/src/message_parcel_mock.cpp.s
+.PHONY : stubs/src/message_parcel_mock.s
+
+# target to generate assembly for a file
+stubs/src/message_parcel_mock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/message_parcel_mock.cpp.s
+.PHONY : stubs/src/message_parcel_mock.cpp.s
+
+stubs/src/peer_holder_mock.o: stubs/src/peer_holder_mock.cpp.o
+.PHONY : stubs/src/peer_holder_mock.o
+
+# target to build an object file
+stubs/src/peer_holder_mock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/peer_holder_mock.cpp.o
+.PHONY : stubs/src/peer_holder_mock.cpp.o
+
+stubs/src/peer_holder_mock.i: stubs/src/peer_holder_mock.cpp.i
+.PHONY : stubs/src/peer_holder_mock.i
+
+# target to preprocess a source file
+stubs/src/peer_holder_mock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/peer_holder_mock.cpp.i
+.PHONY : stubs/src/peer_holder_mock.cpp.i
+
+stubs/src/peer_holder_mock.s: stubs/src/peer_holder_mock.cpp.s
+.PHONY : stubs/src/peer_holder_mock.s
+
+# target to generate assembly for a file
+stubs/src/peer_holder_mock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/peer_holder_mock.cpp.s
+.PHONY : stubs/src/peer_holder_mock.cpp.s
+
+stubs/src/softbus_mock.o: stubs/src/softbus_mock.cpp.o
+.PHONY : stubs/src/softbus_mock.o
+
+# target to build an object file
+stubs/src/softbus_mock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/softbus_mock.cpp.o
+.PHONY : stubs/src/softbus_mock.cpp.o
+
+stubs/src/softbus_mock.i: stubs/src/softbus_mock.cpp.i
+.PHONY : stubs/src/softbus_mock.i
+
+# target to preprocess a source file
+stubs/src/softbus_mock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/softbus_mock.cpp.i
+.PHONY : stubs/src/softbus_mock.cpp.i
+
+stubs/src/softbus_mock.s: stubs/src/softbus_mock.cpp.s
+.PHONY : stubs/src/softbus_mock.s
+
+# target to generate assembly for a file
+stubs/src/softbus_mock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/softbus_mock.cpp.s
+.PHONY : stubs/src/softbus_mock.cpp.s
+
+stubs/src/system_ability_manager_client_mock.o: stubs/src/system_ability_manager_client_mock.cpp.o
+.PHONY : stubs/src/system_ability_manager_client_mock.o
+
+# target to build an object file
+stubs/src/system_ability_manager_client_mock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/system_ability_manager_client_mock.cpp.o
+.PHONY : stubs/src/system_ability_manager_client_mock.cpp.o
+
+stubs/src/system_ability_manager_client_mock.i: stubs/src/system_ability_manager_client_mock.cpp.i
+.PHONY : stubs/src/system_ability_manager_client_mock.i
+
+# target to preprocess a source file
+stubs/src/system_ability_manager_client_mock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/system_ability_manager_client_mock.cpp.i
+.PHONY : stubs/src/system_ability_manager_client_mock.cpp.i
+
+stubs/src/system_ability_manager_client_mock.s: stubs/src/system_ability_manager_client_mock.cpp.s
+.PHONY : stubs/src/system_ability_manager_client_mock.s
+
+# target to generate assembly for a file
+stubs/src/system_ability_manager_client_mock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcamera_source.dir/build.make CMakeFiles/dcamera_source.dir/stubs/src/system_ability_manager_client_mock.cpp.s
+.PHONY : stubs/src/system_ability_manager_client_mock.cpp.s
 
 # Help Target
 help:
@@ -839,9 +1103,6 @@ help:
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.o"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.i"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcamera_source_service_ipc.s"
-	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.o"
-	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.i"
-	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.s"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input.o"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input.i"
 	@echo "... Users/donghuibin/Work/distributedhardware_distributed_camera/services/cameraservice/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input.s"
@@ -860,12 +1121,48 @@ help:
 	@echo "... src/dcamera_source_dll.o"
 	@echo "... src/dcamera_source_dll.i"
 	@echo "... src/dcamera_source_dll.s"
+	@echo "... stubs/src/access_token_kit_mock.o"
+	@echo "... stubs/src/access_token_kit_mock.i"
+	@echo "... stubs/src/access_token_kit_mock.s"
+	@echo "... stubs/src/data_buffer_mock.o"
+	@echo "... stubs/src/data_buffer_mock.i"
+	@echo "... stubs/src/data_buffer_mock.s"
 	@echo "... stubs/src/dcamera_hisysevent_adapter.o"
 	@echo "... stubs/src/dcamera_hisysevent_adapter.i"
 	@echo "... stubs/src/dcamera_hisysevent_adapter.s"
+	@echo "... stubs/src/dcamera_pipeline_source_mock.o"
+	@echo "... stubs/src/dcamera_pipeline_source_mock.i"
+	@echo "... stubs/src/dcamera_pipeline_source_mock.s"
 	@echo "... stubs/src/hilog_mock.o"
 	@echo "... stubs/src/hilog_mock.i"
 	@echo "... stubs/src/hilog_mock.s"
+	@echo "... stubs/src/hitrace_mock.o"
+	@echo "... stubs/src/hitrace_mock.i"
+	@echo "... stubs/src/hitrace_mock.s"
+	@echo "... stubs/src/ipc_object_stub_constructor_mock.o"
+	@echo "... stubs/src/ipc_object_stub_constructor_mock.i"
+	@echo "... stubs/src/ipc_object_stub_constructor_mock.s"
+	@echo "... stubs/src/ipc_object_stub_mock.o"
+	@echo "... stubs/src/ipc_object_stub_mock.i"
+	@echo "... stubs/src/ipc_object_stub_mock.s"
+	@echo "... stubs/src/ipc_skeleton_mock.o"
+	@echo "... stubs/src/ipc_skeleton_mock.i"
+	@echo "... stubs/src/ipc_skeleton_mock.s"
+	@echo "... stubs/src/iremote_object_mock.o"
+	@echo "... stubs/src/iremote_object_mock.i"
+	@echo "... stubs/src/iremote_object_mock.s"
+	@echo "... stubs/src/message_parcel_mock.o"
+	@echo "... stubs/src/message_parcel_mock.i"
+	@echo "... stubs/src/message_parcel_mock.s"
+	@echo "... stubs/src/peer_holder_mock.o"
+	@echo "... stubs/src/peer_holder_mock.i"
+	@echo "... stubs/src/peer_holder_mock.s"
+	@echo "... stubs/src/softbus_mock.o"
+	@echo "... stubs/src/softbus_mock.i"
+	@echo "... stubs/src/softbus_mock.s"
+	@echo "... stubs/src/system_ability_manager_client_mock.o"
+	@echo "... stubs/src/system_ability_manager_client_mock.i"
+	@echo "... stubs/src/system_ability_manager_client_mock.s"
 .PHONY : help
 
 

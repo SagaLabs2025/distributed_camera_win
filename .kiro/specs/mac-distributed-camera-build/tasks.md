@@ -12,21 +12,21 @@
   - 优化包含路径优先级配置
   - _需求：1.1, 1.2, 1.3, 1.4, 1.5_
 
-- [-] 2. 完善Stub适配层
+- [x] 2. 完善Stub适配层
   - [x] 2.1 审查现有stub实现
     - 检查stubs/headers/目录下的所有头文件
     - 验证API签名与OpenHarmony接口匹配
     - 检查stubs/src/目录下的实现文件
     - _需求：4.1, 4.2, 4.4_
   
-  - [ ] 2.2 补充缺失的stub实现
+  - [x] 2.2 补充缺失的stub实现
     - 根据编译错误识别缺失的stub
     - **重要：添加新stub前必须询问用户确认**
     - 实现返回成功值的mock函数
     - 添加调试日志记录
     - _需求：4.1, 4.5_
   
-  - [ ] 2.3 验证stub层完整性
+  - [x] 2.3 验证stub层完整性
     - 确保所有OpenHarmony系统API都有对应stub
     - 验证HiLog、IPC、System Ability、Device Manager、Softbus、Codec等模块
     - _需求：4.4_
