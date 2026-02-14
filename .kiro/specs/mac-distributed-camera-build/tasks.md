@@ -91,34 +91,34 @@
   - 检查编译警告和错误
   - 如有问题，询问用户并解决
 
-- [ ] 7. 完善通道模块集成
-  - [ ] 7.1 验证通道模块源文件
+- [x] 7. 完善通道模块集成
+  - [x] 7.1 验证通道模块源文件
     - 检查services/channel目录的源文件是否包含
     - 确认icamera_channel_listener.h等头文件路径
     - _需求：6.1, 6.2_
   
-  - [ ] 7.2 添加协作管理器支持
+  - [x] 7.2 添加协作管理器支持
     - 包含dcamera_collaboration_manager_capi.h
     - 添加相关源文件
     - _需求：6.3_
   
-  - [ ] 7.3 补充Softbus stub
+  - [x] 7.3 补充Softbus stub
     - 检查softbus API的stub实现
     - **如需添加新stub，先询问用户**
     - _需求：6.4_
 
-- [ ] 8. 完善数据处理管道集成
-  - [ ] 8.1 验证数据处理源文件
+- [x] 8. 完善数据处理管道集成
+  - [x] 8.1 验证数据处理源文件
     - 检查services/data_process目录的源文件
     - 确认pipeline、interfaces、utils头文件路径
     - _需求：7.1, 7.2_
   
-  - [ ] 8.2 添加feeding smoother组件
+  - [x] 8.2 添加feeding smoother组件
     - 包含dcamera_stream_data_process.cpp
     - 添加feeding smoother相关源文件
     - _需求：7.3_
   
-  - [ ] 8.3 补充Codec stub
+  - [x] 8.3 补充Codec stub
     - 检查av_codec接口的stub实现
     - **如需添加新stub，先询问用户**
     - _需求：7.4_
