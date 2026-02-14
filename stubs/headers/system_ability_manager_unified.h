@@ -17,8 +17,37 @@
 namespace OHOS {
 
 // 前向声明
-template<typename T> class sptr;
 class IRemoteObject;
+
+/**
+ * @brief 简化的 sptr 智能指针实现（macOS mock）
+ * 避免 c_utils 的 refbase.h 复杂依赖
+ */
+template<typename T>
+class sptr {
+public:
+    sptr() : ptr_(nullptr) {}
+    sptr(std::nullptr_t) : ptr_(nullptr) {}
+    sptr(T* p) : ptr_(p) {}
+    sptr(const sptr& other) : ptr_(other.ptr_) {}
+
+    T& operator*() const { return *ptr_; }
+    T* operator->() const { return ptr_; }
+    explicit operator bool() const { return ptr_ != nullptr; }
+
+    sptr& operator=(std::nullptr_t) {
+        ptr_ = nullptr;
+        return *this;
+    }
+
+    sptr& operator=(T* p) {
+        ptr_ = p;
+        return *this;
+    }
+
+private:
+    T* ptr_;
+};
 
 /**
  * @brief 系统能力状态枚举
@@ -46,7 +75,19 @@ public:
     virtual sptr<IRemoteObject> CheckSystemAbility(int32_t saId, const std::string& deviceId)
     {
         (void)saId; (void)deviceId;
-        return nullptr;  // Mock: 返回空指针
+        return sptr<IRemoteObject>(nullptr);  // Mock: 返回空指针
+    }
+
+    virtual int32_t Subscribe(const std::string& deviceId, int32_t saId)
+    {
+        (void)deviceId; (void)saId;
+        return 0;  // Mock: 总是订阅成功
+    }
+
+    virtual int32_t Unsubscribe(const std::string& deviceId, int32_t saId)
+    {
+        (void)deviceId; (void)saId;
+        return 0;  // Mock: 总是取消订阅成功
     }
 };
 
@@ -68,7 +109,7 @@ public:
     sptr<IRemoteObject> CheckSystemAbility(int32_t saId, const std::string& deviceId) override
     {
         (void)saId; (void)deviceId;
-        return nullptr;  // Mock: 返回空指针
+        return sptr<IRemoteObject>(nullptr);  // Mock: 返回空指针
     }
 
     int32_t AddSystemAbility(int32_t saId, void* ability) override
@@ -94,6 +135,18 @@ public:
     {
         (void)saId;
         return SA_REGISTERED;  // Mock: 总是已注册
+    }
+
+    int32_t Subscribe(const std::string& deviceId, int32_t saId) override
+    {
+        (void)deviceId; (void)saId;
+        return 0;  // Mock: 总是订阅成功
+    }
+
+    int32_t Unsubscribe(const std::string& deviceId, int32_t saId) override
+    {
+        (void)deviceId; (void)saId;
+        return 0;  // Mock: 总是取消订阅成功
     }
 };
 

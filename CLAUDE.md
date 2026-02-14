@@ -4,8 +4,6 @@
 
 这是一个 **macOS 模拟框架**，用于 OpenHarmony 分布式相机系统的开发和测试。项目通过引用 OpenHarmony 源代码并创建必要的 mock 存根，在 macOS 上实现 Source（控制端，SA_ID=4803）和 Sink（被控端，SA_ID=4804）的分布式相机功能。
 
----
-
 ## 代码路径配置
 
 ### 1. OpenHarmony 源代码路径
@@ -29,156 +27,6 @@
 
 **相对路径**: `../external/`（相对于项目根目录）
 
-**配置变量** (CMakeLists.txt):
-```cmake
-set(EXTERNAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../external")
-```
-
----
-
-## 外部依赖查找规则（重要约束）
-
-### ⚠️ 优先级规则
-
-当需要查找外部依赖时，**必须按以下顺序**：
-
-1. **首先**：从 `../external/` 文件夹中查找
-2. **其次**：从 `stubs/` 目录中查找 mock 实现
-3. **最后**：才考虑系统路径或其他位置
-
-### 代码搜索优先级
-
-```
-external/ → stubs/headers/ → OHOS_DCAMERA_SOURCE_ROOT
-```
-
-### ⚠️ 头文件 vs 函数实现规则（核心约束）
-
-**重要**：external 文件夹的使用限制
-
-#### 通用规则
-
-1. **仅用于头文件查找**：
-   - 从 `external/` 中**只引用头文件**（`.h` 文件）
-   - 用于类型定义、常量、宏声明、接口定义等
-
-2. **不使用 external 中的函数实现**：
-   - **不链接** external 中的 `.cpp`/`.c` 实现文件
-   - **不编译** external 中的源代码
-   - **避免依赖路径过深**导致的复杂依赖链
-
-3. **函数实现采用 Mock 方式**：
-   - 所有需要的函数实现仍在 `stubs/src/` 中提供 Mock
-   - Mock 实现返回适当的成功值（通常为 0）
-   - 保持简单、可控的依赖关系
-
-#### 例外：独立基础库
-
-**以下独立基础库可以直接使用其实现**（因为基本无外部依赖）：
-
-| 代码仓 | 状态 | 原因 |
-|--------|------|------|
-| `cJSON` | ✅ 已使用 | 单文件 C 库，无外部依赖 |
-| `c_utils` | ⚠️ 部分可用 | 部分工具函数可用，但某些模块依赖 securec |
-| `ffrt` | ⚠️ 可选 | 函数流运行时，有独立 CMake 构建系统 |
-
-**使用原则**：
-- 优先使用 stub 实现，保持可控性
-- 如果基础库确实独立且必要，可以考虑直接链接
-- 需要评估编译复杂度和收益
-
-### 示例：正确使用方式
-
-```cmake
-# ✅ 正确：只使用 external 的头文件获取类型定义
-target_include_directencies(dcamera_source PRIVATE
-    ${EXTERNAL_DIR}/hiviewdfx_hilog/include     # 引用头文件（类型、接口定义）
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers    # Mock 头文件（优先级更高）
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
-
-# ✅ 正确：使用 stubs/src 中的 Mock 实现
-target_sources(dcamera_source PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dh_log_mock.cpp  # Mock 实现
-)
-
-# ❌ 错误：不要链接 external 的实现库
-# target_link_libraries(dcamera_source
-#     ${EXTERNAL_DIR}/hiviewdfx_hilog/lib/libhilog.z.so  # 避免！依赖链太深
-# )
-
-# ❌ 错误：不要编译 external 中的源文件
-# target_sources(dcamera_source PRIVATE
-#     ${EXTERNAL_DIR}/hiviewdfx_hilog/src/hilog.cpp  # 避免！引入复杂依赖
-# )
-```
-
-### 为什么这样做？
-
-| 方式 | 优点 | 缺点 |
-|------|------|------|
-| **只引用 external 头文件** | 获取准确的类型定义，API 兼容 | 无 |
-| **使用 stubs Mock 实现** | 简单可控，返回成功值，避免深依赖 | 需要手动维护 Mock |
-| **链接 external 实现** | 功能完整 | ❌ 依赖链太深，难以调试 |
-
-### 依赖原则
-
-```
-external/           → 提供头文件定义（类型、接口、宏）
-stubs/headers/      → 提供简化的兼容层头文件（优先级最高）
-stubs/src/          → 提供 Mock 函数实现（返回成功值）
-external 源文件     → 仅限独立基础库（cJSON、可选 c_utils/ffrt 部分）
-```
-
-### 当前使用情况
-
-| 组件 | 使用方式 | 说明 |
-|------|---------|------|
-| cJSON | 编译源文件 | 单文件独立库，已集成 |
-| c_utils | 仅头文件 | 使用 refbase.h 等头文件定义 |
-| ffrt | 未使用 | 并发运行时，暂不需要 |
-| hilog | 适配器 | 使用 stubs 中的 hilog_log_adapter.h |
-| IPC | 仅头文件 | 使用 iremote_object.h 等接口定义 |
-| samgr/safwk | 仅头文件 | 使用 system_ability.h 等接口定义 |
-
-### 示例
-
-当需要查找 `hilog.h` 时：
-1. 先查：`../external/hiviewdfx_hilog/`
-2. 再查：`stubs/headers/`
-3. 最后查：`../distributedhardware_distributed_camera/`
-
----
-
-## 已下载的外部依赖
-
-external 文件夹包含以下 OpenHarmony 代码仓：
-
-| 序号 | 代码仓 | 说明 |
-|------|--------|------|
-| 1 | ability_ability_runtime | Ability 运行时（包含 EventHandler） |
-| 2 | c_utils | C 工具库 |
-| 3 | cJSON | JSON 解析库 |
-| 4 | communication_dsoftbus | 分布式软总线 |
-| 5 | communication_ipc | IPC/RPC 通信 |
-| 6 | device_manager | 设备管理器 |
-| 7 | distributedhardware_distributed_hardware_fwk | 分布式硬件框架核心 |
-| 8 | drivers_hdf_core | HDF 驱动框架核心 |
-| 9 | drivers_interface | HDI 接口定义 |
-| 10 | graphic_surface | 图形 Surface 组件 |
-| 11 | hiviewdfx_hicollie | 卡死检测框架 |
-| 12 | hiviewdfx_hilog | 日志系统 |
-| 13 | hiviewdfx_hitrace | 分布式追踪 |
-| 14 | multimedia_av_codec | 音视频编解码 |
-| 15 | multimedia_camera_framework | 相机框架 |
-| 16 | multimedia_media_foundation | 媒体基础库 |
-| 17 | resourceschedule_ffrt | 函数流运行时（并发编程） |
-| 18 | security_access_token | 权限管理 |
-| 19 | systemabilitymgr_safwk | 系统能力框架 |
-| 20 | systemabilitymgr_samgr | 系统能力管理器 |
-
----
-
 ## 目录结构
 
 ```
@@ -201,16 +49,26 @@ external/                              # 外部依赖（优先级第1）
 ├── c_utils/
 ├── cJSON/
 ├── communication_dsoftbus/
-├── ...（其他 17 个代码仓）
+├── communication_ipc/
+├── device_manager/
+├── distributedhardware_distributed_hardware_fwk/
+├── drivers_hdf_core/
+├── drivers_interface/
+├── graphic_surface/
+├── hiviewdfx_hilog/
+├── hiviewdfx_hicollie/
+├── hiviewdfx_hitrace/
+├── multimedia_av_codec/
+├── multimedia_camera_framework/
+├── multimedia_media_foundation/
+├── resourceschedule_ffrt/
+├── security_access_token/
+├── systemabilitymgr_safwk/
+├── systemabilitymgr_samgr/
+└── ...（其他 17 个代码仓）
 
-../distributedhardware_distributed_camera/  # OpenHarmony 源代码引用
-├── services/cameraservice/
-├── interfaces/
-├── common/
-└── ...
+../distributedhardware_distributed_camera/  # OpenHarmony 源代码引用（优先级第3）
 ```
-
----
 
 ## 编译器定义
 
@@ -218,8 +76,6 @@ external/                              # 外部依赖（优先级第1）
 - `__MACOS__` - macOS 平台标志
 - `HI_LOG_ENABLE=0` - 禁用 HiLog，使用标准输出
 - `DCAMERA_SOURCE_EXPORTS` / `DCAMERA_SINK_EXPORTS` - 动态库导出
-
----
 
 ## 重要约束
 
@@ -229,20 +85,19 @@ external/                              # 外部依赖（优先级第1）
 2. **Mock 实现应返回成功（0）** - 用于模拟目的
 3. **保持 API 兼容性** - 签名应与 OpenHarmony 匹配
 4. **编译修复仅在 stubs 中** - 永不修改引用的源代码仓库
-5. **包含路径优先级** - stubs/headers 必须在包含目录中排第一
-6. **external 仅用于头文件** - 从 external 只引用头文件，不链接其实现库，避免依赖路径过深
 
-### Include 路径优先级示例
+### Include 路径优先级
 
 ```cmake
-target_include_directencies(dcamera_source PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers  # MUST be first
+target_include_directories(dcamera_source PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers    # MUST be first
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${OHOS_DCAMERA_SOURCE_ROOT}/...
+    ${EXTERNAL_DIR}/...
 )
 ```
 
----
+优先级：**stubs/headers** > **include/** > **OHOS_DCAMERA_SOURCE_ROOT** > **external/**
 
 ## 依赖映射说明
 
@@ -257,13 +112,11 @@ BUILD.gn 中的 `external_deps` 映射到 external 文件夹中的代码仓：
 | `c_utils:utils` | c_utils | `../external/c_utils/` |
 | `device_manager:*` | device_manager | `../external/device_manager/` |
 | `distributed_hardware_fwk:*` | distributedhardware_distributed_hardware_fwk | `../external/distributedhardware_distributed_hardware_fwk/` |
-| `drivers_interface_*` | drivers_interface | `../external/drivers_interface/` |
 | `dsoftbus:*` | communication_dsoftbus | `../external/communication_dsoftbus/` |
 | `eventhandler:*` | ability_ability_runtime | `../external/ability_ability_runtime/` |
 | `ffrt:*` | resourceschedule_ffrt | `../external/resourceschedule_ffrt/` |
 | `graphic_surface:*` | graphic_surface | `../external/graphic_surface/` |
 | `hdf_core:*` | drivers_hdf_core | `../external/drivers_hdf_core/` |
-| `hicollie:*` | hiviewdfx_hicollie | `../external/hiviewdfx_hicollie/` |
 | `hilog:*` | hiviewdfx_hilog | `../external/hiviewdfx_hilog/` |
 | `hitrace:*` | hiviewdfx_hitrace | `../external/hiviewdfx_hitrace/` |
 | `ipc:*` | communication_ipc | `../external/communication_ipc/` |
@@ -271,9 +124,37 @@ BUILD.gn 中的 `external_deps` 映射到 external 文件夹中的代码仓：
 | `safwk:*` | systemabilitymgr_safwk | `../external/systemabilitymgr_safwk/` |
 | `samgr:*` | systemabilitymgr_samgr | `../external/systemabilitymgr_samgr/` |
 
----
+## 已下载的外部依赖
 
-## 命令速查
+external 文件夹包含以下 OpenHarmony 代码仓：
+
+| 序号 | 代码仓 | 说明 |
+|------|--------|------|
+| 1 | ability_ability_runtime | Ability 运行时（包含 EventHandler） |
+| 2 | c_utils | C 工具库 |
+| 3 | cJSON | JSON 解析库 |
+| 4 | communication_dsoftbus | 分布式软总线 |
+| 5 | communication_ipc | IPC/RPC 通信 |
+| 6 | device_manager | 设备管理器 |
+| 7 | distributedhardware_distributed_hardware_fwk | 分布式硬件框架核心 |
+| 8 | drivers_hdf_core | HDF 驱动框架核心 |
+| 9 | drivers_interface | HDI 接口定义 |
+| 10 | graphic_surface | 图形 Surface 组件 |
+| 11 | hiviewdfx_hicollie | 卡死检测框架 |
+| 12 | hiviewdfx_hilog | 日志系统 |
+| 13 | hiviewdfx_hitrace | 分布式追踪 |
+| 14 | hiviewdfx_hitrace | 分布式追踪 |
+| 15 | multimedia_av_codec | 音视频编解码 |
+| 16 | multimedia_camera_framework | 相机框架 |
+| 17 | multimedia_media_foundation | 媒体基础库 |
+| 18 | resourceschedule_ffrt | 函数流运行时（并发编程） |
+| 19 | security_access_token | 权限管理 |
+| 20 | systemabilitymgr_safwk | 系统能力框架 |
+| 21 | systemabilitymgr_samgr | 系统能力管理器 |
+
+## 构建系统
+
+使用 **CMake + Ninja** 构建：
 
 ### 构建
 ```bash
@@ -288,13 +169,35 @@ cmake -DCMAKE_BUILD_TYPE=Debug ..
 make -j$(sysctl -n hw.ncpu)
 ```
 
-### 查找依赖文件
-当需要查找某个头文件时，按以下顺序：
-1. `../external/<仓库名>/`
-2. `stubs/headers/`
-3. `../distributedhardware_distributed_camera/`
+## 测试
 
----
+使用 **Google Test (gtest)** 框架：
+
+### 运行测试
+```bash
+# 构建测试
+./build.sh
+
+# 运行测试（需要先构建）
+cd build/tests
+./test_distributed_camera
+```
+
+## 主要组件
+
+### Source Service (SA 4803)
+- **入口**: `dcamera_source_dll.cpp`
+- **核心服务**: `DistributedCameraSourceService`
+- **数据通道**: 基于 SoftBus 的数据传输
+
+### Sink Service (SA 4804)
+- **入口**: `dcamera_sink_dll.cpp`
+- **核心服务**: `DistributedCameraSinkService`
+- **数据通道**: 基于 SoftBus 的数据传输
+
+### 数据处理
+- **数据处理管道**: 支持图像编解码、颜色空间转换、缩放、帧率调整、旋转
+- **缓冲管理**: 统一的缓冲区分配和释放
 
 ## 版本信息
 
@@ -302,3 +205,8 @@ make -j$(sysctl -n hw.ncpu)
 - **CMake**: 3.20+
 - **C++ 标准**: C++17
 - **平台**: macOS (Darwin)
+
+## 重要文件
+
+- **CMakeLists.txt**: 主构建配置
+- **build.sh**: 标准构建脚本

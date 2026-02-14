@@ -1,191 +1,175 @@
 /*
- * AppExecFwk Event Handler Stub for macOS Mock
+ * EventHandler Stub for macOS
  *
- * OpenHarmony 事件处理框架的 macOS 兼容层
+ * 提供基本的 AppExecFwk::EventHandler 和 InnerEvent 定义
+ * 用于源代码仓的继承和接口实现
  */
 
-#ifndef STUBS_EVENT_HANDLER_H
-#define STUBS_EVENT_HANDLER_H
+#ifndef OHOS_EVENT_HANDLER_STUB_H
+#define OHOS_EVENT_HANDLER_STUB_H
 
-#include <string>
 #include <memory>
-#include <cstdint>
 #include <functional>
+#include <string>
 
-#ifdef __cplusplus
 namespace AppExecFwk {
 
-/**
- * @brief 内部事件
- */
+// 前向声明
+class EventRunner;
+class EventQueue;
+
+// Priority enum
+enum class Priority {
+    IMMEDIATE = 0,
+    HIGH = 1,
+    LOW = 2,
+    IDLE = 3
+};
+
+// InnerEvent 类定义（简化版本）
 class InnerEvent {
 public:
-    // 智能指针类型别名
     using Pointer = std::shared_ptr<InnerEvent>;
 
-    uint32_t GetInnerEventId() const { return innerEventId_; }
-    uint64_t GetParam() const { return param_; }
+    InnerEvent() = default;
+    virtual ~InnerEvent() = default;
 
-    // GetSharedObject - 获取存储的共享参数并转换为指定类型
+    // Get event ID
+    uint32_t GetInnerEventId() const { return eventId_; }
+    
+    // Static Get method - creates an InnerEvent with data
     template<typename T>
-    std::shared_ptr<T> GetSharedObject()
+    static Pointer Get(uint32_t eventId, const std::shared_ptr<T>& data, int64_t param = 0)
     {
-        return std::static_pointer_cast<T>(sharedParam_);
-    }
-
-    // Get 方法 - 返回 Pointer (shared_ptr)
-    // 版本1: eventId + shared_ptr (有参数版本)
-    static Pointer Get(uint32_t eventId, const std::shared_ptr<void>& param)
-    {
+        (void)eventId;
+        (void)data;
+        (void)param;
         auto event = std::make_shared<InnerEvent>();
-        event->innerEventId_ = eventId;
-        event->sharedParam_ = param;
+        event->eventId_ = eventId;
         return event;
     }
 
-    // 版本2: eventId + shared_ptr + priority (int32_t)
-    static Pointer Get(uint32_t eventId, const std::shared_ptr<void>& param, int32_t priority)
-    {
-        auto event = std::make_shared<InnerEvent>();
-        event->innerEventId_ = eventId;
-        event->sharedParam_ = param;
-        event->priorityValue_ = priority;
-        return event;
-    }
-
-    // 版本3: 仅 eventId（无 param 版本，用于兼容某些调用）
-    static Pointer Get(uint32_t eventId)
-    {
-        auto event = std::make_shared<InnerEvent>();
-        event->innerEventId_ = eventId;
-        event->sharedParam_ = nullptr;  // 无参数时设为空
-        return event;
-    }
-
-    // 兼容旧版本 - eventId + uint64_t param
-    static InnerEvent Get(uint32_t eventId, uint64_t param)
-    {
-        InnerEvent event;
-        event.innerEventId_ = eventId;
-        event.param_ = param;
-        return event;
-    }
-
-private:
-    uint32_t innerEventId_ = 0;
-    uint64_t param_ = 0;
-    std::shared_ptr<void> sharedParam_;
-    int32_t priorityValue_ = 0;
-};
-
-/**
- * @brief 事件运行器
- */
-class EventRunner {
-public:
-    EventRunner() = default;
-
-    static EventRunner* Current()
-    {
-        static EventRunner runner;
-        return &runner;
-    }
-
-    static std::shared_ptr<EventRunner> Create(bool run = false)
-    {
-        (void)run;
-        static auto runner = std::make_shared<EventRunner>();
-        return runner;
-    }
-
-    void Run() {}
-    void Stop() {}
-};
-
-/**
- * @brief 事件处理器
- */
-class EventHandler {
-public:
-    explicit EventHandler(EventRunner* runner)
-    {
-        (void)runner;
-    }
-
-    // Constructor taking shared_ptr<EventRunner>
-    explicit EventHandler(const std::shared_ptr<EventRunner>& runner)
-    {
-        (void)runner;
-    }
-
-    virtual ~EventHandler() = default;
-
-    virtual void ProcessEvent(const InnerEvent& event)
-    {
-        (void)event;
-    }
-
-    // ProcessEvent 方法 - Pointer 版本（支持子类重写）
-    virtual void ProcessEvent(const InnerEvent::Pointer& event)
-    {
-        (void)event;
-    }
-
-    void SendEvent(uint32_t eventId, uint64_t param, int64_t delayTime = 0)
+    // Static Get method - creates an InnerEvent without data
+    static Pointer Get(uint32_t eventId, int64_t param = 0)
     {
         (void)eventId;
         (void)param;
-        (void)delayTime;
+        auto event = std::make_shared<InnerEvent>();
+        event->eventId_ = eventId;
+        return event;
     }
 
-    void SendEvent(InnerEvent& event)
+    // Get shared object from event
+    template<typename T>
+    std::shared_ptr<T> GetSharedObject() const
+    {
+        return nullptr;  // Mock: return null
+    }
+
+private:
+    uint32_t eventId_ = 0;
+};
+
+// Get event data - non-member template function for extracting data from event
+template<typename T>
+inline std::shared_ptr<T> Get(const InnerEvent::Pointer& event)
+{
+    (void)event;
+    return nullptr;  // Mock: return null
+}
+
+// EventQueue 类定义
+class EventQueue {
+public:
+    // Priority enum inside EventQueue
+    enum Priority {
+        PRIORITY_IMMEDIATE = 0,
+        IMMEDIATE = 0,  // Alias for PRIORITY_IMMEDIATE
+        PRIORITY_HIGH = 1,
+        HIGH = 1,  // Alias for PRIORITY_HIGH
+        PRIORITY_LOW = 2,
+        LOW = 2,  // Alias for PRIORITY_LOW
+        PRIORITY_IDLE = 3,
+        IDLE = 3  // Alias for PRIORITY_IDLE
+    };
+};
+
+// EventRunner 类定义
+class EventRunner {
+public:
+    using Pointer = std::shared_ptr<EventRunner>;
+
+    EventRunner() = default;
+    virtual ~EventRunner() = default;
+
+    // Create event runner
+    static Pointer Create(const std::string& name = "")
+    {
+        (void)name;
+        return std::make_shared<EventRunner>();
+    }
+
+    // Create event runner with thread
+    static Pointer Create(bool inNewThread)
+    {
+        (void)inNewThread;
+        return std::make_shared<EventRunner>();
+    }
+
+    // Run event loop
+    void Run() {}
+
+    // Stop event loop
+    void Stop() {}
+};
+
+// EventHandler 基类（简化版本，用于接口继承）
+class EventHandler {
+public:
+    EventHandler() = default;
+    explicit EventHandler(const std::shared_ptr<EventRunner>& runner) : runner_(runner) {}
+    virtual ~EventHandler() = default;
+
+    // 虚函数占位符
+    virtual void ProcessEvent(const InnerEvent::Pointer &event) 
     {
         (void)event;
     }
 
-    // SendEvent 方法 - Pointer + delayTime + priority
-    void SendEvent(const InnerEvent::Pointer& event, int64_t delayTime, int32_t priority)
+    // Send event
+    bool SendEvent(const InnerEvent::Pointer& event, int64_t delayTime = 0, EventQueue::Priority priority = EventQueue::PRIORITY_LOW)
     {
         (void)event;
         (void)delayTime;
         (void)priority;
-    }
-};
-
-/**
- * @brief 事件队列（简化版）
- */
-class EventQueue {
-public:
-    // 嵌套的 Priority 结构体
-    struct Priority {
-        static constexpr int32_t LOW = 0;
-        static constexpr int32_t IMMEDIATE = 1;
-        static constexpr int32_t HIGH = 2;
-    };
-
-    static EventQueue& GetInstance()
-    {
-        static EventQueue queue;
-        return queue;
+        return true;  // Mock: always success
     }
 
-    void AddHandler(EventHandler* handler)
+    // Send event with priority
+    bool SendEvent(uint32_t innerEventId, int64_t delayTime = 0, EventQueue::Priority priority = EventQueue::PRIORITY_LOW)
     {
-        (void)handler;
+        (void)innerEventId;
+        (void)delayTime;
+        (void)priority;
+        return true;  // Mock: always success
     }
 
-    void RemoveHandler(EventHandler* handler)
+    // Remove event
+    void RemoveEvent(uint32_t innerEventId)
     {
-        (void)handler;
+        (void)innerEventId;
+    }
+
+    // Get event runner
+    std::shared_ptr<EventRunner> GetEventRunner() const
+    {
+        return runner_;
     }
 
 private:
-    EventQueue() = default;
+    std::shared_ptr<EventRunner> runner_;
 };
 
 } // namespace AppExecFwk
 
-#endif // __cplusplus
-
-#endif // STUBS_EVENT_HANDLER_H
+#endif // OHOS_EVENT_HANDLER_STUB_H

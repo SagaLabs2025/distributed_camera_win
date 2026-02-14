@@ -10,6 +10,7 @@
 #include <string>
 #include <memory>
 #include "refbase.h"
+#include "iremote_broker.h"
 
 #ifdef __cplusplus
 namespace CameraStandard {
@@ -17,8 +18,10 @@ namespace CameraStandard {
 /**
  * @brief 相机标准服务接口
  */
-class ICameraService {
+class ICameraService : public OHOS::IRemoteBroker {
 public:
+    DECLARE_INTERFACE_DESCRIPTOR(u"CameraStandard.ICameraService");
+
     virtual ~ICameraService() = default;
 
     virtual int32_t Initialize()
@@ -41,7 +44,7 @@ public:
 /**
  * @brief 相机设备接口
  */
-class ICameraDevice {
+class ICameraDevice : public OHOS::RefBase {
 public:
     virtual ~ICameraDevice() = default;
 

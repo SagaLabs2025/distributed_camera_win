@@ -6,11 +6,23 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# 平台检测
+if(NOT APPLE)
+    message(FATAL_ERROR "此项目仅支持 macOS 平台")
+endif()
+
+message(STATUS "检测到平台: macOS (${CMAKE_SYSTEM_NAME} ${CMAKE_SYSTEM_VERSION})")
+message(STATUS "编译器: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
+
 # 设置编译选项
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-parameter")
+    # Force include std_compat.h to ensure standard headers are included early
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -include ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/std_compat.h")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2 -DNDEBUG")
+else()
+    message(WARNING "推荐使用 Clang 编译器，当前编译器: ${CMAKE_CXX_COMPILER_ID}")
 endif()
 
 # 定义平台宏
@@ -22,12 +34,17 @@ add_definitions(-DDCAMERA_LOCAL_TEST)  # 分布式相机本地模拟测试
 # 使用源码中的类型和常量定义（优先于 stub 中的定义）
 add_definitions(-DUSE_SOURCE_DEFINITIONS=true)
 
+# 取消 external 库中可能冲突的宏定义（如 avcodec_info.h 中的 max）
+add_definitions(-Dmax=)
+
 # 设置 OpenHarmony 源码根目录
 if(NOT DEFINED OHOS_DCAMERA_SOURCE_ROOT)
     set(OHOS_DCAMERA_SOURCE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../distributedhardware_distributed_camera")
-    if(NOT EXISTS "${OHOS_DCAMERA_SOURCE_ROOT}")
-        message(WARNING "OpenHarmony 源码目录不存在: ${OHOS_DCAMERA_SOURCE_ROOT}")
-    endif()
+endif()
+
+if(NOT EXISTS "${OHOS_DCAMERA_SOURCE_ROOT}")
+    message(FATAL_ERROR "OpenHarmony 源码目录不存在: ${OHOS_DCAMERA_SOURCE_ROOT}\n"
+                        "请设置 OHOS_DCAMERA_SOURCE_ROOT 环境变量或确保源码在默认位置")
 endif()
 
 message(STATUS "OpenHarmony 源码根目录: ${OHOS_DCAMERA_SOURCE_ROOT}")
@@ -48,22 +65,70 @@ set(SAFWK_INCLUDE "${EXTERNAL_DIR}/systemabilitymgr_safwk/services/safwk/include
 set(HILOG_INCLUDE "${EXTERNAL_DIR}/hiviewdfx_hilog/interfaces/native/kits/include")
 
 # 验证外部依赖
+message(STATUS "")
+message(STATUS "========== 外部依赖检查 ==========")
+
+set(DEPENDENCY_CHECK_PASSED TRUE)
+
+# 关键依赖检查（必须存在）
 if(EXISTS "${C_UTILS_INCLUDE_DIR}")
     message(STATUS "✓ 找到 c_utils: ${C_UTILS_INCLUDE_DIR}")
 else()
-    message(STATUS "✗ 未找到 c_utils，部分功能可能受限")
+    message(STATUS "✗ 未找到 c_utils")
+    set(DEPENDENCY_CHECK_PASSED FALSE)
 endif()
 
 if(EXISTS "${CJSON_INCLUDE_DIR}/cJSON.h")
     message(STATUS "✓ 找到 cJSON: ${CJSON_INCLUDE_DIR}")
 else()
     message(STATUS "✗ 未找到 cJSON")
+    set(DEPENDENCY_CHECK_PASSED FALSE)
 endif()
 
 if(EXISTS "${DH_FWK_INCLUDE_DIR}")
     message(STATUS "✓ 找到 distributed_hardware_fwk: ${DH_FWK_INCLUDE_DIR}")
 else()
     message(STATUS "✗ 未找到 distributed_hardware_fwk")
+    set(DEPENDENCY_CHECK_PASSED FALSE)
+endif()
+
+# 可选依赖检查（警告但不阻止构建）
+set(OPTIONAL_DEPS
+    "${EXTERNAL_DIR}/communication_ipc"
+    "${EXTERNAL_DIR}/hiviewdfx_hilog"
+    "${EXTERNAL_DIR}/systemabilitymgr_safwk"
+    "${EXTERNAL_DIR}/systemabilitymgr_samgr"
+    "${EXTERNAL_DIR}/security_access_token"
+    "${EXTERNAL_DIR}/multimedia_av_codec"
+    "${EXTERNAL_DIR}/multimedia_media_foundation"
+    "${EXTERNAL_DIR}/resourceschedule_ffrt"
+    "${EXTERNAL_DIR}/hiviewdfx_hitrace"
+    "${EXTERNAL_DIR}/communication_dsoftbus"
+    "${EXTERNAL_DIR}/ability_ability_runtime"
+    "${EXTERNAL_DIR}/device_manager"
+    "${EXTERNAL_DIR}/drivers_interface"
+)
+
+set(OPTIONAL_DEPS_FOUND 0)
+set(OPTIONAL_DEPS_MISSING 0)
+
+foreach(DEP_PATH ${OPTIONAL_DEPS})
+    get_filename_component(DEP_NAME ${DEP_PATH} NAME)
+    if(EXISTS "${DEP_PATH}")
+        math(EXPR OPTIONAL_DEPS_FOUND "${OPTIONAL_DEPS_FOUND} + 1")
+    else()
+        message(STATUS "⚠ 未找到可选依赖: ${DEP_NAME}")
+        math(EXPR OPTIONAL_DEPS_MISSING "${OPTIONAL_DEPS_MISSING} + 1")
+    endif()
+endforeach()
+
+message(STATUS "")
+message(STATUS "依赖统计: ${OPTIONAL_DEPS_FOUND} 个可选依赖可用, ${OPTIONAL_DEPS_MISSING} 个缺失")
+message(STATUS "==================================")
+message(STATUS "")
+
+if(NOT DEPENDENCY_CHECK_PASSED)
+    message(FATAL_ERROR "关键依赖缺失，无法继续构建。请检查 external 目录")
 endif()
 
 # 源码头文件目录
@@ -76,40 +141,52 @@ set(SOFTBUS_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers")
 set(DCAMERA_SERVICE_DIR "${DCAMERA_SOURCE_DIR}/services/cameraservice")
 
 # 包含目录
-# 注意：stubs/headers 优先级最高，用于提供简化的 mock 实现
-# external 头文件用于引用真实的类型定义
+# 注意：按照全局规则，优先级顺序为：
+# 1. external 依赖头文件（优先）
+# 2. OpenHarmony 源码头文件
+# 3. stubs 头文件（仅包含不重复的必要文件）
+
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/adapters
     ${CMAKE_SOURCE_DIR}/include
 
-    # Stub 头文件（优先级最高 - 提供简化的 mock 和适配器）
+    # 0. Stub 特定适配层（最优先 - macOS 平台特定适配）
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/hilog
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers
-    ${CMAKE_SOURCE_DIR}/stubs/headers
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/v1_1
-    ${CMAKE_SOURCE_DIR}/stubs/headers/v1_1
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/meta
-    ${CMAKE_SOURCE_DIR}/stubs/headers/meta
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/buffer
-    ${CMAKE_SOURCE_DIR}/stubs/headers/buffer
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/hitrace
-    ${CMAKE_SOURCE_DIR}/stubs/headers/hitrace
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/ipc
-    ${CMAKE_SOURCE_DIR}/stubs/headers/ipc
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/transport
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/feeding
 
-    # External 依赖头文件（用于类型定义）
+    # 1. External 依赖头文件（优先 - 使用真实的类型定义和接口）
+    ${EXTERNAL_DIR}/idl_conversion  # iav_trans_control_center_callback.h 所在目录
     ${C_UTILS_INCLUDE_DIR}
+    ${EXTERNAL_DIR}/c_utils/base/src  # event_handler.h 所在目录
     ${IPC_CORE_INCLUDE}
+    ${EXTERNAL_DIR}/hiviewdfx_hilog/interfaces/native/kits/include
     ${SAFWK_INCLUDE}
     ${DH_FWK_UTILS_INCLUDE}
     ${EXTERNAL_DIR}/communication_ipc/interfaces/innerkits/ipc_core/include
+    ${EXTERNAL_DIR}/communication_ipc/interfaces/innerkits/native/include/ipc
     ${EXTERNAL_DIR}/security_access_token/interfaces/innerkits/accesstoken/include
     ${EXTERNAL_DIR}/multimedia_av_codec/interfaces/inner_api/native
-    ${EXTERNAL_DIR}/distributedhardware_distributed_hardware_fwk/common/utils/include
+    ${EXTERNAL_DIR}/distributedhardware_distributed_hardware_fwk/av_transport/common/include  # av_trans_types.h
+    ${EXTERNAL_DIR}/distributedhardware_distributed_hardware_fwk/av_transport/av_trans_control_center/inner_kits/include  # av_trans_control_center_callback.h（必须在 common/utils 之前）
+    ${EXTERNAL_DIR}/distributedhardware_distributed_hardware_fwk/common/utils/include  # idistributed_hardware.h (需要上面的回调)
+    ${EXTERNAL_DIR}/distributedhardware_distributed_hardware_fwk/interfaces/inner_kits/include  # distributed_hardware_fwk_kit.h
+    ${EXTERNAL_DIR}/resourceschedule_ffrt/interfaces/inner_api  # ffrt_inner.h
+    ${EXTERNAL_DIR}/systemabilitymgr_samgr/interfaces/innerkits/samgr_proxy/include
+    ${EXTERNAL_DIR}/multimedia_media_foundation/interface/inner_api
+    ${EXTERNAL_DIR}/multimedia_media_foundation/interface/inner_api/meta
+    ${EXTERNAL_DIR}/multimedia_media_foundation/interface/inner_api/buffer
+    ${EXTERNAL_DIR}/hiviewdfx_hitrace/interfaces/innerkits/native/include
+    ${EXTERNAL_DIR}/hiviewdfx_hitrace/interfaces/native/innerkits/include/hitrace_meter  # hitrace_meter.h
+    ${EXTERNAL_DIR}/communication_dsoftbus/interfaces/kits/native
+    ${EXTERNAL_DIR}/communication_dsoftbus/interfaces/kits  # transport/trans_type.h parent directory
+    ${EXTERNAL_DIR}/ability_ability_runtime/interfaces/innerkits/eventhandler/include
+    ${EXTERNAL_DIR}/resourceschedule_ffrt/interfaces/kits
+    ${EXTERNAL_DIR}/device_manager/interfaces/inner_kits/native/include
+    ${EXTERNAL_DIR}/device_manager/interfaces/inner_kits/native_cpp/include  # device_manager.h
+    ${EXTERNAL_DIR}/drivers_hdf_core/interfaces/inner_api/ipc  # iproxy_broker.h
 
-    # OpenHarmony 源码头文件
+    # 2. OpenHarmony 源码头文件
     ${CJSON_INCLUDE_DIR}
     ${DCAMERA_INCLUDE_DIR}
     ${DCAMERA_COMMON_INCLUDE}
@@ -128,11 +205,23 @@ include_directories(
     ${DCAMERA_SERVICE_DIR}/sourceservice/include/distributedcameramgr  # parent directory for subdirs
     ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/include  # idistributed_camera_source.h 所在目录
     ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/include/callback  # idcamera_source_callback.h 所在目录
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_sink/include  # idistributed_camera_sink.h 所在目录
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_sink/include/callback  # idcamera_sink_callback.h 所在目录
+    ${DCAMERA_SOURCE_DIR}/services/data_process/include/pipeline
+    ${DCAMERA_SOURCE_DIR}/services/data_process/include/interfaces
+    ${DCAMERA_SOURCE_DIR}/services/data_process/include/utils
+    ${DCAMERA_SOURCE_DIR}/services/cameraservice/sourceservice/include/distributedcameramgr/dcameradata/feedingsmoother/base
+    ${DCAMERA_SOURCE_DIR}/services/cameraservice/sourceservice/include/distributedcameramgr/dcameradata/feedingsmoother/derived
+    ${DCAMERA_SOURCE_DIR}/services/cameraservice/cameraoperator/handler/include
 
     # 源文件所在目录（用于访问同目录的头文件）
     ${DCAMERA_SERVICE_DIR}/base/src
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr
+
+    # 其他 Stub 子目录
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/v1_1
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/headers/sys
 )
 
 # ========== 源文件列表 ==========
@@ -148,9 +237,8 @@ set(DCAMERA_SOURCE_SOURCES
 
     # ========== SourceService 基础服务模块 ==========
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp
-    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp
+    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp  # 暂时禁用：依赖 iav_trans_control_center
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp
-    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp
 
@@ -171,6 +259,7 @@ set(DCAMERA_SOURCE_SOURCES
 
     # ========== Stub 实现 ==========
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_hisysevent_adapter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/hilog_mock.cpp  # HiLog mock 实现
 )
 
 # 检查源文件是否存在
@@ -207,6 +296,7 @@ target_compile_definitions(dcamera_source PRIVATE
 # 创建 dcamera_sink 动态库
 add_library(dcamera_sink SHARED
     src/dcamera_sink_dll.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/hilog_mock.cpp  # HiLog mock 实现
 )
 
 # 定义 dcamera_sink 的日志宏
@@ -237,11 +327,21 @@ install(TARGETS dcamera_source dcamera_sink
 )
 
 # 打印配置信息
+message(STATUS "")
 message(STATUS "==============================================")
 message(STATUS "  分布式相机测试工程配置")
 message(STATUS "==============================================")
+message(STATUS "  项目版本: ${PROJECT_VERSION}")
 message(STATUS "  构建类型: ${CMAKE_BUILD_TYPE}")
-message(STATUS "  C++ 标准: ${CMAKE_CXX_STANDARD}")
+message(STATUS "  C++ 标准: C++${CMAKE_CXX_STANDARD}")
+message(STATUS "  编译器: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
+message(STATUS "  平台: ${CMAKE_SYSTEM_NAME} ${CMAKE_SYSTEM_VERSION}")
 message(STATUS "  源码根目录: ${OHOS_DCAMERA_SOURCE_ROOT}")
+message(STATUS "  外部依赖目录: ${EXTERNAL_DIR}")
 message(STATUS "  源文件数量: ${SOURCE_COUNT}")
+message(STATUS "  构建目标:")
+message(STATUS "    - libdcamera_source.dylib (Source服务)")
+message(STATUS "    - libdcamera_sink.dylib (Sink服务)")
+message(STATUS "    - libcjson.a (静态库)")
 message(STATUS "==============================================")
+message(STATUS "")
