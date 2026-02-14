@@ -31,8 +31,8 @@
     - 验证HiLog、IPC、System Ability、Device Manager、Softbus、Codec等模块
     - _需求：4.4_
 
-- [ ] 3. 完善Source服务编译配置
-  - [ ] 3.1 验证源文件列表
+- [-] 3. 完善Source服务编译配置
+  - [-] 3.1 验证源文件列表
     - 检查CMakeLists.txt中的DCAMERA_SOURCE_SOURCES列表
     - 确认所有必需模块的源文件都已包含
     - 验证源文件路径正确性

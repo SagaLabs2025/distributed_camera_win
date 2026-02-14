@@ -266,6 +266,7 @@ set(DCAMERA_SOURCE_SOURCES
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_data_process.cpp
     # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process_producer.cpp  # 暂时禁用：NativeBuffer API不匹配
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input_channel_listener.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process_pipeline_listener.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerahdf/dcamera_provider_callback_impl.cpp
 
     # ========== Channel 通道模块 ==========
@@ -291,6 +292,12 @@ set(DCAMERA_SOURCE_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/data_buffer_mock.cpp  # DataBuffer mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_pipeline_source_mock.cpp  # DCameraPipelineSource mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/access_token_kit_mock.cpp  # AccessTokenKit mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_stream_data_process_producer_mock.cpp  # DCameraStreamDataProcessProducer mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/distributed_camera_source_service_mock.cpp  # DistributedCameraSourceService mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/icamera_channel_mock.cpp  # ICameraChannel mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/weak_ref_counter_mock.cpp  # WeakRefCounter mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/broker_registration_impl.cpp  # BrokerRegistration 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_radar_mock.cpp  # DcameraRadar mock 实现
 )
 
 # 检查源文件是否存在
