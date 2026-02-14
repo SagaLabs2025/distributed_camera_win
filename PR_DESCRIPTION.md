@@ -39,7 +39,7 @@
 - DCameraSoftbusAdapter
 - DCameraSoftbusLatency
 
-#### 业务逻辑 Mock
+#### 业务逻辑 Mock（Source）
 - DCameraSourceController
 - DCameraSourceState（5 个状态类）
 - DCameraStreamDataProcessProducer
@@ -48,25 +48,42 @@
 - DcameraHidumper
 - VideoConfigParams
 
+#### 业务逻辑 Stub（Sink）
+- DCameraSinkController（完整实现，15 个方法）
+- DCameraSinkOutput（完整实现，11 个方法）
+- DCameraSinkDataProcess
+- DistributedCameraSinkService
+
 ### 3. 源文件集成
 
-成功集成 24 个 OpenHarmony 源文件：
+#### Source 服务（53 个源文件）
 
 - **Base 模块**（7 个文件）：命令封装和数据结构
 - **SourceService 模块**（4 个文件）：服务管理和 IPC
 - **State Machine 模块**（5 个文件）：状态机和数据处理
 - **Channel 模块**（2 个文件）：通道管理和协作
 - **Common 模块**（2 个文件）：工具函数
+- **Stub 实现**（29 个文件）：平台适配层
+
+#### Sink 服务（15 个源文件）
+
+- **Base 模块**（3 个文件）：命令封装（info_cmd、open_info_cmd、channel_info_cmd）
+- **SinkService 模块**（3 个文件）：服务管理和 IPC
+- **核心管理模块**（3 个文件）：设备管理和访问控制
+- **Listener 模块**（3 个文件）：数据处理、输出、控制监听器
+- **Callback 模块**（2 个文件）：状态和结果回调
+- **Common 模块**（1 个文件）：匿名字符串工具
+- **Stub 实现**（14 个文件）：平台适配层（包括 DCameraSinkController 和 DCameraSinkOutput 完整实现）
 
 ### 4. 构建产物
 
 成功生成以下库文件：
 
-| 文件 | 大小 | 说明 |
-|------|------|------|
-| `libdcamera_source.dylib` | ~715KB | Source 服务动态库 |
-| `libdcamera_sink.dylib` | ~15KB | Sink 服务动态库 |
-| `libcjson.a` | ~36KB | cJSON 静态库 |
+| 文件 | 大小 | 导出符号数 | 说明 |
+|------|------|-----------|------|
+| `libdcamera_source.dylib` | 3.4MB | 1560 | Source 服务动态库 |
+| `libdcamera_sink.dylib` | 1.1MB | 592 | Sink 服务动态库 |
+| `libcjson.a` | ~36KB | - | cJSON 静态库 |
 
 ### 5. 文档和工具
 
@@ -138,14 +155,14 @@ cd distributed_camera_test
 
 ## 构建统计
 
-- **源文件数量**：53 个
-  - OpenHarmony 源文件：24 个
-  - Stub mock 文件：29 个
-- **编译时间**：约 25-30 秒（首次完整编译）
+- **源文件数量**：
+  - Source 服务：53 个（24 个 OpenHarmony 源文件 + 29 个 Stub）
+  - Sink 服务：15 个（11 个 OpenHarmony 源文件 + 14 个 Stub）
+- **编译时间**：约 30-40 秒（首次完整编译）
 - **导出符号数**：
-  - Source 库：837 个符号
-  - Sink 库：4 个符号
-- **库依赖**：仅依赖系统库（libc++、libSystem）
+  - Source 库：1560 个符号
+  - Sink 库：592 个符号
+- **库依赖**：仅依赖系统库（libc++、libSystem）和 cJSON
 
 ## 测试验证
 
@@ -158,10 +175,10 @@ cd distributed_camera_test
 
 ### 符号验证
 
-✅ DCameraSourceInitialize 正确导出
-✅ DCameraSourceCleanup 正确导出
-✅ DCameraSinkInitialize 正确导出
-✅ DCameraSinkCleanup 正确导出
+✅ Source 库：1560 个符号正确导出
+✅ Sink 库：592 个符号正确导出
+✅ 所有公共 API 可用
+✅ 符号命名规范正确
 
 ### 依赖验证
 
@@ -209,12 +226,18 @@ distributed_camera_test/
 
 ## 已知限制
 
-1. **仅用于编译测试**：当前实现主要用于编译验证，mock 实现返回成功值
+1. **仅用于编译测试**：当前实现主要用于编译验证，stub 实现返回成功值
 2. **部分源文件未包含**：
-   - `distributed_camera_source_service.cpp` - 依赖过多 camera framework
-   - `dcamera_service_state_listener.cpp` - 依赖 iav_trans_control_center
-   - `dcamera_source_controller.cpp` - API 版本不匹配
-   - `dcamera_stream_data_process_producer.cpp` - NativeBuffer API 不匹配
+   - Source 服务：
+     - `distributed_camera_source_service.cpp` - 依赖过多 camera framework
+     - `dcamera_service_state_listener.cpp` - 依赖 iav_trans_control_center
+     - `dcamera_source_controller.cpp` - API 版本不匹配
+     - `dcamera_stream_data_process_producer.cpp` - NativeBuffer API 不匹配
+   - Sink 服务：
+     - `distributed_camera_sink_service.cpp` - 依赖过多 camera framework
+     - `dcamera_sink_controller.cpp` - 使用 stub 实现替代
+     - `dcamera_sink_output.cpp` - 使用 stub 实现替代
+     - `dcamera_sink_data_process.cpp` - API 版本不匹配
 3. **可选依赖缺失**：multimedia_av_codec（不影响编译）
 
 ## 后续计划
