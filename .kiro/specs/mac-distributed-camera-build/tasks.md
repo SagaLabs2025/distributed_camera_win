@@ -31,20 +31,20 @@
     - 验证HiLog、IPC、System Ability、Device Manager、Softbus、Codec等模块
     - _需求：4.4_
 
-- [-] 3. 完善Source服务编译配置
-  - [-] 3.1 验证源文件列表
+- [x] 3. 完善Source服务编译配置
+  - [x] 3.1 验证源文件列表
     - 检查CMakeLists.txt中的DCAMERA_SOURCE_SOURCES列表
     - 确认所有必需模块的源文件都已包含
     - 验证源文件路径正确性
     - _需求：2.2_
   
-  - [ ] 3.2 优化编译配置
+  - [x] 3.2 优化编译配置
     - 配置正确的编译宏定义
     - 设置链接库依赖
     - 配置符号导出
     - _需求：2.1, 2.4, 2.5_
   
-  - [ ] 3.3 验证构建产物
+  - [x] 3.3 验证构建产物
     - 编译生成libdcamera_source.dylib
     - 使用nm命令检查导出符号
     - 使用otool检查链接依赖

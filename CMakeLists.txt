@@ -298,6 +298,15 @@ set(DCAMERA_SOURCE_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/weak_ref_counter_mock.cpp  # WeakRefCounter mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/broker_registration_impl.cpp  # BrokerRegistration 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_radar_mock.cpp  # DcameraRadar mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_softbus_session_mock.cpp  # DCameraSoftbusSession mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_source_state_mock.cpp  # DCameraSourceState mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_source_controller_mock.cpp  # DCameraSourceController mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_hitrace_mock.cpp  # DcameraHitrace mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/system_ability_manager_client_mock.cpp  # SystemAbilityManagerClient mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_hidumper_mock.cpp  # DcameraHidumper mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/video_config_params_mock.cpp  # VideoConfigParams mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_softbus_adapter_mock.cpp  # DCameraSoftbusAdapter mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_softbus_latency_mock.cpp  # DCameraSoftbusLatency mock 实现
 )
 
 # 检查源文件是否存在

@@ -15,6 +15,11 @@ BrokerRegistration& BrokerRegistration::Get()
     return instance;
 }
 
+BrokerRegistration::~BrokerRegistration()
+{
+    // Mock: 空实现
+}
+
 bool BrokerRegistration::Register(const std::u16string& descriptor,
                                    const Constructor& constructor,
                                    const BrokerDelegatorBase* delegator)

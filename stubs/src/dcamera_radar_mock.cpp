@@ -16,38 +16,54 @@ enum class BizState {};
 
 class DcameraRadar {
 public:
-    static DcameraRadar& GetInstance()
-    {
-        static DcameraRadar instance;
-        return instance;
-    }
+    static DcameraRadar& GetInstance();
     
-    void ReportDcameraOpen(const std::string& devId, CameraOpen openType, BizState state, int result)
-    {
-        (void)devId;
-        (void)openType;
-        (void)state;
-        (void)result;
-        // Mock: 空实现
-    }
-    
-    void ReportDcameraClose(const std::string& devId, CameraClose closeType, BizState state, int result)
-    {
-        (void)devId;
-        (void)closeType;
-        (void)state;
-        (void)result;
-        // Mock: 空实现
-    }
-    
-    void ReportDcameraOpenProgress(const std::string& devId, CameraOpen openType, int progress)
-    {
-        (void)devId;
-        (void)openType;
-        (void)progress;
-        // Mock: 空实现
-    }
+    void ReportDcameraOpen(const std::string& devId, CameraOpen openType, BizState state, int result);
+    void ReportDcameraClose(const std::string& devId, CameraClose closeType, BizState state, int result);
+    void ReportDcameraOpenProgress(const std::string& devId, CameraOpen openType, int progress);
+    void ReportDcameraCloseProgress(const std::string& devId, CameraClose closeType, int progress);
 };
+
+// 实现
+DcameraRadar& DcameraRadar::GetInstance()
+{
+    static DcameraRadar instance;
+    return instance;
+}
+
+void DcameraRadar::ReportDcameraOpen(const std::string& devId, CameraOpen openType, BizState state, int result)
+{
+    (void)devId;
+    (void)openType;
+    (void)state;
+    (void)result;
+    // Mock: 空实现
+}
+
+void DcameraRadar::ReportDcameraClose(const std::string& devId, CameraClose closeType, BizState state, int result)
+{
+    (void)devId;
+    (void)closeType;
+    (void)state;
+    (void)result;
+    // Mock: 空实现
+}
+
+void DcameraRadar::ReportDcameraOpenProgress(const std::string& devId, CameraOpen openType, int progress)
+{
+    (void)devId;
+    (void)openType;
+    (void)progress;
+    // Mock: 空实现
+}
+
+void DcameraRadar::ReportDcameraCloseProgress(const std::string& devId, CameraClose closeType, int progress)
+{
+    (void)devId;
+    (void)closeType;
+    (void)progress;
+    // Mock: 空实现
+}
 
 } // namespace DistributedHardware
 } // namespace OHOS
