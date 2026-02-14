@@ -181,6 +181,7 @@ include_directories(
     ${EXTERNAL_DIR}/communication_dsoftbus/interfaces/kits/native
     ${EXTERNAL_DIR}/communication_dsoftbus/interfaces/kits/bus_center  # softbus_bus_center.h
     ${EXTERNAL_DIR}/communication_dsoftbus/interfaces/kits/common  # softbus_common.h
+    ${EXTERNAL_DIR}/communication_dsoftbus/interfaces/kits/transport  # trans_type.h, socket.h
     ${EXTERNAL_DIR}/communication_dsoftbus/interfaces/kits  # transport/trans_type.h parent directory
     ${EXTERNAL_DIR}/ability_ability_runtime/interfaces/innerkits/eventhandler/include
     ${EXTERNAL_DIR}/resourceschedule_ffrt/interfaces/kits
@@ -189,6 +190,8 @@ include_directories(
     ${EXTERNAL_DIR}/drivers_hdf_core/interfaces/inner_api/ipc  # iproxy_broker.h
     ${EXTERNAL_DIR}/graphic_surface/interfaces/kits  # surface.h
     ${EXTERNAL_DIR}/graphic_utils/interfaces/kits  # gfx_utils/pixel_format_utils.h
+    ${EXTERNAL_DIR}/multimedia_camera_framework/interfaces/inner_api/native/camera/include  # camera_info.h parent
+    ${EXTERNAL_DIR}/multimedia_camera_framework/interfaces/inner_api/native/camera/include/input  # camera_info.h
 
     # 2. OpenHarmony 源码头文件
     ${CJSON_INCLUDE_DIR}
@@ -248,6 +251,7 @@ set(DCAMERA_SOURCE_SOURCES
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp
+    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp  # 暂时禁用：依赖太多camera framework
 
     # ========== SourceService 核心管理模块 ==========
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp
@@ -255,9 +259,18 @@ set(DCAMERA_SOURCE_SOURCES
 
     # ========== State Machine 状态机模块 ==========
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerastate/dcamera_source_state_machine.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerastate/dcamera_source_state_factory.cpp
     # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp  # 暂时禁用：API版本不匹配
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_data_process.cpp
+    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process_producer.cpp  # 暂时禁用：NativeBuffer API不匹配
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input_channel_listener.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerahdf/dcamera_provider_callback_impl.cpp
+
+    # ========== Channel 通道模块 ==========
+    ${DCAMERA_SOURCE_DIR}/services/channel/src/dcamera_channel_source_impl.cpp
+    ${DCAMERA_SOURCE_DIR}/services/channel/src/allconnect/distributed_camera_allconnect_manager.cpp
 
     # ========== Common 工具模块 ==========
     ${DCAMERA_SOURCE_DIR}/common/src/utils/anonymous_string.cpp
@@ -278,7 +291,6 @@ set(DCAMERA_SOURCE_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/data_buffer_mock.cpp  # DataBuffer mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_pipeline_source_mock.cpp  # DCameraPipelineSource mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/access_token_kit_mock.cpp  # AccessTokenKit mock 实现
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/system_ability_manager_client_mock.cpp  # SystemAbilityManagerClient mock 实现
 )
 
 # 检查源文件是否存在

@@ -4,6 +4,7 @@
  * OpenHarmony AccessTokenKit 类的 macOS Mock 空实现
  */
 
+#include "access_token.h"
 #include <string>
 #include <cstdint>
 
