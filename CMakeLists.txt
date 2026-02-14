@@ -214,6 +214,11 @@ include_directories(
     ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/include/callback  # idcamera_source_callback.h 所在目录
     ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_sink/include  # idistributed_camera_sink.h 所在目录
     ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_sink/include/callback  # idcamera_sink_callback.h 所在目录
+    ${DCAMERA_SERVICE_DIR}/sinkservice/include/distributedcamera  # Sink 服务头文件
+    ${DCAMERA_SERVICE_DIR}/sinkservice/include/distributedcameramgr  # Sink 管理器头文件
+    ${DCAMERA_SERVICE_DIR}/sinkservice/include/distributedcameramgr/interface  # Sink 接口头文件
+    ${DCAMERA_SERVICE_DIR}/sinkservice/include/distributedcameramgr/listener  # Sink 监听器头文件
+    ${DCAMERA_SERVICE_DIR}/sinkservice/include/distributedcameramgr/callback  # Sink 回调头文件
     ${DCAMERA_SOURCE_DIR}/services/data_process/include/pipeline
     ${DCAMERA_SOURCE_DIR}/services/data_process/include/interfaces
     ${DCAMERA_SOURCE_DIR}/services/data_process/include/utils
@@ -223,6 +228,7 @@ include_directories(
     ${DCAMERA_SOURCE_DIR}/services/cameraservice/sourceservice/include/distributedcameramgr/dcameradata/feedingsmoother/utils
     ${DCAMERA_SOURCE_DIR}/services/cameraservice/sourceservice/include/distributedcameramgr/dcameradata/feedingsmoother
     ${DCAMERA_SOURCE_DIR}/services/cameraservice/cameraoperator/handler/include
+    ${DCAMERA_SOURCE_DIR}/services/cameraservice/cameraoperator/client/include  # icamera_operator.h 所在目录
 
     # 源文件所在目录（用于访问同目录的头文件）
     ${DCAMERA_SERVICE_DIR}/base/src
@@ -235,6 +241,42 @@ include_directories(
 )
 
 # ========== 源文件列表 ==========
+
+# ========== Sink 服务源文件列表 ==========
+set(DCAMERA_SINK_SOURCES
+    # ========== Base 基础模块（Sink也需要这些命令类）==========
+    ${DCAMERA_SERVICE_DIR}/base/src/dcamera_info_cmd.cpp
+    ${DCAMERA_SERVICE_DIR}/base/src/dcamera_open_info_cmd.cpp
+    ${DCAMERA_SERVICE_DIR}/base/src/dcamera_channel_info_cmd.cpp
+
+    # ========== SinkService 基础服务模块 ==========
+    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcamera/dcamera_sink_callback_proxy.cpp
+    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcamera/distributed_camera_sink_stub.cpp
+    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcamera/dcamera_sink_hidumper.cpp
+    # ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcamera/distributed_camera_sink_service.cpp  # 暂时禁用：依赖太多camera framework
+
+    # ========== SinkService 核心管理模块 ==========
+    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/dcamera_sink_dev.cpp
+    # ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/dcamera_sink_controller.cpp  # 暂时禁用：依赖camera framework
+    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/dcamera_sink_service_ipc.cpp
+    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/dcamera_sink_access_control.cpp
+    # ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/dcamera_sink_output.cpp  # 暂时禁用：可能依赖camera framework
+    # ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/dcamera_sink_data_process.cpp  # 暂时禁用：API版本不匹配
+
+    # ========== Listener 监听器模块 ==========
+    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/listener/dcamera_sink_data_process_listener.cpp
+    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/listener/dcamera_sink_output_channel_listener.cpp
+    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/listener/dcamera_sink_controller_channel_listener.cpp
+
+    # ========== Callback 回调模块 ==========
+    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/callback/dcamera_sink_controller_state_callback.cpp
+    ${DCAMERA_SERVICE_DIR}/sinkservice/src/distributedcameramgr/callback/dcamera_sink_output_result_callback.cpp
+
+    # ========== Common 工具模块（Sink也需要）==========
+    ${DCAMERA_SOURCE_DIR}/common/src/utils/anonymous_string.cpp
+)
+
+# ========== Source 服务源文件列表 ==========
 set(DCAMERA_SOURCE_SOURCES
     # ========== Base 基础模块 ==========
     ${DCAMERA_SERVICE_DIR}/base/src/dcamera_capture_info_cmd.cpp
@@ -320,7 +362,20 @@ foreach(SOURCE_FILE ${DCAMERA_SOURCE_SOURCES})
 endforeach()
 
 list(LENGTH EXISTING_SOURCES SOURCE_COUNT)
-message(STATUS "找到 ${SOURCE_COUNT} 个源文件")
+message(STATUS "找到 ${SOURCE_COUNT} 个 Source 源文件")
+
+# 检查 Sink 源文件是否存在
+set(EXISTING_SINK_SOURCES)
+foreach(SOURCE_FILE ${DCAMERA_SINK_SOURCES})
+    if(EXISTS "${SOURCE_FILE}")
+        list(APPEND EXISTING_SINK_SOURCES "${SOURCE_FILE}")
+    else()
+        message(STATUS "Sink 源文件不存在，跳过: ${SOURCE_FILE}")
+    endif()
+endforeach()
+
+list(LENGTH EXISTING_SINK_SOURCES SINK_SOURCE_COUNT)
+message(STATUS "找到 ${SINK_SOURCE_COUNT} 个 Sink 源文件")
 
 # 编译 cJSON 静态库
 add_library(cjson STATIC ${CJSON_DIR}/cJSON.c)
@@ -343,7 +398,23 @@ target_compile_definitions(dcamera_source PRIVATE
 # 创建 dcamera_sink 动态库
 add_library(dcamera_sink SHARED
     src/dcamera_sink_dll.cpp
+    ${EXISTING_SINK_SOURCES}
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/hilog_mock.cpp  # HiLog mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/ipc_object_stub_mock.cpp  # IPCObjectStub mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/ipc_object_stub_constructor_mock.cpp  # IPCObjectStub 构造函数 mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/peer_holder_mock.cpp  # PeerHolder mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/ipc_skeleton_mock.cpp  # IPCSkeleton mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/iremote_object_mock.cpp  # IRemoteObject mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/message_parcel_mock.cpp  # MessageParcel mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/broker_registration_impl.cpp  # BrokerRegistration 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/weak_ref_counter_mock.cpp  # WeakRefCounter mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/access_token_kit_mock.cpp  # AccessTokenKit mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/system_ability_manager_client_mock.cpp  # SystemAbilityManagerClient mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_hidumper_mock.cpp  # DcameraHidumper mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_sink_output_impl.cpp  # DCameraSinkOutput stub 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_sink_controller_impl.cpp  # DCameraSinkController stub 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_sink_data_process_mock.cpp  # DCameraSinkDataProcess mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/distributed_camera_sink_service_mock.cpp  # DistributedCameraSinkService mock 实现
 )
 
 # 定义 dcamera_sink 的日志宏

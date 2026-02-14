@@ -37,6 +37,11 @@ uint32_t Parcel::ReadUint32()
     return 0;  // Mock: 返回0
 }
 
+bool Parcel::ReadBool()
+{
+    return false;  // Mock: 返回false
+}
+
 bool Parcel::WriteString(const std::string& value)
 {
     (void)value;
