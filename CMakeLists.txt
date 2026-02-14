@@ -101,12 +101,17 @@ set(OPTIONAL_DEPS
     "${EXTERNAL_DIR}/security_access_token"
     "${EXTERNAL_DIR}/multimedia_av_codec"
     "${EXTERNAL_DIR}/multimedia_media_foundation"
+    "${EXTERNAL_DIR}/multimedia_camera_framework"
     "${EXTERNAL_DIR}/resourceschedule_ffrt"
     "${EXTERNAL_DIR}/hiviewdfx_hitrace"
     "${EXTERNAL_DIR}/communication_dsoftbus"
     "${EXTERNAL_DIR}/ability_ability_runtime"
     "${EXTERNAL_DIR}/device_manager"
     "${EXTERNAL_DIR}/drivers_interface"
+    "${EXTERNAL_DIR}/drivers_hdf_core"
+    "${EXTERNAL_DIR}/graphic_surface"
+    "${EXTERNAL_DIR}/graphic_utils"
+    "${EXTERNAL_DIR}/idl_conversion"
 )
 
 set(OPTIONAL_DEPS_FOUND 0)
@@ -124,6 +129,11 @@ endforeach()
 
 message(STATUS "")
 message(STATUS "依赖统计: ${OPTIONAL_DEPS_FOUND} 个可选依赖可用, ${OPTIONAL_DEPS_MISSING} 个缺失")
+message(STATUS "")
+if(OPTIONAL_DEPS_MISSING GREATER 0)
+    message(STATUS "提示: 缺失的可选依赖不会影响编译，但可能导致某些功能受限")
+    message(STATUS "      如需完整功能，请确保所有依赖仓库都已克隆到 ${EXTERNAL_DIR}")
+endif()
 message(STATUS "==================================")
 message(STATUS "")
 
