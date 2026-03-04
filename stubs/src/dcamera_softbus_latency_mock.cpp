@@ -19,6 +19,8 @@ class DCameraSoftbusLatency {
 public:
     static DCameraSoftbusLatency& GetInstance();
     TimeSyncInfo GetTimeSyncInfo(const std::string& networkId);
+    void StartSoftbusTimeSync(const std::string& networkId);
+    void StopSoftbusTimeSync(const std::string& networkId);
 };
 
 // 实现
@@ -35,6 +37,18 @@ TimeSyncInfo DCameraSoftbusLatency::GetTimeSyncInfo(const std::string& networkId
     info.localTime = 0;
     info.remoteTime = 0;
     return info;  // Mock: 返回空的时间同步信息
+}
+
+void DCameraSoftbusLatency::StartSoftbusTimeSync(const std::string& networkId)
+{
+    (void)networkId;
+    // Mock: 空实现
+}
+
+void DCameraSoftbusLatency::StopSoftbusTimeSync(const std::string& networkId)
+{
+    (void)networkId;
+    // Mock: 空实现
 }
 
 } // namespace DistributedHardware

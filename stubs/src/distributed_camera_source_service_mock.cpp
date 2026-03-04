@@ -5,6 +5,7 @@
  */
 
 #include <string>
+#include "dcamera_index.h"
 
 namespace OHOS {
 namespace DistributedHardware {
@@ -19,6 +20,7 @@ struct CameraDumpInfo {
 class DistributedCameraSourceService {
 public:
     void GetDumpInfo(CameraDumpInfo& dumpInfo);
+    static void CamDevErase(DCameraIndex& camIndex);
 };
 
 // 实现
@@ -26,6 +28,12 @@ void DistributedCameraSourceService::GetDumpInfo(CameraDumpInfo& dumpInfo)
 {
     (void)dumpInfo;
     // Mock: 空实现
+}
+
+void DistributedCameraSourceService::CamDevErase(DCameraIndex& camIndex)
+{
+    (void)camIndex;
+    // Mock: 空实现 - 在真实实现中会从设备列表中移除相机设备
 }
 
 } // namespace DistributedHardware

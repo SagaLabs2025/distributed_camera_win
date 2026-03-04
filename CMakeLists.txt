@@ -106,7 +106,7 @@ set(OPTIONAL_DEPS
     "${EXTERNAL_DIR}/hiviewdfx_hitrace"
     "${EXTERNAL_DIR}/communication_dsoftbus"
     "${EXTERNAL_DIR}/ability_ability_runtime"
-    "${EXTERNAL_DIR}/device_manager"
+    "${EXTERNAL_DIR}/distributedhardware_device_manager"
     "${EXTERNAL_DIR}/drivers_interface"
     "${EXTERNAL_DIR}/drivers_hdf_core"
     "${EXTERNAL_DIR}/graphic_surface"
@@ -195,8 +195,9 @@ include_directories(
     ${EXTERNAL_DIR}/communication_dsoftbus/interfaces/kits  # transport/trans_type.h parent directory
     ${EXTERNAL_DIR}/ability_ability_runtime/interfaces/innerkits/eventhandler/include
     ${EXTERNAL_DIR}/resourceschedule_ffrt/interfaces/kits
-    ${EXTERNAL_DIR}/device_manager/interfaces/inner_kits/native/include
-    ${EXTERNAL_DIR}/device_manager/interfaces/inner_kits/native_cpp/include  # device_manager.h
+    # ${EXTERNAL_DIR}/distributedhardware_device_manager/interfaces/inner_kits/native/include  # 使用简化版本
+    # ${EXTERNAL_DIR}/distributedhardware_device_manager/interfaces/inner_kits/native_cpp/include  # 使用 stubs/headers/device_manager.h
+    ${EXTERNAL_DIR}/distributedhardware_device_manager/interfaces/inner_kits/native_cpp/include  # 仅用于 dm_device_info.h 等类型定义
     ${EXTERNAL_DIR}/drivers_hdf_core/interfaces/inner_api/ipc  # iproxy_broker.h
     ${EXTERNAL_DIR}/graphic_surface/interfaces/kits  # surface.h
     ${EXTERNAL_DIR}/graphic_utils/interfaces/kits  # gfx_utils/pixel_format_utils.h
@@ -299,7 +300,7 @@ set(DCAMERA_SOURCE_SOURCES
 
     # ========== SourceService 基础服务模块 ==========
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp
-    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp  # 暂时禁用：依赖 iav_trans_control_center
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_service_state_listener_adapted.cpp  # macOS 适配版本（替换 FFRT 为 std::thread）
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp
@@ -312,13 +313,27 @@ set(DCAMERA_SOURCE_SOURCES
     # ========== State Machine 状态机模块 ==========
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerastate/dcamera_source_state_machine.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerastate/dcamera_source_state_factory.cpp
-    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp  # 暂时禁用：API版本不匹配
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerastate/dcamera_source_init_state.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerastate/dcamera_source_regist_state.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerastate/dcamera_source_opened_state.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerastate/dcamera_source_config_stream_state.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerastate/dcamera_source_capture_state.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameracontrol/dcamera_source_controller_channel_listener.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_data_process.cpp
     # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process_producer.cpp  # 暂时禁用：NativeBuffer API不匹配
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input_channel_listener.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process_pipeline_listener.cpp
+
+    # ========== FeedingSmoother 平滑处理模块 ==========
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/ifeeding_smoother.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/base/time_statistician.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/derived/dcamera_feeding_smoother.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/derived/dcamera_time_statistician.cpp
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/feedingsmoother/feeding_smoother_listener.cpp
+    
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamerahdf/dcamera_provider_callback_impl.cpp
 
     # ========== Channel 通道模块 ==========
@@ -351,14 +366,16 @@ set(DCAMERA_SOURCE_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/broker_registration_impl.cpp  # BrokerRegistration 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_radar_mock.cpp  # DcameraRadar mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_softbus_session_mock.cpp  # DCameraSoftbusSession mock 实现
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_source_state_mock.cpp  # DCameraSourceState mock 实现
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_source_controller_mock.cpp  # DCameraSourceController mock 实现
+    # ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_source_state_mock.cpp  # DCameraSourceState mock 实现 - 已被真实实现替代
+    # ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_source_controller_mock.cpp  # DCameraSourceController mock 实现 - 已使用真实实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_hitrace_mock.cpp  # DcameraHitrace mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/system_ability_manager_client_mock.cpp  # SystemAbilityManagerClient mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_hidumper_mock.cpp  # DcameraHidumper mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/video_config_params_mock.cpp  # VideoConfigParams mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_softbus_adapter_mock.cpp  # DCameraSoftbusAdapter mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_softbus_latency_mock.cpp  # DCameraSoftbusLatency mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/device_manager_simplified_impl.cpp  # DeviceManager 简化实现（只包含 3 个方法）
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_low_latency_mock.cpp  # DCameraLowLatency mock 实现
 )
 
 # 检查源文件是否存在
