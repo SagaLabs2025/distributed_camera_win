@@ -19,4 +19,13 @@
 #define EOK 0
 #endif
 
+// OpenHarmony style no-copy/no-move helper (some headers assume this is globally available).
+#ifndef DISALLOW_COPY_AND_MOVE
+#define DISALLOW_COPY_AND_MOVE(TypeName) \
+    TypeName(const TypeName&) = delete;  \
+    TypeName& operator=(const TypeName&) = delete; \
+    TypeName(TypeName&&) = delete;       \
+    TypeName& operator=(TypeName&&) = delete
+#endif
+
 #endif // STD_COMPAT_H

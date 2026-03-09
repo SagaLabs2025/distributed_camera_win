@@ -253,6 +253,29 @@ include_directories(
 
 # ========== 源文件列表 ==========
 
+# ========== SDK 源文件列表 ==========
+
+# SDK Source 源文件列表
+set(DCAMERA_SOURCE_SDK_SOURCES
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/src/callback/dcamera_source_callback.cpp
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/src/callback/dcamera_source_callback_stub.cpp
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/src/dcamera_hdf_operate.cpp
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/src/dcamera_source_handler.cpp
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/src/dcamera_source_handler_ipc.cpp
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/src/dcamera_source_load_callback.cpp
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_source/src/distributed_camera_source_proxy.cpp
+)
+
+# SDK Sink 源文件列表
+set(DCAMERA_SINK_SDK_SOURCES
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_sink/src/callback/dcamera_sink_callback.cpp
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_sink/src/callback/dcamera_sink_callback_stub.cpp
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_sink/src/dcamera_sink_handler.cpp
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_sink/src/dcamera_sink_handler_ipc.cpp
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_sink/src/dcamera_sink_load_callback.cpp
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_sink/src/distributed_camera_sink_proxy.cpp
+)
+
 # ========== Sink 服务源文件列表 ==========
 set(DCAMERA_SINK_SOURCES
     # ========== Base 基础模块（Sink也需要这些命令类）==========
@@ -300,11 +323,11 @@ set(DCAMERA_SOURCE_SOURCES
 
     # ========== SourceService 基础服务模块 ==========
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_event.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_service_state_listener_adapted.cpp  # macOS 适配版本（替换 FFRT 为 std::thread）
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/dcamera_service_state_listener.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/dcamera_source_callback_proxy.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/distributed_camera_source_stub.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/dcamera_source_hidumper.cpp
-    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp  # 暂时禁用：依赖太多camera framework
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcamera/distributed_camera_source_service.cpp
 
     # ========== SourceService 核心管理模块 ==========
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcamera_source_dev.cpp
@@ -323,7 +346,7 @@ set(DCAMERA_SOURCE_SOURCES
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_data_process.cpp
-    # ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process_producer.cpp  # 暂时禁用：NativeBuffer API不匹配
+    ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process_producer.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_source_input_channel_listener.cpp
     ${DCAMERA_SERVICE_DIR}/sourceservice/src/distributedcameramgr/dcameradata/dcamera_stream_data_process_pipeline_listener.cpp
 
@@ -340,9 +363,13 @@ set(DCAMERA_SOURCE_SOURCES
     ${DCAMERA_SOURCE_DIR}/services/channel/src/dcamera_channel_source_impl.cpp
     ${DCAMERA_SOURCE_DIR}/services/channel/src/allconnect/distributed_camera_allconnect_manager.cpp
 
+    # ========== GN distributed_camera_source 依赖的 Sink Proxy ==========
+    ${DCAMERA_SOURCE_DIR}/interfaces/inner_kits/native_cpp/camera_sink/src/distributed_camera_sink_proxy.cpp
+
     # ========== Common 工具模块 ==========
     ${DCAMERA_SOURCE_DIR}/common/src/utils/anonymous_string.cpp
     ${DCAMERA_SOURCE_DIR}/common/src/utils/dcamera_utils_tools.cpp
+    ${DCAMERA_SOURCE_DIR}/common/src/utils/dcamera_buffer_handle.cpp
     # ${DCAMERA_SOURCE_DIR}/common/src/utils/dcamera_radar.cpp  # 暂时排除（宏隔离问题）
 
     # ========== Stub 实现 ==========
@@ -352,15 +379,19 @@ set(DCAMERA_SOURCE_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/softbus_mock.cpp  # Softbus mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/ipc_object_stub_mock.cpp  # IPCObjectStub mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/ipc_object_stub_constructor_mock.cpp  # IPCObjectStub 构造函数 mock 实现
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/peer_holder_mock.cpp  # PeerHolder mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/ipc_skeleton_mock.cpp  # IPCSkeleton mock 实现
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/iremote_object_mock.cpp  # IRemoteObject mock 实现
+    # ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/iremote_object_mock.cpp  # IRemoteObject mock 实现（已使用 OpenHarmony 真实实现）
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/remote_object_mock.cpp  # RemoteObjectMock 实现（进程内直接调用）
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/message_parcel_mock.cpp  # MessageParcel mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/service_registry.cpp  # ServiceRegistry 实现（IPC Mock 层）
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/data_buffer_mock.cpp  # DataBuffer mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_pipeline_source_mock.cpp  # DCameraPipelineSource mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/access_token_kit_mock.cpp  # AccessTokenKit mock 实现
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_stream_data_process_producer_mock.cpp  # DCameraStreamDataProcessProducer mock 实现
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/distributed_camera_source_service_mock.cpp  # DistributedCameraSourceService mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/token_setproc_mock.cpp  # token_setproc mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/distributed_hardware_fwk_kit_mock.cpp  # DistributedHardwareFwkKit mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/string_ex_mock.cpp  # string_ex 最小实现（Str16ToStr8/Str8ToStr16）
+    # ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_stream_data_process_producer_mock.cpp  # mock 实现（已使用真实实现）
+    # ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/distributed_camera_source_service_mock.cpp  # mock 实现（已使用真实实现）
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/icamera_channel_mock.cpp  # ICameraChannel mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/weak_ref_counter_mock.cpp  # WeakRefCounter mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/broker_registration_impl.cpp  # BrokerRegistration 实现
@@ -369,7 +400,6 @@ set(DCAMERA_SOURCE_SOURCES
     # ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_source_state_mock.cpp  # DCameraSourceState mock 实现 - 已被真实实现替代
     # ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_source_controller_mock.cpp  # DCameraSourceController mock 实现 - 已使用真实实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_hitrace_mock.cpp  # DcameraHitrace mock 实现
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/system_ability_manager_client_mock.cpp  # SystemAbilityManagerClient mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_hidumper_mock.cpp  # DcameraHidumper mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/video_config_params_mock.cpp  # VideoConfigParams mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_softbus_adapter_mock.cpp  # DCameraSoftbusAdapter mock 实现
@@ -412,7 +442,23 @@ target_include_directories(cjson PUBLIC ${CJSON_INCLUDE_DIR})
 add_library(dcamera_source SHARED
     src/dcamera_source_dll.cpp
     ${EXISTING_SOURCES}
+    ${DCAMERA_SOURCE_SDK_SOURCES}  # SDK 源文件
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/service_auto_register.cpp  # Service 自动注册
 )
+
+# 符号导出控制（macOS）
+set_target_properties(dcamera_source PROPERTIES
+    CXX_VISIBILITY_PRESET hidden
+    VISIBILITY_INLINES_HIDDEN ON
+)
+if(APPLE)
+    target_link_options(dcamera_source PRIVATE
+        "-Wl,-exported_symbols_list,${CMAKE_CURRENT_SOURCE_DIR}/exports/dcamera_source.exports"
+    )
+    if(CMAKE_BUILD_TYPE STREQUAL "Release")
+        target_link_options(dcamera_source PRIVATE "-Wl,-dead_strip")
+    endif()
+endif()
 
 # 定义 dcamera_source 的日志宏
 # 注意：LOG_CORE 是枚举值，不是宏定义，所以不在这里定义
@@ -420,23 +466,28 @@ target_compile_definitions(dcamera_source PRIVATE
     DH_LOG_TAG="dcamerasource"
     LOG_DOMAIN=0xD004150
     HI_LOG_ENABLE=0
+    DCAMERA_BUILD_SOURCE_LIB=1
 )
 
 # 创建 dcamera_sink 动态库
 add_library(dcamera_sink SHARED
     src/dcamera_sink_dll.cpp
     ${EXISTING_SINK_SOURCES}
+    ${DCAMERA_SINK_SDK_SOURCES}  # SDK 源文件
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/service_auto_register.cpp  # Service 自动注册
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_hisysevent_adapter.cpp  # DcameraHiSysEvent 适配（ReportSaEvent/CreateMsg）
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/hilog_mock.cpp  # HiLog mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/string_ex_mock.cpp  # string_ex 最小实现（Str16ToStr8/Str8ToStr16）
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/ipc_object_stub_mock.cpp  # IPCObjectStub mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/ipc_object_stub_constructor_mock.cpp  # IPCObjectStub 构造函数 mock 实现
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/peer_holder_mock.cpp  # PeerHolder mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/ipc_skeleton_mock.cpp  # IPCSkeleton mock 实现
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/iremote_object_mock.cpp  # IRemoteObject mock 实现
+    # ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/iremote_object_mock.cpp  # IRemoteObject mock 实现（已使用 OpenHarmony 真实实现）
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/remote_object_mock.cpp  # RemoteObjectMock 实现（进程内直接调用）
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/message_parcel_mock.cpp  # MessageParcel mock 实现
+    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/service_registry.cpp  # ServiceRegistry 实现（IPC Mock 层）
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/broker_registration_impl.cpp  # BrokerRegistration 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/weak_ref_counter_mock.cpp  # WeakRefCounter mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/access_token_kit_mock.cpp  # AccessTokenKit mock 实现
-    ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/system_ability_manager_client_mock.cpp  # SystemAbilityManagerClient mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_hidumper_mock.cpp  # DcameraHidumper mock 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_sink_output_impl.cpp  # DCameraSinkOutput stub 实现
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/dcamera_sink_controller_impl.cpp  # DCameraSinkController stub 实现
@@ -444,12 +495,27 @@ add_library(dcamera_sink SHARED
     ${CMAKE_CURRENT_SOURCE_DIR}/stubs/src/distributed_camera_sink_service_mock.cpp  # DistributedCameraSinkService mock 实现
 )
 
+# 符号导出控制（macOS）
+set_target_properties(dcamera_sink PROPERTIES
+    CXX_VISIBILITY_PRESET hidden
+    VISIBILITY_INLINES_HIDDEN ON
+)
+if(APPLE)
+    target_link_options(dcamera_sink PRIVATE
+        "-Wl,-exported_symbols_list,${CMAKE_CURRENT_SOURCE_DIR}/exports/dcamera_sink.exports"
+    )
+    if(CMAKE_BUILD_TYPE STREQUAL "Release")
+        target_link_options(dcamera_sink PRIVATE "-Wl,-dead_strip")
+    endif()
+endif()
+
 # 定义 dcamera_sink 的日志宏
 # 注意：LOG_CORE 是枚举值，不是宏定义，所以不在这里定义
 target_compile_definitions(dcamera_sink PRIVATE
     DH_LOG_TAG="dcamerasink"
     LOG_DOMAIN=0xD004151
     HI_LOG_ENABLE=0
+    DCAMERA_BUILD_SINK_LIB=1
 )
 
 # 链接库
@@ -464,6 +530,14 @@ target_link_libraries(dcamera_sink
     c++
     cjson
 )
+
+if(APPLE)
+    find_library(COREFOUNDATION_FRAMEWORK CoreFoundation)
+    if(COREFOUNDATION_FRAMEWORK)
+        target_link_libraries(dcamera_source PRIVATE ${COREFOUNDATION_FRAMEWORK})
+        target_link_libraries(dcamera_sink PRIVATE ${COREFOUNDATION_FRAMEWORK})
+    endif()
+endif()
 
 # 安装
 install(TARGETS dcamera_source dcamera_sink

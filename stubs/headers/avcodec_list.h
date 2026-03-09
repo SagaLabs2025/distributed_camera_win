@@ -1,27 +1,32 @@
-/*
- * AVCodec List Stub for macOS Mock
- *
- * OpenHarmony AVCodec List 的 macOS 兼容层
- */
-
 #ifndef STUBS_AVCODEC_LIST_H
 #define STUBS_AVCODEC_LIST_H
 
+#include <memory>
 #include <string>
-#include <vector>
+
+#include "avcodec_info.h"
 
 namespace OHOS {
-namespace Media {
+namespace MediaAVCodec {
 
 class AVCodecList {
 public:
-    static std::vector<std::string> GetCodecNameList()
+    CapabilityData* GetCapability(const std::string& /*mime*/, bool /*isEncoder*/, AVCodecCategory /*category*/)
     {
-        return std::vector<std::string>();  // Mock: 返回空列表
+        return nullptr;
     }
 };
 
-} // namespace Media
+class AVCodecListFactory {
+public:
+    static std::shared_ptr<AVCodecList> CreateAVCodecList()
+    {
+        return nullptr;
+    }
+};
+
+} // namespace MediaAVCodec
 } // namespace OHOS
 
 #endif // STUBS_AVCODEC_LIST_H
+

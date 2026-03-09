@@ -6,9 +6,6 @@
  */
 
 #include "ipc_object_stub.h"
-#include "message_parcel.h"
-#include "message_option.h"
-#include "iremote_object.h"
 
 namespace OHOS {
 
@@ -17,11 +14,7 @@ namespace OHOS {
 int IPCObjectStub::SendRequest(uint32_t code, MessageParcel& data, 
                                 MessageParcel& reply, MessageOption& option)
 {
-    (void)code;
-    (void)data;
-    (void)reply;
-    (void)option;
-    return 0;  // Mock: 总是成功
+    return OnRemoteRequest(code, data, reply, option);
 }
 
 int IPCObjectStub::OnRemoteDump(uint32_t code, MessageParcel& data,

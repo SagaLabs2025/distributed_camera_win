@@ -50,7 +50,7 @@ echo ""
 echo "3. 检查符号导出"
 echo "-------------------"
 echo "Source 库导出的关键符号:"
-nm -gU libdcamera_source.dylib | grep -E "DCameraSourceInitialize|DCameraSourceCleanup" | head -5
+nm -gU libdcamera_source.dylib | grep -E "GetSourceHardwareHandler" | head -5
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✓${NC} Source 库符号导出正常"
 else
@@ -59,7 +59,7 @@ fi
 echo ""
 
 echo "Sink 库导出的关键符号:"
-nm -gU libdcamera_sink.dylib | grep -E "DCameraSinkInitialize|DCameraSinkCleanup" | head -5
+nm -gU libdcamera_sink.dylib | grep -E "GetSinkHardwareHandler" | head -5
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✓${NC} Sink 库符号导出正常"
 else

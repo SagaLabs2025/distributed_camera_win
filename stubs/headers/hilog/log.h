@@ -29,8 +29,8 @@ typedef enum {
     LOG_FATAL = 4,
 } LogLevel;
 
-// 定义 LOG_CORE - 源代码仓 distributed_hardware_log.h 需要这个
-// 使用 LOG_APP 作为类型，domain 作为标识
+// Define LOG_CORE - used by OpenHarmony headers as the first argument of HILOG_* macros.
+// We model it as a label struct (type/domain/tag) instead of a comma tuple so it works in C++.
 #ifndef LOG_DOMAIN
 #define LOG_DOMAIN 0
 #endif
@@ -39,29 +39,36 @@ typedef enum {
 #define LOG_TAG NULL
 #endif
 
-// LOG_CORE 宏定义：用于源代码仓的 HILOG_DEBUG/INFO/WARN/ERROR 宏
-// 格式：LOG_CORE 是一个 (LogType, domain) 元组
-#define LOG_CORE (LOG_APP, LOG_DOMAIN)
+typedef struct HiLogLabel {
+    LogType type;
+    unsigned int domain;
+    const char* tag;
+} HiLogLabel;
+
+#ifdef __cplusplus
+#define LOG_CORE HiLogLabel{LOG_APP, LOG_DOMAIN, LOG_TAG}
+#else
+#define LOG_CORE ((HiLogLabel){LOG_APP, LOG_DOMAIN, LOG_TAG})
+#endif
 
 // HiLog 函数声明（macOS stub 实现）
 int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, ...);
 bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level);
 
 // HiLog 宏定义（兼容 OpenHarmony）
-#define OH_LOG_DEBUG(type, ...) ((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
-#define OH_LOG_INFO(type, ...) ((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
-#define OH_LOG_WARN(type, ...) ((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
-#define OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
-#define OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+// OpenHarmony usage: HILOG_INFO(LOG_CORE, fmt, ...)
+#define HILOG_DEBUG(label, ...) ((void)OH_LOG_Print((label).type, LOG_DEBUG, (label).domain, (label).tag, __VA_ARGS__))
+#define HILOG_INFO(label, ...) ((void)OH_LOG_Print((label).type, LOG_INFO, (label).domain, (label).tag, __VA_ARGS__))
+#define HILOG_WARN(label, ...) ((void)OH_LOG_Print((label).type, LOG_WARN, (label).domain, (label).tag, __VA_ARGS__))
+#define HILOG_ERROR(label, ...) ((void)OH_LOG_Print((label).type, LOG_ERROR, (label).domain, (label).tag, __VA_ARGS__))
+#define HILOG_FATAL(label, ...) ((void)OH_LOG_Print((label).type, LOG_FATAL, (label).domain, (label).tag, __VA_ARGS__))
 
-// 兼容源代码仓中使用的格式
-// 源代码仓使用: HILOG_DEBUG(LOG_CORE, fmt, ...)
-// 这里直接使用 OH_LOG_* 宏
-#define HILOG_DEBUG(...) OH_LOG_DEBUG(__VA_ARGS__)
-#define HILOG_INFO(...) OH_LOG_INFO(__VA_ARGS__)
-#define HILOG_WARN(...) OH_LOG_WARN(__VA_ARGS__)
-#define HILOG_ERROR(...) OH_LOG_ERROR(__VA_ARGS__)
-#define HILOG_FATAL(...) OH_LOG_FATAL(__VA_ARGS__)
+// Compatibility aliases (rarely used in our codebase, but keep for completeness).
+#define OH_LOG_DEBUG(label, ...) HILOG_DEBUG(label, __VA_ARGS__)
+#define OH_LOG_INFO(label, ...) HILOG_INFO(label, __VA_ARGS__)
+#define OH_LOG_WARN(label, ...) HILOG_WARN(label, __VA_ARGS__)
+#define OH_LOG_ERROR(label, ...) HILOG_ERROR(label, __VA_ARGS__)
+#define OH_LOG_FATAL(label, ...) HILOG_FATAL(label, __VA_ARGS__)
 
 #ifdef __cplusplus
 }

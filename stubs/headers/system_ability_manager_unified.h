@@ -12,42 +12,13 @@
 #include <cstdint>
 #include <string>
 #include <memory>
+#include "refbase.h"  // Include refbase.h before namespace declaration
 
 #ifdef __cplusplus
 namespace OHOS {
 
 // 前向声明
 class IRemoteObject;
-
-/**
- * @brief 简化的 sptr 智能指针实现（macOS mock）
- * 避免 c_utils 的 refbase.h 复杂依赖
- */
-template<typename T>
-class sptr {
-public:
-    sptr() : ptr_(nullptr) {}
-    sptr(std::nullptr_t) : ptr_(nullptr) {}
-    sptr(T* p) : ptr_(p) {}
-    sptr(const sptr& other) : ptr_(other.ptr_) {}
-
-    T& operator*() const { return *ptr_; }
-    T* operator->() const { return ptr_; }
-    explicit operator bool() const { return ptr_ != nullptr; }
-
-    sptr& operator=(std::nullptr_t) {
-        ptr_ = nullptr;
-        return *this;
-    }
-
-    sptr& operator=(T* p) {
-        ptr_ = p;
-        return *this;
-    }
-
-private:
-    T* ptr_;
-};
 
 /**
  * @brief 系统能力状态枚举
@@ -93,24 +64,16 @@ public:
 
 /**
  * @brief Mock 的 SystemAbilityManager
- * 在测试环境中直接返回成功，不进行真实的系统调用
+ * 在测试环境中使用 ServiceRegistry 查找 Service 对象，实现进程内直接对接
  */
 class MockSystemAbilityManager : public ISystemAbilityManager {
 public:
     MockSystemAbilityManager() = default;
     ~MockSystemAbilityManager() override = default;
 
-    int32_t CheckSystemAbility(int32_t saId) override
-    {
-        (void)saId;
-        return 0;  // Mock: SA 总是存在
-    }
+    int32_t CheckSystemAbility(int32_t saId) override;
 
-    sptr<IRemoteObject> CheckSystemAbility(int32_t saId, const std::string& deviceId) override
-    {
-        (void)saId; (void)deviceId;
-        return sptr<IRemoteObject>(nullptr);  // Mock: 返回空指针
-    }
+    sptr<IRemoteObject> CheckSystemAbility(int32_t saId, const std::string& deviceId) override;
 
     int32_t AddSystemAbility(int32_t saId, void* ability) override
     {

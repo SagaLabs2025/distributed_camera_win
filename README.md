@@ -106,7 +106,7 @@ distributed_camera_test/
 make clean
 
 # 查看导出符号
-nm -gU libdcamera_source.dylib | grep DCameraSource
+nm -gU libdcamera_source.dylib | grep -E \"GetSourceHardwareHandler|GetSinkHardwareHandler\"
 
 # 查看库依赖
 otool -L libdcamera_source.dylib

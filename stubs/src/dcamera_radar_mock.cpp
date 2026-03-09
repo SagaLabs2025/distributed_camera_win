@@ -1,68 +1,74 @@
 /*
  * DcameraRadar Mock Implementation for macOS
  *
- * OpenHarmony DcameraRadar 的 macOS Mock 空实现
+ * Provide empty implementations so camera code can link on macOS.
  */
 
-#include <string>
+#include "dcamera_radar.h"
 
 namespace OHOS {
 namespace DistributedHardware {
 
-// 前向声明枚举
-enum class CameraOpen {};
-enum class CameraClose {};
-enum class BizState {};
+FWK_IMPLEMENT_SINGLE_INSTANCE(DcameraRadar);
 
-class DcameraRadar {
-public:
-    static DcameraRadar& GetInstance();
-    
-    void ReportDcameraOpen(const std::string& devId, CameraOpen openType, BizState state, int result);
-    void ReportDcameraClose(const std::string& devId, CameraClose closeType, BizState state, int result);
-    void ReportDcameraOpenProgress(const std::string& devId, CameraOpen openType, int progress);
-    void ReportDcameraCloseProgress(const std::string& devId, CameraClose closeType, int progress);
-};
-
-// 实现
-DcameraRadar& DcameraRadar::GetInstance()
+bool DcameraRadar::ReportDcameraInit(const std::string& func, CameraInit bizStage, BizState bizState, int32_t errCode)
 {
-    static DcameraRadar instance;
-    return instance;
+    (void)func;
+    (void)bizStage;
+    (void)bizState;
+    (void)errCode;
+    return true;
 }
 
-void DcameraRadar::ReportDcameraOpen(const std::string& devId, CameraOpen openType, BizState state, int result)
+bool DcameraRadar::ReportDcameraInitProgress(const std::string& func, CameraInit bizStage, int32_t errCode)
 {
-    (void)devId;
-    (void)openType;
-    (void)state;
-    (void)result;
-    // Mock: 空实现
+    (void)func;
+    (void)bizStage;
+    (void)errCode;
+    return true;
 }
 
-void DcameraRadar::ReportDcameraClose(const std::string& devId, CameraClose closeType, BizState state, int result)
+bool DcameraRadar::ReportDcameraOpen(const std::string& func, CameraOpen bizStage, BizState bizState, int32_t errCode)
 {
-    (void)devId;
-    (void)closeType;
-    (void)state;
-    (void)result;
-    // Mock: 空实现
+    (void)func;
+    (void)bizStage;
+    (void)bizState;
+    (void)errCode;
+    return true;
 }
 
-void DcameraRadar::ReportDcameraOpenProgress(const std::string& devId, CameraOpen openType, int progress)
+bool DcameraRadar::ReportDcameraOpenProgress(const std::string& func, CameraOpen bizStage, int32_t errCode)
 {
-    (void)devId;
-    (void)openType;
-    (void)progress;
-    // Mock: 空实现
+    (void)func;
+    (void)bizStage;
+    (void)errCode;
+    return true;
 }
 
-void DcameraRadar::ReportDcameraCloseProgress(const std::string& devId, CameraClose closeType, int progress)
+bool DcameraRadar::ReportDcameraClose(const std::string& func, CameraClose bizStage, BizState bizState, int32_t errCode)
 {
-    (void)devId;
-    (void)closeType;
-    (void)progress;
-    // Mock: 空实现
+    (void)func;
+    (void)bizStage;
+    (void)bizState;
+    (void)errCode;
+    return true;
+}
+
+bool DcameraRadar::ReportDcameraCloseProgress(const std::string& func, CameraClose bizStage, int32_t errCode)
+{
+    (void)func;
+    (void)bizStage;
+    (void)errCode;
+    return true;
+}
+
+bool DcameraRadar::ReportDcameraUnInit(const std::string& func, CameraUnInit bizStage, BizState bizState, int32_t errCode)
+{
+    (void)func;
+    (void)bizStage;
+    (void)bizState;
+    (void)errCode;
+    return true;
 }
 
 } // namespace DistributedHardware

@@ -10,11 +10,8 @@ namespace OHOS {
 
 // IPCObjectStub 构造函数
 IPCObjectStub::IPCObjectStub(std::u16string descriptor, bool serialInvokeFlag)
-    : IRemoteObject()
+    : IRemoteObject(std::move(descriptor)), serialInvokeFlag_(serialInvokeFlag)
 {
-    (void)descriptor;
-    (void)serialInvokeFlag;
-    // Mock: 空实现
 }
 
 } // namespace OHOS

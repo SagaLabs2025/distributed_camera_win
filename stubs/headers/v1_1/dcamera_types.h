@@ -11,6 +11,9 @@
 #include <vector>
 #include <cstdint>
 
+#include "buffer_handle.h"
+#include "refbase.h"
+
 #ifdef __cplusplus
 namespace OHOS {
 namespace HDI {
@@ -65,9 +68,6 @@ enum DCStreamType {
     SNAPSHOT_FRAME = 1,      // 单次捕获流（拍照流）
 };
 
-// 前向声明
-struct NativeBuffer;
-
 /**
  * @brief 分布式硬件设备基础信息
  */
@@ -116,12 +116,18 @@ struct DCCaptureInfo {
     std::vector<DCameraSettings> captureSettings_;  // 流设置
 };
 
-/**
- * @brief 本地缓冲区句柄（简化版本）
- */
-struct NativeBuffer {
-    void* handle_;    // 缓冲区句柄
-    uint32_t size_;   // 缓冲区大小
+class NativeBuffer : public RefBase {
+public:
+    NativeBuffer() = default;
+    ~NativeBuffer() override = default;
+
+    ::BufferHandle* GetBufferHandle()
+    {
+        return &handle_;
+    }
+
+private:
+    ::BufferHandle handle_ {};
 };
 
 /**
@@ -131,7 +137,7 @@ struct NativeBuffer {
 struct DCameraBuffer {
     int index_;                          // 缓冲区索引
     uint32_t size_;                      // 缓冲区大小
-    NativeBuffer bufferHandle_;          // 本地缓冲区句柄
+    sptr<NativeBuffer> bufferHandle_ = nullptr; // Native buffer handle wrapper
 };
 
 /**

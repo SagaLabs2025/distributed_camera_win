@@ -5,9 +5,31 @@
  */
 
 #include "iremote_broker.h"
-#include "iremote_object.h"
+
+#include <mutex>
+#include <unordered_map>
 
 namespace OHOS {
+
+namespace {
+struct Entry {
+    BrokerRegistration::Constructor constructor;
+    const BrokerDelegatorBase* delegator { nullptr };
+};
+
+class RegistryState {
+public:
+    std::mutex mutex;
+    std::unordered_map<std::u16string, Entry> entries;
+};
+
+RegistryState& GetRegistryState()
+{
+    // Intentionally leaked to avoid static destruction order issues when dylibs unload.
+    static RegistryState* state = new RegistryState();
+    return *state;
+}
+} // namespace
 
 BrokerRegistration& BrokerRegistration::Get()
 {
@@ -17,31 +39,43 @@ BrokerRegistration& BrokerRegistration::Get()
 
 BrokerRegistration::~BrokerRegistration()
 {
-    // Mock: 空实现
 }
 
 bool BrokerRegistration::Register(const std::u16string& descriptor,
                                    const Constructor& constructor,
                                    const BrokerDelegatorBase* delegator)
 {
-    (void)descriptor;
-    (void)constructor;
-    (void)delegator;
-    return true;  // Mock: 总是成功
+    auto& state = GetRegistryState();
+    std::lock_guard<std::mutex> lock(state.mutex);
+    state.entries[descriptor] = Entry { constructor, delegator };
+    return true;
 }
 
 void BrokerRegistration::Unregister(const std::u16string& descriptor)
 {
-    (void)descriptor;
-    // Mock: 空实现
+    auto& state = GetRegistryState();
+    std::lock_guard<std::mutex> lock(state.mutex);
+    state.entries.erase(descriptor);
 }
 
 sptr<IRemoteBroker> BrokerRegistration::NewInstance(const std::u16string& descriptor,
                                                       const sptr<IRemoteObject>& object)
 {
-    (void)descriptor;
-    (void)object;
-    return nullptr;  // Mock: 返回空指针
+    BrokerRegistration::Constructor ctor;
+    {
+        auto& state = GetRegistryState();
+        std::lock_guard<std::mutex> lock(state.mutex);
+        auto it = state.entries.find(descriptor);
+        if (it == state.entries.end()) {
+            return nullptr;
+        }
+        ctor = it->second.constructor;
+    }
+
+    if (!ctor) {
+        return nullptr;
+    }
+    return ctor(object);
 }
 
 } // namespace OHOS

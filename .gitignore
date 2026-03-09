@@ -15,6 +15,10 @@ Makefile
 *.bak
 *.bak*
 
+# Local build logs
+*.log
+build_*.log
+
 # External dependencies (keep source, ignore .git)
 external/cJSON/.git
 external/c_utils/.git
@@ -22,3 +26,14 @@ external/drivers_interface/.git
 
 # macOS
 .DS_Store
+
+# Kiro specs / local planning artifacts
+.kiro/
+
+# Local reports/artifacts
+reports/
+
+# Test binaries
+tests/test_*
+!tests/test_*.cpp
+tests/service_registry_test

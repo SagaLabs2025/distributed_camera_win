@@ -1,82 +1,81 @@
-/*
- * HDI Service Manager Stub for macOS Mock
- *
- * OpenHarmony HDI服务管理器的 macOS 兼容层
- */
+#ifndef ISERVMGR_HDI_H
+#define ISERVMGR_HDI_H
 
-#ifndef STUBS_ISERVMGR_HDI_H
-#define STUBS_ISERVMGR_HDI_H
-
-#include <memory>
 #include <string>
+#include <cstdint>
+#include <memory>
+#include <vector>
 #include "refbase.h"
-
-#ifdef __cplusplus
+#include "iremote_object.h"
+#include "iservstat_listener_hdi.h"
 
 namespace OHOS {
 namespace HDI {
 namespace ServiceManager {
 namespace V1_0 {
 
-/**
- * @brief HDI服务管理器接口
- */
-class IServiceManager : public OHOS::RefBase {
+// 服务管理器接口 Mock
+class IServiceManager : public HdiBase {
 public:
     virtual ~IServiceManager() = default;
-
-    /**
-     * @brief 获取服务管理器实例
-     */
-    static sptr<IServiceManager> Get()
-    {
-        static sptr<IServiceManager> instance = new IServiceManager();
-        return instance;
+    
+    // 引用计数方法（用于 sptr 兼容性）
+    virtual void IncStrongRef(const void* objectId) {
+        (void)objectId;
     }
-
-    /**
-     * @brief 加载服务
-     */
-    virtual int32_t LoadService(const std::string& serviceName)
-    {
-        (void)serviceName;
-        return 0;  // Mock: 总是成功
+    
+    virtual void DecStrongRef(const void* objectId) {
+        (void)objectId;
     }
-
-    /**
-     * @brief 获取服务
-     */
-    virtual sptr<IRemoteObject> GetService(const std::string& serviceName)
-    {
-        (void)serviceName;
-        return nullptr;  // Mock: 返回空
+    
+    // 静态工厂方法 - 获取 IServiceManager 实例
+    static sptr<IServiceManager> Get() {
+        // Mock: 返回 nullptr，表示 HDF 服务不可用
+        return nullptr;
     }
-
-    /**
-     * @brief 注册服务
-     */
-    virtual int32_t RegisterService(const std::string& serviceName, const sptr<IRemoteObject>& service)
-    {
-        (void)serviceName;
-        (void)service;
-        return 0;  // Mock: 总是成功
+    
+    // 注册服务状态监听器
+    virtual int32_t RegisterServiceStatusListener(
+        const sptr<IServStatListener>& listener,
+        uint16_t deviceClass) {
+        (void)listener;
+        (void)deviceClass;
+        return 0; // 成功
     }
-
-    /**
-     * @brief 注销服务
-     */
-    virtual int32_t UnregisterService(const std::string& serviceName)
-    {
+    
+    // 注销服务状态监听器
+    virtual int32_t UnregisterServiceStatusListener(
+        const sptr<IServStatListener>& listener) {
+        (void)listener;
+        return 0; // 成功
+    }
+    
+    // 获取服务
+    virtual sptr<IRemoteObject> GetService(const std::string& serviceName) {
         (void)serviceName;
-        return 0;  // Mock: 总是成功
+        return nullptr; // Mock: 返回空
+    }
+    
+    // 列出所有服务
+    virtual int32_t ListAllService(std::vector<std::string>& serviceNames) {
+        (void)serviceNames;
+        return 0; // 成功
     }
 };
 
-} // namespace V1_0
-} // namespace ServiceManager
-} // namespace HDI
-} // namespace OHOS
+// 获取服务管理器实例
+inline sptr<IServiceManager> IServiceManager_Get() {
+    return nullptr; // Mock: 返回空
+}
 
-#endif // __cplusplus
+// 静态工厂方法 - 获取 IServiceManager 实例
+inline sptr<IServiceManager> Get() {
+    return nullptr; // Mock: 返回空
+}
 
-#endif // STUBS_ISERVMGR_HDI_H
+} // V1_0
+} // ServiceManager
+} // HDI
+} // OHOS
+
+#endif // ISERVMGR_HDI_H
