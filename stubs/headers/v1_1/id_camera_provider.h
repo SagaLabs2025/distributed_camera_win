@@ -1,121 +1,123 @@
-/*
- * ICameraProvider - macOS Mock Implementation
- *
- * OpenHarmony HDF v1.1 相机提供者接口的 macOS 实现
- */
-
-#ifndef STUBS_V1_1_ID_CAMERA_PROVIDER_H
-#define STUBS_V1_1_ID_CAMERA_PROVIDER_H
+#ifndef ID_CAMERA_PROVIDER_H
+#define ID_CAMERA_PROVIDER_H
 
 #include <string>
-#include <vector>
+#include <cstdint>
 #include <memory>
+#include <vector>
+#include "refbase.h"
+#include "id_camera_provider_callback.h"
+#include "id_camera_hdf_callback.h"
 #include "dcamera_types.h"
-#include "dcamera_hdf_types.h"
 
 namespace OHOS {
 namespace HDI {
 namespace DistributedCamera {
 namespace V1_1 {
 
-// ICameraProviderCallback - 相机提供者回调接口
-class ICameraProviderCallback {
+// HdiBase 基类 Mock
+class HdiBase {
 public:
-    virtual ~ICameraProviderCallback() = default;
-
-    // 相机设备状态变化回调
-    virtual void OnCameraDeviceStatusChange(const std::string& deviceId, int32_t status) {
-        (void)deviceId;
-        (void)status;
-    }
+    virtual ~HdiBase() = default;
 };
 
-// 前向声明
-class MockCameraProvider;
-
-// ICameraProvider - 相机提供者接口
-class ICameraProvider {
+// 分布式相机提供者接口 Mock
+class IDCameraProvider : public HdiBase {
 public:
-    virtual ~ICameraProvider() = default;
-
-    // 静态方法：获取服务实例
-    static std::shared_ptr<ICameraProvider> Get(const std::string& serviceName);
-
-    // 设置回调
-    virtual int32_t SetCallback(const std::shared_ptr<ICameraProviderCallback>& callback) {
-        (void)callback;
-        return 0;  // Mock: 返回成功
+    virtual ~IDCameraProvider() = default;
+    
+    // 引用计数方法（用于 sptr 兼容性）
+    virtual void IncStrongRef(const void* objectId) {
+        (void)objectId;
     }
-
-    // 启用相机设备 - 更新签名以匹配 OpenHarmony 源码调用
-    virtual int32_t EnableDCameraDevice(const DHBase& dhBase, const DCameraAbility& ability,
-                                        const std::shared_ptr<ICameraProviderCallback>& callback) {
+    
+    virtual void DecStrongRef(const void* objectId) {
+        (void)objectId;
+    }
+    
+    // 静态工厂方法 - 获取 IDCameraProvider 实例
+    static sptr<IDCameraProvider> Get(const std::string& serviceName) {
+        (void)serviceName;
+        // Mock: 返回 nullptr，表示 HDF 服务不可用
+        return nullptr;
+    }
+    
+    // 使能分布式相机设备
+    virtual int32_t EnableDCameraDevice(
+        const DHBase& dhBase,
+        const std::string& parameters,
+        const sptr<IDCameraProviderCallback>& callback) {
         (void)dhBase;
-        (void)ability;
+        (void)parameters;
         (void)callback;
-        return 0;  // Mock: 返回成功
+        return 0; // 成功
     }
-
-    // 禁用相机设备
-    virtual int32_t DisableDCameraDevice(const std::string& dhId) {
-        (void)dhId;
-        return 0;  // Mock: 返回成功
+    
+    // 禁用分布式相机设备
+    virtual int32_t DisableDCameraDevice(const DHBase& dhBase) {
+        (void)dhBase;
+        return 0; // 成功
     }
-
-    // 获取相机设备列表
-    virtual int32_t GetCameraDeviceList(std::vector<std::string>& deviceIds) {
-        deviceIds.clear();
-        deviceIds.push_back("camera0");
-        return 0;  // Mock: 返回成功
-    }
-
-    // 获取相机设备能力
-    virtual int32_t GetCameraAbility(const std::string& deviceId, DCameraAbility& ability) {
-        (void)deviceId;
-        // Mock: 返回默认能力
-        ability = DCameraAbility();
-        return 0;
-    }
-
+    
     // 打开相机设备
-    virtual int32_t OpenCamera(const std::string& deviceId, void** cameraDevice) {
-        (void)deviceId;
-        *cameraDevice = nullptr;
-        return 0;  // Mock: 返回成功
+    virtual int32_t OpenDCameraDevice(const DHBase& dhBase) {
+        (void)dhBase;
+        return 0; // 成功
     }
-
+    
     // 关闭相机设备
-    virtual int32_t CloseCamera(void* cameraDevice) {
-        (void)cameraDevice;
-        return 0;  // Mock: 返回成功
+    virtual int32_t CloseDCameraDevice(const DHBase& dhBase) {
+        (void)dhBase;
+        return 0; // 成功
+    }
+    
+    // Acquire a frame buffer
+    virtual int32_t AcquireBuffer(const DHBase& dhBase, int streamId, DCameraBuffer& buffer) {
+        (void)dhBase;
+        (void)streamId;
+        (void)buffer;
+        return 0; // 成功
+    }
+    
+    // 释放缓冲区
+    virtual int32_t ShutterBuffer(const DHBase& dhBase, int streamId, const DCameraBuffer& buffer) {
+        (void)dhBase;
+        (void)streamId;
+        (void)buffer;
+        return 0; // 成功
+    }
+    
+    // 通知事件
+    virtual int32_t Notify(const DHBase& dhBase, const DCameraHDFEvent& event) {
+        (void)dhBase;
+        (void)event;
+        return 0; // 成功
+    }
+    
+    // 设置结果回调
+    virtual int32_t OnSettingsResult(const DHBase& dhBase, const DCameraSettings& settings) {
+        (void)dhBase;
+        (void)settings;
+        return 0; // 成功
+    }
+    
+    // 注册相机 HDF 监听器
+    virtual int32_t RegisterCameraHdfListener(const std::string& serviceName, const sptr<IDCameraHdfCallback>& callback) {
+        (void)serviceName;
+        (void)callback;
+        return 0; // 成功
+    }
+    
+    // 注销相机 HDF 监听器
+    virtual int32_t UnRegisterCameraHdfListener(const std::string& serviceName) {
+        (void)serviceName;
+        return 0; // 成功
     }
 };
 
-// Mock 实现类
-class MockCameraProvider : public ICameraProvider {
-public:
-    MockCameraProvider() = default;
-    ~MockCameraProvider() override = default;
-};
+} // V1_1
+} // DistributedCamera
+} // HDI
+} // OHOS
 
-// 在类定义之后实现 Get 方法
-inline std::shared_ptr<ICameraProvider> ICameraProvider::Get(const std::string& serviceName) {
-    (void)serviceName;
-    static auto instance = std::make_shared<MockCameraProvider>();
-    return instance;
-}
-
-} // namespace V1_1
-} // namespace DistributedCamera
-} // namespace HDI
-} // namespace OHOS
-
-// 为兼容 OpenHarmony 源码，在 DistributedHardware 命名空间中引入类型别名
-namespace OHOS {
-namespace DistributedHardware {
-    // 使用完整路径
-    using ::OHOS::HDI::DistributedCamera::V1_1::ICameraProvider;
-}
-}
-
-#endif // STUBS_V1_1_ID_CAMERA_PROVIDER_H
+#endif // ID_CAMERA_PROVIDER_H

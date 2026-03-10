@@ -1,41 +1,69 @@
-/*
- * IRemoteObject - OpenHarmony IPC - macOS Mock
- *
- * IPC 远程对象的 macOS 空实现
- */
-
 #ifndef STUBS_IREMOTE_OBJECT_H
 #define STUBS_IREMOTE_OBJECT_H
 
-#include <memory>
+#include <cstdint>
+#include <string>
+#include <vector>
+
+#include "ipc_types.h"
+#include "parcelable.h"
+#include "message_option.h"
+#include "message_parcel.h"
 
 namespace OHOS {
 
-// IRemoteObject - 远程对象基类
-class IRemoteObject {
+class IRemoteBroker;
+
+class IRemoteObject : public virtual Parcelable, public virtual RefBase {
 public:
-    virtual ~IRemoteObject() = default;
-};
+    class DeathRecipient : public virtual RefBase {
+    public:
+        virtual ~DeathRecipient() override = default;
+        virtual void OnRemoteDied(const wptr<IRemoteObject>& object) = 0;
+    };
 
-// sptr - 智能指针模板
-template<typename T>
-class sptr {
-public:
-    sptr() : sharedPtr_(nullptr) {}
-    sptr(std::nullptr_t) : sharedPtr_(nullptr) {}
-    sptr(T* ptr) : sharedPtr_(ptr) {}
-    sptr(const std::shared_ptr<T>& ptr) : sharedPtr_(ptr) {}
+    virtual ~IRemoteObject() override = default;
 
-    T& operator*() const { return *sharedPtr_; }
-    T* operator->() const { return sharedPtr_.get(); }
+    virtual int32_t GetObjectRefCount() = 0;
+    virtual int SendRequest(uint32_t code, MessageParcel& data, MessageParcel& reply, MessageOption& option) = 0;
 
-    bool operator==(std::nullptr_t) const { return sharedPtr_ == nullptr; }
-    bool operator!=(std::nullptr_t) const { return sharedPtr_ != nullptr; }
+    virtual bool IsProxyObject() const { return false; }
+    virtual bool IsObjectDead() const { return false; }
+    virtual std::u16string GetInterfaceDescriptor() { return descriptor_; }
+    virtual bool CheckObjectLegality() const { return true; }
 
-    explicit operator bool() const { return sharedPtr_ != nullptr; }
+    virtual bool AddDeathRecipient(const sptr<DeathRecipient>& recipient) = 0;
+    virtual bool RemoveDeathRecipient(const sptr<DeathRecipient>& recipient) = 0;
 
-private:
-    std::shared_ptr<T> sharedPtr_;
+    bool Marshalling(Parcel& parcel) const override
+    {
+        (void)parcel;
+        return true;
+    }
+
+    static sptr<IRemoteObject> Unmarshalling(Parcel& parcel)
+    {
+        (void)parcel;
+        return nullptr;
+    }
+
+    static bool Marshalling(Parcel& parcel, const sptr<IRemoteObject>& object)
+    {
+        (void)parcel;
+        (void)object;
+        return true;
+    }
+
+    virtual sptr<IRemoteBroker> AsInterface() { return nullptr; }
+
+    virtual int Dump(int fd, const std::vector<std::u16string>& args) = 0;
+
+    std::u16string GetObjectDescriptor() const { return descriptor_; }
+
+protected:
+    explicit IRemoteObject(std::u16string descriptor = {}) : descriptor_(std::move(descriptor)) {}
+
+    const std::u16string descriptor_;
 };
 
 } // namespace OHOS

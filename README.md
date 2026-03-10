@@ -1,135 +1,195 @@
-# 分布式相机测试工程 (macOS)
+# 分布式相机 macOS 测试工程
 
-## 项目概述
+这是一个用于在 macOS 平台上编译和测试 OpenHarmony 分布式相机组件的项目。
 
-这是 OpenHarmony 分布式相机的 macOS 模拟测试工程，将 OpenHarmony 分布式相机源码编译为 macOS 动态库，用于功能测试和验证。
+## 快速开始
+
+### 方法 1: 使用编译脚本（推荐）
+
+```bash
+# 普通编译
+./build.sh
+
+# 清理后重新编译
+./build.sh -c
+
+# Debug 模式编译
+./build.sh -d
+
+# 查看所有选项
+./build.sh -h
+```
+
+### 方法 2: 手动编译
+
+```bash
+# 1. 配置 CMake
+cmake .
+
+# 2. 编译
+make -j8
+
+# 3. 验证
+./verify_build.sh
+```
+
+## 验证构建
+
+运行验证脚本检查构建产物：
+
+```bash
+./verify_build.sh
+```
+
+该脚本会检查：
+- ✓ 构建产物是否存在
+- ✓ 文件大小是否正常
+- ✓ 符号导出是否正确
+- ✓ 库依赖是否正确
+- ✓ 架构信息
+
+## 构建产物
+
+成功编译后会生成：
+
+| 文件 | 大小 | 说明 |
+|------|------|------|
+| `libdcamera_source.dylib` | ~2.8MB | Source 服务动态库 |
+| `libdcamera_sink.dylib` | ~19KB | Sink 服务动态库 |
+| `libcjson.a` | ~42KB | cJSON 静态库 |
 
 ## 目录结构
 
 ```
 distributed_camera_test/
-├── src/                    # 源文件（dylib 入口点）
-├── include/                # 公共 API 头文件
-├── adapters/               # 平台适配层（FFmpeg、Socket、Virtual Camera）
-├── stubs/                  # OpenHarmony 系统 Mock 实现
-│   ├── headers/           # Mock 头文件（40+）
-│   └── src/               # Mock 实现文件
-├── tests/                  # 测试套件
-├── scripts/                # 构建和测试脚本
-├── docs/                   # 文档
-├── cmake/                  # CMake 模块
-├── external/               # 外部依赖
-│   ├── c_utils/           # OpenHarmony C 工具库
-│   └── drivers_interface/ # HDF 驱动接口
-└── CMakeLists.txt          # 主构建配置
+├── CMakeLists.txt          # CMake 配置文件
+├── BUILD.md                # 详细编译文档
+├── README.md               # 本文件
+├── build.sh                # 快速编译脚本
+├── verify_build.sh         # 构建验证脚本
+├── src/                    # 入口点实现
+│   ├── dcamera_source_dll.cpp
+│   └── dcamera_sink_dll.cpp
+└── stubs/                  # Mock 实现
+    ├── headers/            # Stub 头文件
+    └── src/                # Stub 实现文件
 ```
 
-## 构建说明
+## 前置条件
 
-### 前置要求
+1. **macOS 系统**（已在 macOS 14.6 上测试）
+2. **CMake 3.20+**
+   ```bash
+   brew install cmake
+   ```
+3. **Xcode Command Line Tools**
+   ```bash
+   xcode-select --install
+   ```
+4. **OpenHarmony 源码**
+   - 位置：`../distributedhardware_distributed_camera`
+   - 或设置环境变量：`export OHOS_DCAMERA_SOURCE_ROOT=/path/to/source`
+5. **外部依赖**
+   - 位置：`../external`
+   - 必需：c_utils、cJSON、distributed_hardware_fwk
 
-- macOS 10.15+
-- Xcode Command Line Tools
-- CMake 3.20+
-
-### 快速构建
+## 常用命令
 
 ```bash
-# 创建构建目录并编译
-mkdir build && cd build
-cmake -DCMAKE_BUILD_TYPE=Debug ..
-make -j$(sysctl -n hw.ncpu)
+# 完整重新编译
+./build.sh -c
 
-# 输出动态库
-# libdcamera_source.dylib
-# libdcamera_sink.dylib
+# Debug 模式编译（包含调试符号）
+./build.sh -d
+
+# 清理构建产物
+make clean
+
+# 查看导出符号
+nm -gU libdcamera_source.dylib | grep -E \"GetSourceHardwareHandler|GetSinkHardwareHandler\"
+
+# 查看库依赖
+otool -L libdcamera_source.dylib
+
+# 查看库信息
+file libdcamera_source.dylib
 ```
 
-### 使用脚本构建
+## 编译选项
 
+### Debug 模式
 ```bash
-# 一键构建
-./build.sh
-
-# 清理并重新构建
-./build.sh --clean
+cmake -DCMAKE_BUILD_TYPE=Debug .
+make
 ```
+- 包含调试符号（-g）
+- 禁用优化（-O0）
+- 便于使用 lldb 调试
 
-## 测试
-
+### Release 模式
 ```bash
-# API 加载测试
-./build/test_api_load
-
-# Socket 通道测试
-./build/test_socket_channel
-
-# 虚拟相机测试
-./build/test_virtual_camera
+cmake -DCMAKE_BUILD_TYPE=Release .
+make
 ```
+- 启用优化（-O2）
+- 定义 NDEBUG 宏
+- 生成更小的库文件
 
-## 依赖说明
+## 故障排除
 
-### OpenHarmony 源码
-
-项目引用 OpenHarmony 分布式相机源码，路径：
-- 环境变量: `OHOS_DCAMERA_SOURCE_ROOT`
-- 默认: `../distributedhardware_distributed_camera`
-
-### 外部依赖
-
-- **c_utils**: OpenHarmony C 工具库
-- **drivers_interface**: HDF 驱动接口定义
-
-可通过以下命令下载：
+### 找不到 OpenHarmony 源码
 ```bash
-./scripts/setup_deps.sh
+export OHOS_DCAMERA_SOURCE_ROOT=/path/to/distributedhardware_distributed_camera
+cmake .
+make
 ```
 
-## Mock 实现
+### 缺少外部依赖
+确保 `../external` 目录包含：
+- c_utils
+- cJSON
+- distributedhardware_distributed_hardware_fwk
 
-本工程使用 Mock 方式解决 OpenHarmony 系统依赖：
-- **IPC 框架**: IRemoteBroker, IRemoteObject
-- **事件系统**: EventHandler, EventRunner
-- **日志系统**: DHLog, HiLog
-- **System Ability**: SA 框架
-- **HDF 接口**: V1_1 分布式相机接口
+### 编译错误
+1. 清理后重新编译：`./build.sh -c`
+2. 检查 CMake 输出的依赖检查信息
+3. 查看详细编译信息：`./build.sh -v`
 
-所有 Mock 实现返回成功（0），用于模拟测试。
+## 技术架构
 
-## 开发说明
+### Stub 层设计
+本项目使用 Stub/Mock 层来模拟 OpenHarmony 系统 API：
+- **HiLog**: 日志系统 mock
+- **IPC**: 进程间通信 mock
+- **Softbus**: 软总线 mock
+- **System Ability**: 系统能力 mock
+- **Device Manager**: 设备管理 mock
+- **Codec**: 编解码器 mock
 
-### 添加新的 Mock 头文件
+所有 mock 实现返回成功值，用于编译测试。
 
-1. 在 `stubs/headers/` 创建头文件
-2. 实现 Mock 类和函数（返回成功）
-3. 更新 CMakeLists.txt 包含路径
-4. 重新编译
+### 编译统计
+- 源文件数量：53 个
+- OpenHarmony 源文件：24 个
+- Stub mock 文件：29 个
+- 编译时间：约 30-60 秒（首次完整编译）
+- 增量编译：约 5-10 秒
 
-### 编译规则
+## 文档
 
-1. **禁止修改 OpenHarmony 源码**: 所有修改仅在 `stubs/` 目录
-2. **保持 API 兼容**: Mock 签名必须与 OpenHarmony 一致
-3. **Mock 返回成功**: 所有 Mock 实现 return 0
-
-## 项目状态
-
-- ✅ 项目结构恢复完成
-- ✅ 40+ Stub 头文件创建
-- ✅ 构建系统配置完成
-- 🔄 待编译验证
-
-## 相关文档
-
-- [CLAUDE.md](CLAUDE.md) - Claude Code 工作指南
-- [FIX_PROGRESS_REPORT.md](FIX_PROGRESS_REPORT.md) - 编译修复进度
-- [TODO.md](TODO.md) - 待办事项
+- [BUILD.md](BUILD.md) - 详细编译指南
+- [tasks.md](.kiro/specs/mac-distributed-camera-build/tasks.md) - 任务列表
+- [design.md](.kiro/specs/mac-distributed-camera-build/design.md) - 设计文档
+- [requirements.md](.kiro/specs/mac-distributed-camera-build/requirements.md) - 需求文档
 
 ## 许可证
 
-Apache License 2.0
+本项目遵循 OpenHarmony 项目的许可证。
 
-## 参考资源
+## 贡献
 
-- [OpenHarmony 分布式硬件](https://gitee.com/openharmony/distributedhardware_distributed_hardware_fwk)
-- [OpenHarmony 分布式相机](https://gitee.com/openharmony/distributedhardware_distributed_camera)
+欢迎提交 Issue 和 Pull Request。
+
+## 联系方式
+
+如有问题，请查看文档或提交 Issue。

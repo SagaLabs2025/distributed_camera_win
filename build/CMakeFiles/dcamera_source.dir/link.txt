@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -Wextra -Wno-unused-parameter -dynamiclib -Wl,-headerpad_max_install_names -o libdcamera_source.dylib -install_name @rpath/libdcamera_source.dylib CMakeFiles/dcamera_source.dir/src/dcamera_source_dll.cpp.o CMakeFiles/dcamera_source.dir/stubs/src/dcamera_utils_tools.cpp.o  -lc++ libcjson.a

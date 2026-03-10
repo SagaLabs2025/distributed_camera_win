@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -Wextra -Wno-unused-parameter -dynamiclib -Wl,-headerpad_max_install_names -o libdcamera_sink.dylib -install_name @rpath/libdcamera_sink.dylib CMakeFiles/dcamera_sink.dir/src/dcamera_sink_dll.cpp.o  -lc++ libcjson.a
